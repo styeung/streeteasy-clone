@@ -5,24 +5,24 @@ describe User do
     let (:new_user) { User.new }
 
     it "validates the presence of an email" do
-      expect(new_user).to have_at_least(1).error_on(:email)
+      expect(new_user).not_to be_valid
     end
 
     it "validates the presence of a password" do
-      expect(new_user).to have_at_least(1).error_on(:password)
+      expect(new_user).not_to be_valid
     end
   end
 
   it "does not allow email with no password" do
     new_user = User.new({ email: "user@email.com"})
 
-    expect(new_user).to have_at_least(1).error_on(:password)
+    expect(new_user).not_to be_valid
   end
 
   it "does not allow password with no email" do
     new_user = User.new({ password: "password"})
 
-    expect(new_user).to have_at_least(1).error_on(:email)
+    expect(new_user).not_to be_valid
   end
 
   it "validates uniqueness of name" do

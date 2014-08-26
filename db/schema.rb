@@ -11,13 +11,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20140826183502) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-<<<<<<< Local Changes
-=======
+  create_table "properties", force: true do |t|
+    t.integer  "owner_id",     null: false
+    t.string   "address",      null: false
+    t.string   "unit"
+    t.string   "zip",          null: false
+    t.string   "neighborhood", null: false
+    t.integer  "price",        null: false
+    t.integer  "beds"
+    t.decimal  "baths"
+    t.integer  "sq_ft"
+    t.string   "type",         null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "properties", ["address", "unit"], name: "index_properties_on_address_and_unit", unique: true, using: :btree
+  add_index "properties", ["baths"], name: "index_properties_on_baths", using: :btree
+  add_index "properties", ["beds"], name: "index_properties_on_beds", using: :btree
+  add_index "properties", ["neighborhood"], name: "index_properties_on_neighborhood", using: :btree
+  add_index "properties", ["owner_id"], name: "index_properties_on_owner_id", using: :btree
+  add_index "properties", ["price"], name: "index_properties_on_price", using: :btree
+  add_index "properties", ["sq_ft"], name: "index_properties_on_sq_ft", using: :btree
+  add_index "properties", ["type"], name: "index_properties_on_type", using: :btree
+  add_index "properties", ["zip"], name: "index_properties_on_zip", using: :btree
+
   create_table "users", force: true do |t|
     t.string   "email",           null: false
     t.string   "password_digest", null: false
@@ -29,5 +52,4 @@ ActiveRecord::Schema.define(version: 0) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["session_token"], name: "index_users_on_session_token", using: :btree
 
->>>>>>> External Changes
 end

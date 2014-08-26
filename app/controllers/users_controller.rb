@@ -13,7 +13,7 @@ class UsersController < ApplicationController
       login(@user)
       redirect_to user_url(@user)
     else
-      flash.now[:errors] << @user.errors.full_messages
+      flash.now[:errors] = @user.errors.full_messages
       render :new
     end
   end
@@ -29,7 +29,7 @@ class UsersController < ApplicationController
     if @user.update(user_params)
       redirect_to user_url(@user)
     else
-      flash.now[:errors] << @user.errors.full_messages
+      flash.now[:errors] = @user.errors.full_messages
       render :edit
     end
   end
@@ -40,7 +40,7 @@ class UsersController < ApplicationController
     if @user.destroy
       redirect_to new_user_url
     else
-      flash.now[:errors] << @user.errors.full_messages
+      flash.now[:errors] = @user.errors.full_messages
     end
   end
 
@@ -50,7 +50,7 @@ class UsersController < ApplicationController
     if @user
       render :show
     else
-      flash.now[:errors] << "Incorrect user id"
+      flash.now[:errors] = ["Incorrect user id"]
     end
 
   end

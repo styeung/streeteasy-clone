@@ -11,7 +11,7 @@
   <a href="<%= new_user_url %>">Sign Up</a> |
   <a href="<%= new_session_url %>">Sign In</a>
 <% else %>
-  Welcome <a href="<%= user_url(current_user) %>">current_user.email</a>
+  Welcome <a href="<%= user_url(current_user) %>"><%= current_user.email %></a> | Not you? <%= button_to "Sign out", session_url, method: :delete %>
 <% end %>
 
 <% if flash[:errors] %>
