@@ -1,0 +1,71 @@
+<h2>List a new property</h2>
+
+<form action="<%= properties_url %>" method="POST">
+  <%= auth_token %>
+
+  <label>
+    Address (Required)
+    <input type="text" name="property[address]" value="<%= @property.address %>">
+  </label>
+  <br>
+  <label>
+    Unit
+    <input type="text" name="property[unit]" value="<%= @property.unit %>">
+  </label>
+  <br>
+  <label>
+    Zip
+    <input type="text" name="property[zip]" value="<%= @property.zip %>">
+  </label>
+  <br>
+  <select>
+    Neighborhood
+    <option value=""></option>
+    <option value="FINANCIAL DISTRICT">FINANCIAL DISTRICT</option>
+    <option value="BATTERY PARK CITY">BATTERY PARK CITY</option>
+    <option value="CHINATOWN">CHINATOWN</option>
+    <option value="TRIBECA">TRIBECA</option>
+    <option value="LOWER EAST SIDE">LOWER EAST SIDE</option>
+    <option value="EAST VILLAGE">EAST VILLAGE</option>
+    <option value="WEST VILLAGE">WEST VILLAGE/GREENWICH VILLAGE</option>
+    <option value="SOHO">SOHO</option>
+    <option value="NOHO/NOLITA">NOHO/NOLITA</option>
+    <option value="CHELSEA">CHELSEA</option>
+    <option value="FLATIRON/GRAMERCY">FLATIRON/GRAMERCY</option>
+    <option value="MURRAY HILL/KIPS BAY">MURRAY HILL/KIPS BAY</option>
+    <option value="MIDTOWN EAST">MIDTOWN EAST</option>
+    <option value="MIDTOWN WEST/HELL'S KITCHEN">MIDTOWN WEST/HELL'S KITCHEN</option>
+    <option value="UPPER EAST SIDE">UPPER EAST SIDE</option>
+    <option value="UPPER WEST SIDE">UPPER WEST SIDE</option>
+    <option value="HARLEM">HARLEM</option>
+    <option value="WASHINGTON HEIGHTS">WASHINGTON HEIGHTS</option>
+    <option value="INWOOD">INWOOD</option>
+  </select>
+  <br>
+  <label>
+    Price (Required)
+    <input type="number" name="property[price]" value="<%= @property.price %>">
+  </label>
+  <br>
+  <label>
+    Beds
+    <input type="number" name="property[beds]" value="<%= @property.beds %>">
+  </label>
+  <br>
+  <label>
+    Baths
+    <input type="text" name="property[baths]" value="<%= @property.baths %>">
+  </label>
+  <br>
+  <label>
+    Baths
+    <input type="text" name="property[baths]" value="<%= @property.baths %>">
+  </label>
+  <br>
+  <label>
+    Type
+    <input type="text" name="property[type]" value="<%= @property.type %>">
+  </label>
+  <br>
+  <button>Submit</button>
+</form>

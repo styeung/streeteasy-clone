@@ -5,14 +5,14 @@ class PropertiesController < ApplicationController
     count = 0
     params_length = search_params.length
     comparator = {
-      "min_price": ">=",
-      "max_price": "<=",
-      "beds": ">=",
-      "baths": ">=",
-      "zip": "=",
-      "neighborhood", "=",
-      "sq_ft": ">=",
-      "type": "="
+      min_price: ">=",
+      max_price: "<=",
+      beds: ">=",
+      baths: ">=",
+      zip: "=",
+      neighborhood: "=",
+      sq_ft: ">=",
+      type: "="
     }
 
     search_params.each do |key, value|
