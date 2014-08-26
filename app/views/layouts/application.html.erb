@@ -7,6 +7,20 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<% if !signed_in? %>
+  <a href="<%= new_user_url %>">Sign Up</a> |
+  <a href="<%= new_session_url %>">Sign In</a>
+<% else %>
+  Welcome <a href="<%= user_url(current_user) %>">current_user.email</a>
+<% end %>
+
+<% if flash[:errors] %>
+  <ul>
+    <% flash[:errors].each do |error| %>
+      <li><%= error %></li>
+    <% end %>
+  </ul>
+<% end %>
 
 <%= yield %>
 
