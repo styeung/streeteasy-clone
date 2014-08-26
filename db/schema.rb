@@ -26,19 +26,19 @@ ActiveRecord::Schema.define(version: 20140826183502) do
     t.integer  "beds"
     t.decimal  "baths"
     t.integer  "sq_ft"
-    t.string   "type",         null: false
+    t.string   "apt_type",     null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "properties", ["address", "unit"], name: "index_properties_on_address_and_unit", unique: true, using: :btree
+  add_index "properties", ["apt_type"], name: "index_properties_on_apt_type", using: :btree
   add_index "properties", ["baths"], name: "index_properties_on_baths", using: :btree
   add_index "properties", ["beds"], name: "index_properties_on_beds", using: :btree
   add_index "properties", ["neighborhood"], name: "index_properties_on_neighborhood", using: :btree
   add_index "properties", ["owner_id"], name: "index_properties_on_owner_id", using: :btree
   add_index "properties", ["price"], name: "index_properties_on_price", using: :btree
   add_index "properties", ["sq_ft"], name: "index_properties_on_sq_ft", using: :btree
-  add_index "properties", ["type"], name: "index_properties_on_type", using: :btree
   add_index "properties", ["zip"], name: "index_properties_on_zip", using: :btree
 
   create_table "users", force: true do |t|

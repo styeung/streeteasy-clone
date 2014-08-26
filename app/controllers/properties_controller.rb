@@ -12,7 +12,7 @@ class PropertiesController < ApplicationController
       zip: "=",
       neighborhood: "=",
       sq_ft: ">=",
-      type: "="
+      apt_type: "="
     }
 
     search_params.each do |key, value|
@@ -29,12 +29,15 @@ class PropertiesController < ApplicationController
   end
 
   def new
-    @property = Property.new()
+    @user = User.find(params[:user_id])
+    @property = @user.properties.new()
     render :new
   end
 
   def create
-    @property = Property.new(property_params)
+    @user = User.find(params[:user_id])
+
+    @property = @user.properties.new(property_params)
 
     if @property.save
       redirect_to property_url(@property)
@@ -93,7 +96,7 @@ class PropertiesController < ApplicationController
                                      :beds,
                                      :baths,
                                      :sq_ft,
-                                     :type)
+                                     :apt_type)
   end
 
   def search_params
@@ -104,7 +107,7 @@ class PropertiesController < ApplicationController
                                      :beds,
                                      :baths,
                                      :sq_ft,
-                                     :type)
+                                     :apt_type)
   end
 
 end

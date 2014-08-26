@@ -10,7 +10,7 @@ class CreateProperties < ActiveRecord::Migration
       t.integer :beds
       t.decimal :baths
       t.integer :sq_ft
-      t.string :type, null: false
+      t.string :apt_type, null: false
 
       t.timestamps
     end
@@ -23,6 +23,6 @@ class CreateProperties < ActiveRecord::Migration
     add_index :properties, :beds
     add_index :properties, :baths
     add_index :properties, :sq_ft
-    add_index :properties, :type
+    add_index :properties, :apt_type
   end
 end

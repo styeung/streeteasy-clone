@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
   root to: "root#root"
 
-  resources :users
+  resources :users do
+    resources :properties, only: [:new, :create]
+  end
 
   resource :session, only: [:new, :create, :destroy]
 
   get "/", to: "root#root"
 
-  resources :properties
+  resources :properties, except: [:new, :create]
 end
