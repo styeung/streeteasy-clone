@@ -50,6 +50,7 @@ class PropertiesController < ApplicationController
       redirect_to property_url(@property)
     else
       flash.now[:errors] = @property.errors.full_messages
+      render :new
     end
   end
 

@@ -13,3 +13,13 @@
  *= require_tree .
  *= require_self
  */
+
+html, body {
+	font-family: sans-serif;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	
+}

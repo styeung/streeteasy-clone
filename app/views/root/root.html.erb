@@ -1,5 +1,3 @@
-<h1>Streeteasy</h1>
-
 <h3>Search Sales</h3>
 <form action="<%= properties_url %>" method="GET">
   <%= auth_token %>
@@ -14,7 +12,7 @@
     <input type="text" name="property[zip]" value="">
   </label>
   <br>
-  <label for="borough-select">Borough (Required)</label>
+  <label for="borough-select">Borough</label>
   <select name="property[borough]" id="borough-select">
 		<option value="">(Choose one)</option>
     <option value="manhattan">Manhattan</option>
@@ -23,7 +21,7 @@
 		<option value="bronx">The Bronx</option>
   </select>
   <br>
-  <label for="neighborhood-select">Neighborhood (Required)</label>
+  <label for="neighborhood-select">Neighborhood</label>
   <select name="property[neighborhood]" id="neighborhood-select">
     <option value="">(Choose one)</option>
     <option value="financial district">FINANCIAL DISTRICT</option>
@@ -77,7 +75,7 @@
     <input type="number" name="property[sq_ft]" value="<%= @property.sq_ft %>">
   </label>
   <br>
-  <label for="apt-type-select">Apartment Type (Required)</label>
+  <label for="apt-type-select">Apartment Type</label>
     <select name="property[apt_type]" id="apt-type-select">
 			<option value="">(Choose one)</option>
 	    <option value="condo">Condo</option>

@@ -10,6 +10,16 @@ class User < ActiveRecord::Base
     primary_key: :id,
     inverse_of: :owner
   )
+  
+  has_many(
+    :property_saves,
+    class_name: "PropertySave",
+    foreign_key: :user_id,
+    primary_key: :id,
+    inverse_of: :user
+  )
+  
+  has_many :saved_properties, through: :property_saves, source: :property
 
   attr_reader :password
 

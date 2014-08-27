@@ -28,12 +28,22 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    if @user.update(user_params)
-      redirect_to user_url(@user)
-    else
-      flash.now[:errors] = @user.errors.full_messages
-      render :edit
+    if !user_params.empty?
+      if @user.update(user_params)
+        redirect_to user_url(@user)
+      else
+        flash.now[:errors] = @user.errors.full_messages
+        render :edit
+      end
+    elsif !save_params.empty?
+      if @user.saved_properties << Property.find(save_params[:saved_property_id])
+        redirect_to user_url(@user)
+      else
+        flash.now[:errors] = @user.errors.full_messages
+        render json: "Sorry, something went wrong with the save. Please try again."
+      end
     end
+      
   end
 
   def destroy
@@ -59,5 +69,9 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:email, :password)
+  end
+  
+  def save_params
+    params.require(:user).permit(:saved_property_id)
   end
 end

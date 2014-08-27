@@ -1,0 +1,6 @@
+<form action="<%= user_url(current_user.id) %>" method="POST">
+	<%= auth_token %>
+	<input type="hidden" name="_method" value="PATCH">
+	<input type="hidden" name="user[saved_property_id]" value="<%= property.id %>">
+	<button>SAVE</button>
+</form>

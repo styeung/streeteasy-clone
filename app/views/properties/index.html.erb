@@ -16,7 +16,11 @@
 <ul>
 <% @properties.each do |property| %>
 	<li>
+		<img src="https://s3.amazonaws.com/img.streeteasy.com/nyc/image/95/74587695.jpg">
 		<h3><a href="<%= property_url(property) %>"><%= property.address.split(" ").map(&:capitalize).join(" ") %></a></h3>
+		<% if signed_in? %>
+			<%= render "save_form", property: property %>
+		<% end %>
 		<ul>
 			<li>Price: <%= number_to_currency(property.price, precision: 0) %></li>
 			<li>Neighborhood: <%= property.neighborhood.split(" ").map(&:capitalize).join(" ") %></li>
