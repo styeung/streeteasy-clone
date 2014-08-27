@@ -1,31 +1,32 @@
 class PropertiesController < ApplicationController
 
   def index
-    query_string = ""
-    count = 0
-    params_length = search_params.length
-    comparator = {
-      min_price: ">=",
-      max_price: "<=",
-      beds: ">=",
-      baths: ">=",
-      zip: "=",
-      neighborhood: "=",
-      sq_ft: ">=",
-      apt_type: "="
-    }
-
-    search_params.each do |key, value|
-      count += 1
-      if query_string.length == 0 || count == params_length
-        query_string.concat("key #{comparator[key]} #{value}")
-      else
-        query_string.concat(" and ")
-        query_string.concat("key #{comparator[key]} #{value}")
-      end
-    end
-
-    @properties = Property.where(query_string)
+    # query_string = ""
+#     count = 0
+#     params_length = search_params.length
+#     comparator = {
+#       min_price: ">=",
+#       max_price: "<=",
+#       beds: ">=",
+#       baths: ">=",
+#       zip: "=",
+#       neighborhood: "=",
+#       sq_ft: ">=",
+#       apt_type: "="
+#     }
+#
+#     search_params.each do |key, value|
+#       count += 1
+#       if query_string.length == 0 || count == params_length
+#         query_string.concat("key #{comparator[key]} #{value}")
+#       else
+#         query_string.concat(" and ")
+#         query_string.concat("key #{comparator[key]} #{value}")
+#       end
+#     end
+#
+#     @properties = Property.where(query_string)
+@properties = Property.all.page(params[:page]).per(12)
   end
 
   def new

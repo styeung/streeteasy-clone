@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140826183502) do
+ActiveRecord::Schema.define(version: 20140827022158) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,12 +29,14 @@ ActiveRecord::Schema.define(version: 20140826183502) do
     t.string   "apt_type",     null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "borough",      null: false
   end
 
   add_index "properties", ["address", "unit"], name: "index_properties_on_address_and_unit", unique: true, using: :btree
   add_index "properties", ["apt_type"], name: "index_properties_on_apt_type", using: :btree
   add_index "properties", ["baths"], name: "index_properties_on_baths", using: :btree
   add_index "properties", ["beds"], name: "index_properties_on_beds", using: :btree
+  add_index "properties", ["borough"], name: "index_properties_on_borough", using: :btree
   add_index "properties", ["neighborhood"], name: "index_properties_on_neighborhood", using: :btree
   add_index "properties", ["owner_id"], name: "index_properties_on_owner_id", using: :btree
   add_index "properties", ["price"], name: "index_properties_on_price", using: :btree

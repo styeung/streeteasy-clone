@@ -1,0 +1,17 @@
+<h2>Listings</h2>
+
+<%= paginate @properties %>
+
+<ul>
+<% @properties.each do |property| %>
+	<li>
+		<h3><%= property.address %></h3>
+		<ul>
+			<li>Price: <%= number_to_currency(property.price, precision: 0) %></li>
+			<li>Neighborhood: <%= property.neighborhood %></li>
+		</ul>
+	</li>
+<% end %>
+</ul>
+
+<%= paginate @properties %>
