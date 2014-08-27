@@ -1,32 +1,38 @@
 class PropertiesController < ApplicationController
-
+  before_action :require_signed_in, only: [:new, :create, :edit, :update, :destroy]
+  before_action :require_owner, only: [:edit, :update, :destroy]
+  
   def index
-    # query_string = ""
-#     count = 0
-#     params_length = search_params.length
-#     comparator = {
-#       min_price: ">=",
-#       max_price: "<=",
-#       beds: ">=",
-#       baths: ">=",
-#       zip: "=",
-#       neighborhood: "=",
-#       sq_ft: ">=",
-#       apt_type: "="
-#     }
-#
-#     search_params.each do |key, value|
-#       count += 1
-#       if query_string.length == 0 || count == params_length
-#         query_string.concat("key #{comparator[key]} #{value}")
-#       else
-#         query_string.concat(" and ")
-#         query_string.concat("key #{comparator[key]} #{value}")
-#       end
-#     end
-#
-#     @properties = Property.where(query_string)
-@properties = Property.all.page(params[:page]).per(12)
+    query_string = ""
+    count = 0
+    params_length = search_params.length
+    comparator = {
+      min_price: ">=",
+      max_price: "<=",
+      beds: ">=",
+      baths: ">=",
+      sq_ft: ">="
+    }
+    
+    values_hash = {}
+    
+    search_params.each do |key, value|
+      if value != ""
+        count += 1
+        values_hash[key.to_sym] = value
+        if query_string.length == 0 || count == params_length
+          query_string.concat("#{key} #{comparator[key] ||= "="} :#{key}")
+        else
+          query_string.concat(" AND ")
+          query_string.concat("#{key} #{comparator[key] ||= "="} :#{key}")
+        end
+      end
+    end
+    
+    @properties = Property.where(query_string, values_hash).page(params[:page]).per(12)
+
+    render :index
+# @properties = Property.all.page(params[:page]).per(12)
   end
 
   def new
@@ -82,7 +88,7 @@ class PropertiesController < ApplicationController
     @property = Property.find(params[:id])
 
     if @property.destroy
-      redirect_to ""
+      redirect_to root_url
     else
       flash.now[:errors] = @property.errors.full_messages
     end
@@ -92,6 +98,7 @@ class PropertiesController < ApplicationController
     params.require(:property).permit(:address,
                                      :unit,
                                      :zip,
+                                     :borough,
                                      :neighborhood,
                                      :price,
                                      :beds,
@@ -102,6 +109,7 @@ class PropertiesController < ApplicationController
 
   def search_params
     params.require(:property).permit(:zip,
+                                     :borough,
                                      :neighborhood,
                                      :min_price,
                                      :max_price,

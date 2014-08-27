@@ -18,28 +18,36 @@
     <input type="text" name="property[zip]" value="<%= @property.zip %>">
   </label>
   <br>
+  <label for="borough-select">Borough (Required)</label>
+  <select name="property[borough]" id="borough-select">
+    <option value="manhattan">Manhattan</option>
+    <option value="brooklyn">Brooklyn</option>
+		<option value="queens">Queens</option>
+		<option value="bronx">The Bronx</option>
+  </select>
+  <br>
   <label for="neighborhood-select">Neighborhood (Required)</label>
   <select name="property[neighborhood]" id="neighborhood-select">
     <option value="">(Choose one)</option>
-    <option value="FINANCIAL DISTRICT">FINANCIAL DISTRICT</option>
-    <option value="BATTERY PARK CITY">BATTERY PARK CITY</option>
-    <option value="CHINATOWN">CHINATOWN</option>
-    <option value="TRIBECA">TRIBECA</option>
-    <option value="LOWER EAST SIDE">LOWER EAST SIDE</option>
-    <option value="EAST VILLAGE">EAST VILLAGE</option>
-    <option value="WEST VILLAGE">WEST VILLAGE/GREENWICH VILLAGE</option>
-    <option value="SOHO">SOHO</option>
-    <option value="NOHO/NOLITA">NOHO/NOLITA</option>
-    <option value="CHELSEA">CHELSEA</option>
-    <option value="FLATIRON/GRAMERCY">FLATIRON/GRAMERCY</option>
-    <option value="MURRAY HILL/KIPS BAY">MURRAY HILL/KIPS BAY</option>
-    <option value="MIDTOWN EAST">MIDTOWN EAST</option>
-    <option value="MIDTOWN WEST/HELL'S KITCHEN">MIDTOWN WEST/HELL'S KITCHEN</option>
-    <option value="UPPER EAST SIDE">UPPER EAST SIDE</option>
-    <option value="UPPER WEST SIDE">UPPER WEST SIDE</option>
-    <option value="HARLEM">HARLEM</option>
-    <option value="WASHINGTON HEIGHTS">WASHINGTON HEIGHTS</option>
-    <option value="INWOOD">INWOOD</option>
+    <option value="Financial District">FINANCIAL DISTRICT</option>
+    <option value="Battery Park City">BATTERY PARK CITY</option>
+    <option value="Chinatown">CHINATOWN</option>
+    <option value="Tribeca">TRIBECA</option>
+    <option value="Lower East Side">LOWER EAST SIDE</option>
+    <option value="East Village">EAST VILLAGE</option>
+    <option value="Wesst Village">WEST VILLAGE/GREENWICH VILLAGE</option>
+    <option value="Soho">SOHO</option>
+    <option value="Noho/Nolita">NOHO/NOLITA</option>
+    <option value="Chelsea">CHELSEA</option>
+    <option value="Flatiron/Gramercy">FLATIRON/GRAMERCY</option>
+    <option value="Murray Hill/Kips Bay">MURRAY HILL/KIPS BAY</option>
+    <option value="Midtown East">MIDTOWN EAST</option>
+    <option value="Midtown West/Hell's Kitchen">MIDTOWN WEST/HELL'S KITCHEN</option>
+    <option value="Upper East Side">UPPER EAST SIDE</option>
+    <option value="Upper West Side">UPPER WEST SIDE</option>
+    <option value="Harlem">HARLEM</option>
+    <option value="Washington Heights">WASHINGTON HEIGHTS</option>
+    <option value="Inwood">INWOOD</option>
   </select>
   <br>
   <label>
@@ -62,8 +70,13 @@
     <input type="text" name="property[baths]" value="<%= @property.baths %>">
   </label>
   <br>
+  <label>
+    Square Footage
+    <input type="number" name="property[sq_ft]" value="<%= @property.sq_ft %>">
+  </label>
+  <br>
   <label for="apt-type-select">Apartment Type (Required)</label>
-    <select name="property[apt_type]" id="apt-type-select">
+  <select name="property[apt_type]" id="apt-type-select">
     <option value="condo">Condo</option>
     <option value="co-op">Co-op</option>
 		<option value="townhouse">Townhouse</option>

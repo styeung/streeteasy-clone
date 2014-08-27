@@ -1,6 +1,11 @@
 <h2><%= @property.address %> <%= @property.unit %></h2>
 <h3><%= @property.neighborhood %></h3>
 
-<p><%= @property.apt_type %> in <%= @property.neighborhood %></p>
-
-<p><%= @property.beds %> | <%= @property.baths %> | <%= @property.sq_ft %></p>
+<ul>
+<%@property.attributes.each do |attribute, value| %>
+	<!-- non_detailed_attributes is in application_helper.rb -->
+	<% unless non_detailed_attributes.include?(attribute) %>
+		<li><%= attribute %>: <%= value %></li>
+	<% end %>
+<% end %>
+</ul>

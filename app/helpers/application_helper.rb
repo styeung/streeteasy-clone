@@ -7,5 +7,10 @@ module ApplicationHelper
              value="#{ form_authenticity_token }" >
     HTML
   end
+  
+  NON_DETAILED_ATTRIBUTES = ["id", "owner_id", "address", "neighborhood", "unit", "created_at", "updated_at"]
 
+  def non_detailed_attributes
+    NON_DETAILED_ATTRIBUTES
+  end
 end

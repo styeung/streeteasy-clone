@@ -1,1 +1,88 @@
 <h1>Streeteasy</h1>
+
+<h3>Search Sales</h3>
+<form action="<%= properties_url %>" method="GET">
+  <%= auth_token %>
+
+  <label>
+    Address
+    <input type="text" name="property[address]" value="">
+  </label>
+  <br>
+  <label>
+    Zip
+    <input type="text" name="property[zip]" value="">
+  </label>
+  <br>
+  <label for="borough-select">Borough (Required)</label>
+  <select name="property[borough]" id="borough-select">
+    <option value="manhattan">Manhattan</option>
+    <option value="brooklyn">Brooklyn</option>
+		<option value="queens">Queens</option>
+		<option value="bronx">The Bronx</option>
+  </select>
+  <br>
+  <label for="neighborhood-select">Neighborhood (Required)</label>
+  <select name="property[neighborhood]" id="neighborhood-select">
+    <option value="">(Choose one)</option>
+    <option value="Financial District">FINANCIAL DISTRICT</option>
+    <option value="Battery Park City">BATTERY PARK CITY</option>
+    <option value="Chinatown">CHINATOWN</option>
+    <option value="Tribeca">TRIBECA</option>
+    <option value="Lower East Side">LOWER EAST SIDE</option>
+    <option value="East Village">EAST VILLAGE</option>
+    <option value="Wesst Village">WEST VILLAGE/GREENWICH VILLAGE</option>
+    <option value="Soho">SOHO</option>
+    <option value="Noho/Nolita">NOHO/NOLITA</option>
+    <option value="Chelsea">CHELSEA</option>
+    <option value="Flatiron/Gramercy">FLATIRON/GRAMERCY</option>
+    <option value="Murray Hill/Kips Bay">MURRAY HILL/KIPS BAY</option>
+    <option value="Midtown East">MIDTOWN EAST</option>
+    <option value="Midtown West/Hell's Kitchen">MIDTOWN WEST/HELL'S KITCHEN</option>
+    <option value="Upper East Side">UPPER EAST SIDE</option>
+    <option value="Upper West Side">UPPER WEST SIDE</option>
+    <option value="Harlem">HARLEM</option>
+    <option value="Washington Heights">WASHINGTON HEIGHTS</option>
+    <option value="Inwood">INWOOD</option>
+  </select>
+  <br>
+  <label>
+    Min Price
+    <input type="number" name="property[min_price]" value="">
+  </label>
+  <br>
+  <label>
+    Max Price
+    <input type="number" name="property[max_price]" value="">
+  </label>
+  <br>
+  <label>
+    Beds
+    <input type="number" name="property[beds]" value="">
+  </label>
+  <br>
+  <label>
+    Baths
+    <input type="text" name="property[baths]" value="">
+  </label>
+  <br>
+  <label>
+    Baths
+    <input type="text" name="property[baths]" value="">
+  </label>
+  <br>
+  <label>
+    Square Footage
+    <input type="number" name="property[sq_ft]" value="<%= @property.sq_ft %>">
+  </label>
+  <br>
+  <label for="apt-type-select">Apartment Type (Required)</label>
+    <select name="property[apt_type]" id="apt-type-select">
+    <option value="Condo">Condo</option>
+    <option value="Co-op">Co-op</option>
+		<option value="Townhouse">Townhouse</option>
+		<option value="Multi-family">Multi-family</option>
+  </select>
+  <br>
+  <button>Submit</button>
+</form>

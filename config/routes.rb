@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: "root#root"
+  root to: "root#root", as: "root"
 
   resources :users do
     resources :properties, only: [:new, :create]
