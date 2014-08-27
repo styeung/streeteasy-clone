@@ -1,5 +1,16 @@
 <h2>Listings</h2>
 
+<h3>Search terms</h3>
+<ul>
+	<% params["property"].each do |attribute, value| %>
+		<% unless value == "" %>
+			<li><b><%= attribute.capitalize %></b>: <%= value %></li>
+		<% end %>
+	<% end %>
+</ul>
+
+<hr>
+
 <%= paginate @properties %>
 
 <ul>
