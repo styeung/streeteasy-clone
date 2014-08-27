@@ -13,4 +13,10 @@ module ApplicationHelper
   def non_detailed_attributes
     NON_DETAILED_ATTRIBUTES
   end
+  
+  def action_modifier(action)
+    <<-HTML.html_safe
+      <input type="hidden" name="_method" value="#{action}">
+    HTML
+  end
 end

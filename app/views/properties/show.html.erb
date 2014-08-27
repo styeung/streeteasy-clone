@@ -1,5 +1,10 @@
 <h2><%= @property.address.split(" ").map(&:capitalize).join(" ") %> <%= @property.unit %></h2>
 <h3><%= @property.neighborhood.capitalize %></h3>
+<% if owner?(@property) %>
+	<a href="<%= edit_property_url(@property) %>">Edit this listing</a>
+<% end %>
+<br>
+<br>
 <% if signed_in? %>
 	<%= render "save_form", property: @property %>
 <% end %>
