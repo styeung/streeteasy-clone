@@ -5,7 +5,13 @@
 <%@property.attributes.each do |attribute, value| %>
 	<!-- non_detailed_attributes is in application_helper.rb -->
 	<% unless non_detailed_attributes.include?(attribute) %>
-		<li><%= attribute %>: <%= value %></li>
+		<% if value.class == String %>
+			<li><%= attribute %>: <%= value.split(" ").map(&:capitalize).join(" ") %></li>
+		<% elsif attribute == "price" %>
+			<li><%= attribute %>: <%= number_to_currency(value, precision: 0) %></li>
+		<% else %>
+			<li><%= attribute %>: <%= value %></li>
+		<% end %>
 	<% end %>
 <% end %>
 </ul>

@@ -5,10 +5,10 @@
 <ul>
 <% @properties.each do |property| %>
 	<li>
-		<h3><%= property.address %></h3>
+		<h3><a href="<%= property_url(property) %>"><%= property.address.split(" ").map(&:capitalize).join(" ") %></a></h3>
 		<ul>
 			<li>Price: <%= number_to_currency(property.price, precision: 0) %></li>
-			<li>Neighborhood: <%= property.neighborhood %></li>
+			<li>Neighborhood: <%= property.neighborhood.split(" ").map(&:capitalize).join(" ") %></li>
 		</ul>
 	</li>
 <% end %>
