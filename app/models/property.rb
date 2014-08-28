@@ -31,6 +31,14 @@ class Property < ActiveRecord::Base
     inverse_of: :property
   )
   
+  has_many(
+    :comments,
+    class_name: "Comment",
+    foreign_key: :property_id,
+    primary_key: :id,
+    inverse_of: :property
+  )
+  
   has_many :following_users, through: :property_saves, source: :user
   
   def full_address

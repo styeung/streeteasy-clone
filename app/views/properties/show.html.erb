@@ -4,11 +4,14 @@
 	<a href="<%= edit_property_url(@property) %>">Edit this listing</a>
 <% end %>
 <br>
-<br>
 <% if signed_in? %>
 	<%= render "save_form", property: @property %>
 <% end %>
-<%= image_tag @property.property_photo.url(:big) %>
+<% unless @property.property_photo_file_name.nil? %>
+	<%= image_tag @property.property_photo.url(:big) %>
+<% else %>
+	<img src="<%= asset_url("default.png") %>" class="listings-photo">
+<% end %>
 <br>
 <ul>
 <%@property.attributes.each do |attribute, value| %>
@@ -23,3 +26,24 @@
 	<% end %>
 <% end %>
 </ul>
+
+<a href="<%= new_property_comment_url(@property) %>">Add Your Comment</a>
+
+<% if !@property.comments.empty? %>
+	<ul>
+		<% @property.comments.each do |comment| %>
+		<li>
+			<h5>
+				<i>Posted <%= time_ago_in_words(comment.created_at) %> ago by <%= User.find(comment.author_id).email %></i>
+			</h5>
+			<h4><strong><%= comment.title %></strong></h4>
+			<% if comment.author_id == current_user.id %>
+				<h5><a href="<%= edit_property_comment_url(@property, comment.id) %>">Edit your comment</a></h5>
+			<% end %>
+			<p><%= comment.body %></p>
+		</li>
+		<% end %>
+	</ul>
+<% else %>
+	<p>Be the first to discuss this sale</p>
+<% end %>

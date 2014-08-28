@@ -9,5 +9,8 @@ Rails.application.routes.draw do
 
   get "/", to: "root#root"
 
-  resources :properties, except: [:new, :create]
+  resources :properties, except: [:new, :create] do
+    resources :comments, only: [:new, :create, :edit, :update, :destroy]
+  end
+
 end

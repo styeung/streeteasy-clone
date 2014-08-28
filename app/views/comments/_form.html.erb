@@ -1,0 +1,21 @@
+<% header = type == "new" ? "New comment" : "Edit comment" %>
+<% action_path = type == "new" ? property_comments_url(params[:property_id]) : property_comment_url(params[:property_id], params[:id]) %>
+<% action = type == "new" ? "POST" : "PATCH" %>
+
+<h2><%= header %></h2>
+
+<form action="<%= action_path %>" method="POST">
+  <%= auth_token %>
+	<%= action_modifier(action) %>
+	<label>
+    Title (Required)
+    <input type="text" name="comment[title]" value="<%= @comment.title %>">
+  </label>
+  <br>
+  <label>
+    Comment
+    <input type="text" name="comment[body]" value="<%= @comment.body %>">
+  </label>
+	<br>
+	<button>Submit</button>
+</form>

@@ -19,6 +19,14 @@ class User < ActiveRecord::Base
     inverse_of: :user
   )
   
+  has_many(
+    :authored_comments,
+    class_name: "Comment",
+    foreign_key: :author_id,
+    primary_key: :id,
+    inverse_of: :author
+  )
+  
   has_many :saved_properties, through: :property_saves, source: :property
 
   attr_reader :password
