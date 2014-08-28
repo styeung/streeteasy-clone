@@ -5,8 +5,8 @@ class Property < ActiveRecord::Base
   after_validation :geocode
   
   has_attached_file :property_photo, :styles => {
-          :big => "600x600>",
-          :small => "50x50#"
+          :big => "576x400>",
+          :small => "170x110#"
         }
   
   validates_attachment_content_type(

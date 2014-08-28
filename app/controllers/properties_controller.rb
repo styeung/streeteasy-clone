@@ -32,7 +32,6 @@ class PropertiesController < ApplicationController
     @properties = Property.where(query_string, values_hash).page(params[:page]).per(12)
 
     render :index
-# @properties = Property.all.page(params[:page]).per(12)
   end
 
   def new

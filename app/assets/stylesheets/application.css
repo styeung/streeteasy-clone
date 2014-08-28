@@ -10,6 +10,7 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
+ *= require mapbox
  *= require_tree .
  *= require_self
  */
@@ -24,14 +25,38 @@ input::-webkit-inner-spin-button {
 	
 }
 
-#map { 
-	position: fixed; 
-	top:0; 
-	bottom:0; 
-	left: 500px; 
+img {
+	display: block;
+}
+
+header {
+	position: relative;
+}
+
+#map {  
 	width: 300px; 
 	height: 300px;
 	border: 2px solid #999;
+}
+
+.map-static {
+	position: absolute; 
+	top:300px;
+	left: 550px;
+}
+
+.map-scrolling {
+	position: fixed; 
+	top:0;
+	left: 550px;
+	width: 300px; 
+	height: 300px;
+	border: 2px solid #999;
+}
+
+.listings-photo {
+	width: 170px;
+	min-height: 110px;
 }
 
 .property-listing:hover {

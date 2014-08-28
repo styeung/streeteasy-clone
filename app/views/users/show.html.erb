@@ -1,8 +1,5 @@
-<h2>Welcome <%= @user.email %></h2>
-
 <a href="<%= new_user_property_url(@user) %>">Add new property</a>
 
-<hr>
 <h3>Saved Properties</h3>
 <ul>
 <% @user.saved_properties.each do |property| %>

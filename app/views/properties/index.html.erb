@@ -16,7 +16,11 @@
 <ul>
 <% @properties.each do |property| %>
 	<li class="property-listing" data-lat="<%= property.latitude %>" data-lng="<%= property.longitude %>">
-		<%= image_tag property.property_photo.url(:small) %>
+		<% unless property.property_photo_file_name.nil? %>
+			<%= image_tag property.property_photo.url(:small) %>
+		<% else %>
+			<img src="<%= asset_url("default.png") %>" class="listings-photo">
+		<% end %>
 		<h3><a href="<%= property_url(property) %>"><%= property.address.split(" ").map(&:capitalize).join(" ") %></a></h3>
 		<% if signed_in? %>
 			<%= render "save_form", property: property %>
@@ -30,4 +34,34 @@
 <% end %>
 </ul>
 
+<div id="map" class="map-scrolling"></div>
+
 <%= paginate @properties %>
+
+<script>
+
+L.mapbox.accessToken = 'pk.eyJ1Ijoic2FpdG95ZXVuZyIsImEiOiJPOXA3aUowIn0.spWqAgo8-BgTGtYiLbOztg';
+var map = L.mapbox.map('map', 'saitoyeung.jbj6oj44');
+var geocoder = L.mapbox.geocoder('mapbox.places-v1');
+var defaultLat = 40.714728;
+var defaultLng = -73.998672;
+
+map.setView([defaultLat, defaultLng], 12);
+
+var address, borough, queryString, queryResult, lat, lng
+	$(document).ready( function() {
+		//want default on first property on page
+		$(".main").on("mouseenter", "li.property-listing", function(event) {
+			lat = $(event.currentTarget).attr("data-lat");
+			lng = $(event.currentTarget).attr("data-lng");
+		
+			if(lat && lng) {
+				map.setView([lat, lng], 15);
+				L.marker([lat, lng]).addTo(map);
+			}
+			else {
+				map.setView([defaultLat, defaultLng], 12);
+			}
+		});
+	});
+</script>

@@ -10,6 +10,9 @@
 	<%= action_modifier(action) %>
 	<label>
 		Main Photo
+		<% unless @property.property_photo_file_name.nil? %>
+			<%= image_tag @property.property_photo.url(:big) %>
+		<% end %>
 		<input type="file" name="property[property_photo]">
   <label>
     Address (Required)
@@ -40,29 +43,10 @@
   <select name="property[neighborhood]" id="neighborhood-select">
     <option value="">(Choose one)</option>
 		<% all_neighborhoods.each do |neighborhood| %>
-			<option value="<%= neighborhood %>">
+			<option value="<%= neighborhood %>" <%= "Selected" if neighborhood == @property.neighborhood %>>
 				<%= neighborhood.split(" ").map(&:capitalize).join(" ") %>
 			</option>
 		<% end %>
-    <!-- <option value="financial district">FINANCIAL DISTRICT</option>
-    <option value="battery park city">BATTERY PARK CITY</option>
-    <option value="chinatown">CHINATOWN</option>
-    <option value="tribeca">TRIBECA</option>
-    <option value="lower east side">LOWER EAST SIDE</option>
-    <option value="east village">EAST VILLAGE</option>
-    <option value="west village">WEST VILLAGE/GREENWICH VILLAGE</option>
-    <option value="soho">SOHO</option>
-    <option value="noho/nolita">NOHO/NOLITA</option>
-    <option value="chelsea">CHELSEA</option>
-    <option value="flatiron/gramercy">FLATIRON/GRAMERCY</option>
-    <option value="murray hill/kips bay">MURRAY HILL/KIPS BAY</option>
-    <option value="midtown east">MIDTOWN EAST</option>
-    <option value="midtown west/hell's kitchen">MIDTOWN WEST/HELL'S KITCHEN</option>
-    <option value="upper east side">UPPER EAST SIDE</option>
-    <option value="upper west side">UPPER WEST SIDE</option>
-    <option value="harlem">HARLEM</option>
-    <option value="washington heights">WASHINGTON HEIGHTS</option>
-    <option value="inwood">INWOOD</option> -->
   </select>
   <br>
   <label>
@@ -93,10 +77,11 @@
   <label for="apt-type-select">Apartment Type (Required)</label>
   <select name="property[apt_type]" id="apt-type-select">
 		<option value="">(Choose one)</option>
-    <option value="condo">Condo</option>
-    <option value="co-op">Co-op</option>
-		<option value="townhouse">Townhouse</option>
-		<option value="multi-family">Multi-family</option>
+		<% all_apt_types.each do |apt_type| %>
+			<option value="<%= apt_type %>" <%= "Selected" if apt_type == @property.apt_type %>>
+				<%= apt_type.split(" ").map(&:capitalize).join(" ") %>
+			</option>
+		<% end %>
   </select>
   <br>
   <button>Submit</button>

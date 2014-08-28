@@ -12,7 +12,7 @@
 <br>
 <ul>
 <%@property.attributes.each do |attribute, value| %>
-	<% unless attribute.index("photo") != nil || non_detailed_attributes.include?(attribute)%>
+	<% if detailed_attributes.include?(attribute)%>
 		<% if value.class == String %>
 			<li><%= attribute %>: <%= value.split(" ").map(&:capitalize).join(" ") %></li>
 		<% elsif attribute == "price" %>
