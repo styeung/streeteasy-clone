@@ -19,7 +19,7 @@
 		<% unless property.property_photo_file_name.nil? %>
 			<%= image_tag property.property_photo.url(:small) %>
 		<% else %>
-			<img src="<%= asset_url("default.png") %>" class="listings-photo">
+			<img src="<%= asset_path("default.png") %>" class="listings-photo">
 		<% end %>
 		<h3><a href="<%= property_url(property) %>"><%= property.address.split(" ").map(&:capitalize).join(" ") %></a></h3>
 		<% if signed_in? %>

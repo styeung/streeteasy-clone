@@ -10,7 +10,7 @@
 <% unless @property.property_photo_file_name.nil? %>
 	<%= image_tag @property.property_photo.url(:big) %>
 <% else %>
-	<img src="<%= asset_url("default.png") %>" class="listings-photo">
+	<img src="<%= asset_path("default.png") %>" class="listings-photo">
 <% end %>
 <br>
 <ul>
