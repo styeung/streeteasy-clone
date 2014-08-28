@@ -3,7 +3,10 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  helper_method :current_user, :signed_in?, :owner?
+  helper_method :current_user, :signed_in?, :owner?, :all_neighborhoods, :all_apt_types
+  
+  @all_neighborhoods = nil
+  @all_apt_types = nil
 
   def current_user
     return nil if session[:session_token].nil?
@@ -54,6 +57,14 @@ class ApplicationController < ActionController::Base
       flash[:errors] = ["You do not the owner of this listing."]
       redirect_to root_url
     end
+  end
+  
+  def all_neighborhoods
+    @all_neighborhoods ||= Property.uniq.pluck(:neighborhood).map(&:strip).reject.sort
+  end
+  
+  def all_apt_types
+    @all_apt_types ||= Property.uniq.pluck(:apt_type).map(&:strip).reject.sort
   end
   
 end

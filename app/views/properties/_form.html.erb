@@ -29,16 +29,22 @@
   <label for="borough-select">Borough (Required)</label>
   <select name="property[borough]" id="borough-select">
 		<option value="">(Choose one)</option>
-    <option value="manhattan">Manhattan</option>
-    <option value="brooklyn">Brooklyn</option>
-		<option value="queens">Queens</option>
-		<option value="bronx">The Bronx</option>
+		<% borough_choices.each do |key, value| %>
+			<option value="<%= key %>" <%= "Selected" if key.to_s == @property.borough %>>
+				<%= value %>
+			</option>
+		<% end %>
   </select>
   <br>
   <label for="neighborhood-select">Neighborhood</label>
   <select name="property[neighborhood]" id="neighborhood-select">
     <option value="">(Choose one)</option>
-    <option value="financial district">FINANCIAL DISTRICT</option>
+		<% all_neighborhoods.each do |neighborhood| %>
+			<option value="<%= neighborhood %>">
+				<%= neighborhood.split(" ").map(&:capitalize).join(" ") %>
+			</option>
+		<% end %>
+    <!-- <option value="financial district">FINANCIAL DISTRICT</option>
     <option value="battery park city">BATTERY PARK CITY</option>
     <option value="chinatown">CHINATOWN</option>
     <option value="tribeca">TRIBECA</option>
@@ -56,7 +62,7 @@
     <option value="upper west side">UPPER WEST SIDE</option>
     <option value="harlem">HARLEM</option>
     <option value="washington heights">WASHINGTON HEIGHTS</option>
-    <option value="inwood">INWOOD</option>
+    <option value="inwood">INWOOD</option> -->
   </select>
   <br>
   <label>

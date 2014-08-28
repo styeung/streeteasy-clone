@@ -12,8 +12,7 @@
 <br>
 <ul>
 <%@property.attributes.each do |attribute, value| %>
-	<!-- non_detailed_attributes is in application_helper.rb -->
-	<% unless non_detailed_attributes.include?(attribute) %>
+	<% unless attribute.index("photo") != nil || non_detailed_attributes.include?(attribute)%>
 		<% if value.class == String %>
 			<li><%= attribute %>: <%= value.split(" ").map(&:capitalize).join(" ") %></li>
 		<% elsif attribute == "price" %>
