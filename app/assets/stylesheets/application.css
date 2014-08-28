@@ -47,7 +47,7 @@ header {
 
 .map-scrolling {
 	position: fixed; 
-	top:0;
+	top:300px;
 	left: 550px;
 	width: 300px; 
 	height: 300px;
