@@ -15,7 +15,7 @@
 
 <ul>
 <% @properties.each do |property| %>
-	<li>
+	<li class="property-listing">
 		<%= image_tag property.property_photo.url(:small) %>
 		<h3><a href="<%= property_url(property) %>"><%= property.address.split(" ").map(&:capitalize).join(" ") %></a></h3>
 		<% if signed_in? %>
@@ -23,6 +23,7 @@
 		<% end %>
 		<ul>
 			<li>Price: <%= number_to_currency(property.price, precision: 0) %></li>
+			<li class="borough-index">Borough: <%= property.borough.split(" ").map(&:capitalize).join(" ") %></li>
 			<li>Neighborhood: <%= property.neighborhood.split(" ").map(&:capitalize).join(" ") %></li>
 		</ul>
 	</li>
