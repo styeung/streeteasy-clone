@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140827210131) do
+ActiveRecord::Schema.define(version: 20140828144555) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,8 @@ ActiveRecord::Schema.define(version: 20140827210131) do
     t.string   "property_photo_content_type"
     t.integer  "property_photo_file_size"
     t.datetime "property_photo_updated_at"
+    t.float    "latitude"
+    t.float    "longitude"
   end
 
   add_index "properties", ["address", "unit"], name: "index_properties_on_address_and_unit", unique: true, using: :btree

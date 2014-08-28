@@ -15,7 +15,7 @@
 
 <ul>
 <% @properties.each do |property| %>
-	<li class="property-listing">
+	<li class="property-listing" data-lat="<%= property.latitude %>" data-lng="<%= property.longitude %>">
 		<%= image_tag property.property_photo.url(:small) %>
 		<h3><a href="<%= property_url(property) %>"><%= property.address.split(" ").map(&:capitalize).join(" ") %></a></h3>
 		<% if signed_in? %>

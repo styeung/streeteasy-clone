@@ -42,6 +42,7 @@ gem 'kaminari'
 gem 'paperclip'
 gem 'aws-sdk'
 gem 'figaro'
+gem 'geocoder'
 
 group :development do
   gem 'pry-rails'

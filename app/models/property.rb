@@ -1,6 +1,9 @@
 class Property < ActiveRecord::Base
   validates :address, :price, presence: true
   
+  geocoded_by :full_address
+  after_validation :geocode
+  
   has_attached_file :property_photo, :styles => {
           :big => "600x600>",
           :small => "50x50#"
@@ -29,5 +32,23 @@ class Property < ActiveRecord::Base
   )
   
   has_many :following_users, through: :property_saves, source: :user
+  
+  def full_address
+    query_array = []
+    
+    if self.address
+      query_array << self.address
+    elsif self.borough
+      query_array << self.borough
+    elsif self.zip
+      query_array << self.zip
+    end
+    
+    query_array << "New York"
+    query_array << "NY"
+    
+    query_string = query_array.join(", ")
+    
+  end
 
 end

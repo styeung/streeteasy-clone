@@ -17,17 +17,18 @@ module StreetEasyClone
         :controller_specs => true,
         :request_specs => true
     end
+    
+    config.paperclip_defaults = {                                   
+      :storage => :s3,                                              
+      :s3_protocol => 'http',                                       
+      :url =>':s3_domain_url',                                      
+      :path => "images/:class/:id.:style.:extension",
+      :s3_credentials => {                                          
+        :bucket => ENV['AWS_BUCKET'], #these values safely stored in application.yml thanks to figaro!                
+        :access_key_id => ENV['AWS_ACCESS_KEY_ID'],                 
+        :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']          
+      }                                                             
+    } 
   end
   
-  config.paperclip_defaults = {                                   
-    :storage => :s3,                                              
-    :s3_protocol => 'http',                                       
-    :url =>':s3_domain_url',                                      
-    :path => "images/:class/:id.:style.:extension",
-    :s3_credentials => {                                          
-      :bucket => ENV['AWS_BUCKET'], #these values safely stored in application.yml thanks to figaro!                
-      :access_key_id => ENV['AWS_ACCESS_KEY_ID'],                 
-      :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']          
-    }                                                             
-  } 
 end
