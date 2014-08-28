@@ -76,11 +76,13 @@ class PropertiesController < ApplicationController
 
   def update
     @property = Property.find(params[:id])
-
+    
     if @property.update(property_params)
       redirect_to property_url(@property)
     else
       flash.now[:errors] = @property.errors.full_messages
+      render :edit
+      
     end
 
   end
@@ -105,7 +107,8 @@ class PropertiesController < ApplicationController
                                      :beds,
                                      :baths,
                                      :sq_ft,
-                                     :apt_type)
+                                     :apt_type,
+                                     :property_photo)
   end
 
   def search_params

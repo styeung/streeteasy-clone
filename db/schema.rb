@@ -11,25 +11,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140827160633) do
+ActiveRecord::Schema.define(version: 20140827210131) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "properties", force: true do |t|
-    t.integer  "owner_id",     null: false
-    t.string   "address",      null: false
+    t.integer  "owner_id",                    null: false
+    t.string   "address",                     null: false
     t.string   "unit"
-    t.string   "zip",          null: false
+    t.string   "zip",                         null: false
     t.string   "neighborhood"
-    t.integer  "price",        null: false
+    t.integer  "price",                       null: false
     t.integer  "beds"
     t.decimal  "baths"
     t.integer  "sq_ft"
-    t.string   "apt_type",     null: false
+    t.string   "apt_type",                    null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "borough"
+    t.string   "property_photo_file_name"
+    t.string   "property_photo_content_type"
+    t.integer  "property_photo_file_size"
+    t.datetime "property_photo_updated_at"
   end
 
   add_index "properties", ["address", "unit"], name: "index_properties_on_address_and_unit", unique: true, using: :btree

@@ -8,7 +8,7 @@
 <% if signed_in? %>
 	<%= render "save_form", property: @property %>
 <% end %>
-<img src="https://s3.amazonaws.com/img.streeteasy.com/nyc/image/95/74587695.jpg">
+<%= image_tag @property.property_photo.url(:big) %>
 <br>
 <ul>
 <%@property.attributes.each do |attribute, value| %>

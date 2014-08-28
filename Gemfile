@@ -39,6 +39,9 @@ gem 'bcrypt', '~> 3.1.7'
 # gem 'debugger', group: [:development, :test]
 
 gem 'kaminari'
+gem 'paperclip'
+gem 'aws-sdk'
+gem 'figaro'
 
 group :development do
   gem 'pry-rails'
@@ -50,4 +53,6 @@ end
 group :development, :test do
   gem 'rspec-rails'
 end
+
+
 

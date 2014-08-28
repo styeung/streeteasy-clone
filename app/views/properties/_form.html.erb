@@ -5,10 +5,12 @@
 
 <h2><%= header %></h2>
 
-<form action="<%= action_path %>" method="POST">
+<form action="<%= action_path %>" enctype="multipart/form-data" method="POST">
   <%= auth_token %>
 	<%= action_modifier(action) %>
-
+	<label>
+		Main Photo
+		<input type="file" name="property[property_photo]">
   <label>
     Address (Required)
     <input type="text" name="property[address]" value="<%= @property.address %>">
