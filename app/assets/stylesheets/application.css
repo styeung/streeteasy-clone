@@ -48,6 +48,10 @@ input::-webkit-inner-spin-button {
 	
 }
 
+input {
+	-webkit-user-select: none;
+}
+
 img {
 	display: block;
 }
@@ -113,11 +117,15 @@ a.register-link {
 	margin: auto;
 }
 
-.search {
+.form-main {
 	width: 637px;
 }
 
-.big-search-input {
+.form-sidebar {
+	width: 343px;
+}
+
+.big-input {
 	width: 450px;
 	height: 24px;
 	padding: 6px;
@@ -126,7 +134,7 @@ a.register-link {
 	border-radius: 0;
 }
 
-.small-search-input {
+.small-input {
 	width: 138px;
 	height: 24px;
 	padding: 6px;
@@ -135,16 +143,16 @@ a.register-link {
 	border-radius: 0;
 }
 
-select.small-search-input {
+select.small-input {
 	height: 38px;
 }
 
-.search-element {
+.form-element {
 	padding: 5px 10px 10px 0px;
 	font-size: 14px;
 }
 
-.search-element > label {
+.form-element > label {
 	font-size: 11px;
 	font-weight: bold;
 }
@@ -239,10 +247,10 @@ div.map-view#map {
 }
 
 .save-button {
-	width: 62px;
+	width: 72px;
 	height: 24px;
 	border: 1px solid #fdc435;
-	padding: 0 16px;
+	padding: 0 12px;
 	margin: 5px 0;
 	background-color: white;
 }

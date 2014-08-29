@@ -9,12 +9,12 @@
 	<%= action_modifier(action) %>
 	<label>
     Title (Required)
-    <input type="text" name="comment[title]" value="<%= @comment.title %>">
+    <input type="text" name="comment[title]" value="<%= @comment.title %>" class="small-input">
   </label>
   <br>
   <label>
     Comment
-    <input type="text" name="comment[body]" value="<%= @comment.body %>">
+    <input type="text" name="comment[body]" value="<%= @comment.body %>" class="small-input">
   </label>
 	<br>
 	<button>Submit</button>
