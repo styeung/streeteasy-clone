@@ -68,7 +68,7 @@ properties = Property.create([{owner_id:2,apt_type:"Co-op".downcase,price:399000
 {owner_id:1,apt_type:"Condo".downcase,price:995000,neighborhood:"Upper East Side".downcase,borough:"Manhattan".downcase,address:"22 East 82nd Street".downcase,unit:"#C".downcase,zip:"10028".downcase,sq_ft:900,beds:1,baths:1},
 {owner_id:1,apt_type:"Condo".downcase,price:850000,neighborhood:"Upper East Side".downcase,borough:"Manhattan".downcase,address:"22 East 82nd Street".downcase,unit:"#C2".downcase,zip:"10028".downcase,sq_ft:300,beds:0,baths:1},
 {owner_id:1,apt_type:"Condo".downcase,price:1420000,neighborhood:"Gramercy Park".downcase,borough:"Manhattan".downcase,address:"
-   East 23rd Street".downcase,unit:"#9A".downcase,zip:"10010".downcase,sq_ft:733,beds:1,baths:1},
+East 23rd Street".downcase,unit:"#9A".downcase,zip:"10010".downcase,sq_ft:733,beds:1,baths:1},
 {owner_id:1,apt_type:"Condo".downcase,price:1850000,neighborhood:"Lower East Side".downcase,borough:"Manhattan".downcase,address:"38 Delancey Street".downcase,unit:"#8B".downcase,zip:"10002".downcase,sq_ft:1002,beds:2,baths:2},
 {owner_id:2,apt_type:"Co-op".downcase,price:349000,neighborhood:"Upper West Side".downcase,borough:"Manhattan".downcase,address:"205 West 95th Street".downcase,unit:"#4G".downcase,zip:"10025".downcase,beds:0,baths:1},
 {owner_id:2,apt_type:"Co-op".downcase,price:820000,neighborhood:"Flatiron".downcase,borough:"Manhattan".downcase,address:"7 East 14th Street".downcase,unit:"#1108".downcase,zip:"10003".downcase,beds:1,baths:1},

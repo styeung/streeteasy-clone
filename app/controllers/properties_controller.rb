@@ -13,9 +13,9 @@ class PropertiesController < ApplicationController
       baths: ">=",
       sq_ft: ">="
     }
-    
+
     values_hash = {}
-    
+
     search_params.each do |key, value|
       if value != ""
         count += 1
@@ -28,10 +28,42 @@ class PropertiesController < ApplicationController
         end
       end
     end
-    
-    @properties = Property.where(query_string, values_hash).page(params[:page]).per(12)
 
+    @properties = Property.where(query_string, values_hash).page(params[:page]).per(12)
+    
     render :index
+  end
+  
+  def index_map
+    query_string = ""
+    count = 0
+    params_length = search_params.length
+    comparator = {
+      min_price: ">=",
+      max_price: "<=",
+      beds: ">=",
+      baths: ">=",
+      sq_ft: ">="
+    }
+
+    values_hash = {}
+
+    search_params.each do |key, value|
+      if value != ""
+        count += 1
+        values_hash[key.to_sym] = value
+        if query_string.length == 0 || count == params_length
+          query_string.concat("#{key} #{comparator[key] ||= "="} :#{key}")
+        else
+          query_string.concat(" AND ")
+          query_string.concat("#{key} #{comparator[key] ||= "="} :#{key}")
+        end
+      end
+    end
+
+    @properties = Property.where(query_string, values_hash)
+
+    render :index_map
   end
 
   def new
@@ -107,7 +139,9 @@ class PropertiesController < ApplicationController
                                      :baths,
                                      :sq_ft,
                                      :apt_type,
-                                     :property_photo)
+                                     :property_photo,
+                                     :latitude,
+                                     :longitude)
   end
 
   def search_params
