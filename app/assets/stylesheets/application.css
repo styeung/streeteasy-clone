@@ -15,9 +15,32 @@
  *= require_self
  */
 
-html, body {
-	font-family: sans-serif;
+html, body, header, div, ul, li, h1, h2, h3, h4, h5, p, a, option, select, input, br, hr {
+	padding: 0;
+	margin: 0;
+	border: 0;
+	font-family: Source Sans Pro,Helvetica,Arial,Geneva,sans-serif;
 }
+
+h1 {
+	font-size: 26px;
+}
+
+a {
+	text-decoration: none;
+	color: #0080c6;
+}
+
+button, select, option, input {
+	padding: 0px; 
+	margin: 0;
+	border: 0;
+	-webkit-appearance: none;
+}
+
+/*hr {
+	border-bottom: 1px solid black;
+}*/
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
@@ -29,14 +52,120 @@ img {
 	display: block;
 }
 
-header {
-	position: relative;
+ul {
+	list-style: none;
 }
+
+label {
+	display: block;
+}
+
+.nav {
+	display: block;
+	width: 980px;
+	height: 38px;
+	margin: 10px auto;
+	border-bottom: 4px solid black;
+}
+
+.nav-logo {
+	float: left;
+	display: block;
+}
+
+.group:after {
+	content: "";
+	display: block;
+	clear:both;
+}
+
+.group > li {
+	float: left;
+}
+
+a.logo_link {
+	font-color: #004c75;
+	padding: 10px 20px;
+}
+
+a.settings-link {
+	font-color: #004c75;
+	padding: 10px 20px;
+}
+
+a.register-link {
+	font-color: #004c75;
+	padding: 10px 20px;
+}
+
+.nav-settings {
+	float: right;
+}
+
+.title {
+	font-size: 30px;
+	font-weight: 100;
+	padding: 15px 0px;
+}
+
+.main {
+	width: 980px;
+	margin: auto;
+}
+
+.search {
+	width: 637px;
+}
+
+.big-search-input {
+	width: 450px;
+	height: 24px;
+	padding: 6px;
+	background-color: white;
+	border: 1px solid #ccc;
+	border-radius: 0;
+}
+
+.small-search-input {
+	width: 138px;
+	height: 24px;
+	padding: 6px;
+	border: 1px solid #ccc;
+	background-color: white;
+	border-radius: 0;
+}
+
+select.small-search-input {
+	height: 38px;
+}
+
+.search-element {
+	padding: 5px 10px 10px 0px;
+	font-size: 14px;
+}
+
+.search-element > label {
+	font-size: 11px;
+	font-weight: bold;
+}
+
+.search-button {
+	width: 138px;
+	height: 38px;
+	padding: 7px;
+	color: white;
+	background-color: #0080c6;
+	font-size: 13px;
+}
+
+.search-button:hover {
+	background-color: #00669d;
+}
+
 
 #map {  
 	width: 300px; 
 	height: 300px;
-	border: 2px solid #999;
 }
 
 .map-static {
@@ -47,22 +176,25 @@ header {
 
 .map-scrolling {
 	position: fixed; 
-	top:300px;
-	left: 550px;
-	width: 300px; 
-	height: 300px;
-	border: 2px solid #999;
+	top:200px;
+	left: 900px;
 }
 
 .map-container {
 	position: relative;
 }
 
+.search-filter {
+	padding: 30px 0px 7px 0px;
+}
+
 div.map-view#map {
 	position: absolute;
-	top: 0;
+	top: 240px;
 	width: 100%;
-	height: 600px;
+	height: 540px;
+	left: 1px;
+	border-top: 3px solid #999;
 }
 
 .listings-photo {
@@ -70,11 +202,35 @@ div.map-view#map {
 	min-height: 110px;
 }
 
-.property-listing:hover {
+.property-list {
+	border-top: 2px solid black;
+}
 
+.property-listing {
+	border-bottom: 2px solid black;
+	padding: 12px 0px;
 }
 
 .all-properties {
 	display: none;
+}
+
+.property-list-container {
+	width: 638px;
+	height: 146px;
+}
+
+.view-switch {
+	width: 72px;
+	height: 30px;
+	border: 1px solid #ccc;
+	padding: 0 15px;
+	margin: 5px 0;
+	background-color: white;
+}
+
+.view-switch:hover {
+	background-color: #eee;
+	font-weight: bold;
 }
 
