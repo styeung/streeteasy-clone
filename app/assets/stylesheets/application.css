@@ -234,3 +234,20 @@ div.map-view#map {
 	font-weight: bold;
 }
 
+.listing-component {
+	padding-right: 20px;
+}
+
+.save-button {
+	width: 62px;
+	height: 24px;
+	border: 1px solid #fdc435;
+	padding: 0 16px;
+	margin: 5px 0;
+	background-color: white;
+}
+
+.save-button:hover {
+	background-color: #fdc435;
+}
+

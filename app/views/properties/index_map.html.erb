@@ -1,14 +1,11 @@
-<h2>Listings</h2>
-
-<h3>Search terms</h3>
-<ul>
+<div class="search-filter">
+	<h2 class="title"><b><%= @properties.length %></b> Properties Found With:</h2>
 	<% params["property"].each do |attribute, value| %>
 		<% unless value == "" %>
-			<li><b><%= attribute.capitalize %></b>: <%= value %></li>
+			<b><%= attribute.capitalize %></b>: <%= value %> 
 		<% end %>
 	<% end %>
-</ul>
-
+</div>
 <ul class="all-properties">
 	<% @properties.each do |property| %>
 		<li data-lat="<%= property.latitude %>" 

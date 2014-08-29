@@ -43,23 +43,30 @@
 </li>
 </ul>
 
+<%= paginate @properties %>
 <div class="property-list-container">
 	<ul class="property-list">
 	<% @properties.each do |property| %>
 		<li class="property-listing" data-lat="<%= property.latitude %>" data-lng="<%= property.longitude %>">
-			<% unless property.property_photo_file_name.nil? %>
-				<%= image_tag property.property_photo.url(:small) %>
-			<% else %>
-				<img src="<%= asset_path("default.png") %>" class="listings-photo">
-			<% end %>
-			<h3><a href="<%= property_url(property) %>"><%= property.address.split(" ").map(&:capitalize).join(" ") %></a></h3>
-			<% if signed_in? %>
-				<%= render "save_form", property: property %>
-			<% end %>
-			<ul>
-				<li>Price: <%= number_to_currency(property.price, precision: 0) %></li>
-				<li class="borough-index">Borough: <%= property.borough.split(" ").map(&:capitalize).join(" ") %></li>
-				<li>Neighborhood: <%= property.neighborhood.split(" ").map(&:capitalize).join(" ") %></li>
+			<ul class="group">
+				<li class="listing-component">
+					<% unless property.property_photo_file_name.nil? %>
+						<%= image_tag property.property_photo.url(:small) %>
+					<% else %>
+						<img src="<%= asset_path("default.png") %>" class="listings-photo">
+					<% end %>
+				</li>
+				<li class="listing-component">
+					<h3><a href="<%= property_url(property) %>"><%= property.address.split(" ").map(&:capitalize).join(" ") %></a></h3>
+					<% if signed_in? %>
+						<%= render "save_form", property: property %>
+					<% end %>
+					<ul>
+						<li>Price: <%= number_to_currency(property.price, precision: 0) %></li>
+						<li class="borough-index">Borough: <%= property.borough.split(" ").map(&:capitalize).join(" ") %></li>
+						<li>Neighborhood: <%= property.neighborhood.split(" ").map(&:capitalize).join(" ") %></li>
+					</ul>
+				</li>
 			</ul>
 		</li>
 	<% end %>
@@ -69,8 +76,6 @@
 <div class="map-sidebar-container">
 	<div id="map" class="map-scrolling"></div>
 </div>
-
-<%= paginate @properties %>
 
 <script>
 
