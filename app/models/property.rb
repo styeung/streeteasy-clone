@@ -7,8 +7,8 @@ class Property < ActiveRecord::Base
   has_attached_file :property_photo, :styles => {
           :big => "576x400>",
           :small => "170x110#"
-        }
-  
+          }, :default_url => "/images/missing_:style.png"
+          
   validates_attachment_content_type(
           :property_photo,
           :content_type => /\Aimage\/.*\Z/

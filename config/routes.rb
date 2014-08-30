@@ -14,5 +14,9 @@ Rails.application.routes.draw do
   end
   
   get "/index_map", to: "properties#index_map", as: :index_map
+  
+  namespace :api, defaults: {format: :json} do
+    resources :properties
+  end
 
 end

@@ -1,0 +1,50 @@
+<h2 class="title">New York City Real Estate</h2>
+
+<form class="search-form">
+	<div class="form-main">
+	<ul class="group">
+<li class="form-element">
+  <label for="search-address">ADDRESS</label>
+  <input type="text" name="property[address]" value="" class="big-input" id="search-address">
+</li>
+	<li class="form-element">
+  <label for="search-zip">ZIP</label>
+  <input type="text" name="property[zip]" value="" class="small-input" id="search-id">
+</li>
+<li class="form-element">
+  <label for="borough-select" for="borough-select">BOROUGH</label>
+  <select name="property[borough]" id="borough-select" class="small-input">
+		<option value="">(Choose one)</option>
+		<% for( var key in boroughs) { %>
+			<option value="<%= key %>">
+				<%= boroughs[key] %>
+			</option>
+		<%	} %>
+  </select>
+</li>
+<li class="form-element">
+  <label for="search-min-price">MIN PRICE</label>
+  <input type="number" name="property[min_price]" value="" class="small-input" id="search-min-price">
+</li>
+<li class="form-element">
+  <label for="search-max-price">MAX PRICE</label>
+  <input type="number" name="property[max_price]" value="" class="small-input" id="search-max-price">
+</li>
+<li class="form-element">
+  <label for="search-beds">BEDS</label>
+  <input type="number" name="property[beds]" value="" class="small-input" id="search-beds">
+</li>
+<li class="form-element">
+  <label for="search-baths">BATHS</label>
+    <input type="text" name="property[baths]" value="" class="small-input" id="search-baths">
+</li>
+<li class="form-element">
+  <label for="search-sq-ft">SQUARE FEET</label>
+    <input type="number" name="property[sq_ft]" class="small-input" id="search-sq-ft">
+</li>
+<li class="form-element">
+  <button class="search-button">SEARCH</button>
+</li>
+</ul>
+	</div>
+</form>

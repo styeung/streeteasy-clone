@@ -7,11 +7,7 @@
 <% if signed_in? %>
 	<%= render "save_form", property: @property %>
 <% end %>
-<% unless @property.property_photo_file_name.nil? %>
 	<%= image_tag @property.property_photo.url(:big) %>
-<% else %>
-	<img src="<%= asset_path("default.png") %>" class="listings-photo">
-<% end %>
 <br>
 <ul>
 <%@property.attributes.each do |attribute, value| %>
