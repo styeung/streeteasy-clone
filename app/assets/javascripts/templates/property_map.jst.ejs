@@ -1,0 +1,51 @@
+<div id="map" class="map-view"></div>
+<ul class="properties-list" style="display:none">
+<% properties.each( function(property) { %>
+	<li style="display:none"
+			data-lat="<%= property.escape('latitude') %>" 
+			data-lng="<%= property.escape('longitude') %>"
+			data-address="<%= property.escape('address')%>"
+			data-price="<%= property.escape('price') %>"
+			data-photo="<%= property.escape('property_photo_url') %>"
+			data-link="#/property/<%= property.escape("id") %>">
+	</li>
+<% }); %>
+</ul>
+
+<script>
+
+L.mapbox.accessToken = 'pk.eyJ1Ijoic2FpdG95ZXVuZyIsImEiOiJPOXA3aUowIn0.spWqAgo8-BgTGtYiLbOztg';
+var map = L.mapbox.map('map', 'saitoyeung.jbj6oj44');
+var geocoder = L.mapbox.geocoder('mapbox.places-v1');
+var defaultLat = 40.714728;
+var defaultLng = -73.998672;
+
+map.setView([defaultLat, defaultLng], 12);
+
+$(document).ready( function() {
+	$(".properties-list").children().each(function() {
+		var lat = $(this).attr("data-lat");
+		var lng = $(this).attr("data-lng");
+		var address = $(this).attr("data-address");
+		var price = $(this).attr("data-price");
+		var link = $(this).attr("data-link");
+		var photo = $(this).attr("data-photo");
+		if(lat && lng) {
+			var popupContent = "<ul><li><img src='"+ photo + "'><a href='" + link + "'>" + address + "</a><p>" + price + "</p></li></ul>";
+			var marker = L.marker([lat, lng]).bindPopup(popupContent).addTo(map);
+		}
+	});
+	
+	// <% properties.each( function(property) { %>
+	// 	var lat = parseFloat('<%= property.escape("latitude") %>');
+	// 	var lng = parseFloat('<%= property.escape("longitude") %>');
+	//
+	// 	if(!isNaN(lat) && !isNaN(lng)) {
+	// 		var popupContent = "<p>Hello</p>";
+	// 		// var popupContent = "<ul><li><a href='" + link + "'>" + address + "</a><p>" + price + "</p></li></ul>";
+	// 		var marker = L.marker([lat, lng]).bindPopup(popupContent).addTo(map);
+	//
+	// 	}
+	// <% }); %>
+});
+</script>

@@ -43,5 +43,5 @@ window.StreetEasyClone = {
 };
 
 $(document).ready(function(){
-  // StreetEasyClone.initialize();
+  StreetEasyClone.initialize();
 });

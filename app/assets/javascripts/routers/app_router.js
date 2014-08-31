@@ -2,6 +2,7 @@ StreetEasyClone.Routers.AppRouter = Backbone.Router.extend({
 	routes: {
 		"": "search",
 		"properties/:query": "propertyIndex",
+		"property/:id": "propertyShow"
 	},
 	
 	initialize: function(options){
@@ -18,18 +19,15 @@ StreetEasyClone.Routers.AppRouter = Backbone.Router.extend({
 	
 	propertyIndex: function(query) {
 		var that = this;
-		console.log(query);
 		this.properties.fetch({
 			data: query,
 			success: function(resp) {
-				console.log(that.properties);
-				var view = new StreetEasyClone.Views.PropertyList({collection: that.properties});
+				var view = new StreetEasyClone.Views.PropertyIndex({collection: that.properties});
 				that.$rootEl.html(view.render().$el);
 			}
 		});
 		
 		// var view = new StreetEasyClone.Views.PropertyList({query: query});
 		// this.$rootEl.html(view.render().$el);
-		
 	}
 });

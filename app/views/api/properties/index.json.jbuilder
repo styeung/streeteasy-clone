@@ -1,10 +1,10 @@
-# json.array! @properties, :owner_id, :address, :unit, :zip, :neighborhood, :price, :beds, :baths, :sq_ft, :apt_type, :created_at, :updated_at, :property_photo, :latitude, :longitude
-
 json.array! @properties do |property|
+  json.id property.id
   json.owner_id property.owner_id
   json.address property.address
   json.unit property.unit
   json.zip property.zip
+  json.borough property.borough
   json.neighborhood property.neighborhood
   json.price property.price
   json.beds property.beds

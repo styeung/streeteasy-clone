@@ -38,6 +38,10 @@ button, select, option, input {
 	-webkit-appearance: none;
 }
 
+button:focus {
+	outline: none;
+}
+
 /*hr {
 	border-bottom: 1px solid black;
 }*/
@@ -257,5 +261,9 @@ div.map-view#map {
 
 .save-button:hover {
 	background-color: #fdc435;
+}
+
+.listing-text {
+	text-transform: capitalize;
 }
 

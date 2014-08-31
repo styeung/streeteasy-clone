@@ -6,41 +6,41 @@
 		<% end %>
 	<% end %>
 </div>
-<ul class="group">
+<ul class="view-switch-container group">
 	<li>
-<form action="<%= properties_url %>" method="GET">
-  <%= auth_token %>
-	<input type="hidden" name="property[photo]">
-	<input type="hidden" name="property[address]" value="<%= params["property"]["address"] %>">
-	<input type="hidden" name="property[zip]" value="<%= params["property"]["zip"] %>">
-	<input type="hidden" name="property[borough]" value="<%= params["property"]["borough"] %>">
-	<input type="hidden" name="property[neighborhood]" value="<%= params["property"]["neighborhood"] %>">
-	<input type="hidden" name="property[min_price]" value="<%= params["property"]["min_price"] %>">
-	<input type="hidden" name="property[max_price]" value="<%= params["property"]["max_price"] %>">
-	<input type="hidden" name="property[beds]" value="<%= params["property"]["beds"] %>">
-	<input type="hidden" name="property[baths]" value="<%= params["property"]["baths"] %>">
-	<input type="hidden" name="property[sq_ft]" value="<%= params["property"]["sq_ft"] %>">
-	<input type="hidden" name="property[apt_type]" value="<%= params["property"]["apt_type"] %>">
-  <button class="view-switch">LIST</button>
-</form>
-</li>
-<li>
-<form action="<%= index_map_url %>" method="GET">
-  <%= auth_token %>
-	<input type="hidden" name="property[photo]">
-	<input type="hidden" name="property[address]" value="<%= params["property"]["address"] %>">
-	<input type="hidden" name="property[zip]" value="<%= params["property"]["zip"] %>">
-	<input type="hidden" name="property[borough]" value="<%= params["property"]["borough"] %>">
-	<input type="hidden" name="property[neighborhood]" value="<%= params["property"]["neighborhood"] %>">
-	<input type="hidden" name="property[min_price]" value="<%= params["property"]["min_price"] %>">
-	<input type="hidden" name="property[max_price]" value="<%= params["property"]["max_price"] %>">
-	<input type="hidden" name="property[beds]" value="<%= params["property"]["beds"] %>">
-	<input type="hidden" name="property[baths]" value="<%= params["property"]["baths"] %>">
-	<input type="hidden" name="property[sq_ft]" value="<%= params["property"]["sq_ft"] %>">
-	<input type="hidden" name="property[apt_type]" value="<%= params["property"]["apt_type"] %>">
-  <button class="view-switch">MAP</button>
-</form>
-</li>
+		<form action="<%= properties_url %>" method="GET">
+		  <%= auth_token %>
+			<input type="hidden" name="property[photo]">
+			<input type="hidden" name="property[address]" value="<%= params["property"]["address"] %>">
+			<input type="hidden" name="property[zip]" value="<%= params["property"]["zip"] %>">
+			<input type="hidden" name="property[borough]" value="<%= params["property"]["borough"] %>">
+			<input type="hidden" name="property[neighborhood]" value="<%= params["property"]["neighborhood"] %>">
+			<input type="hidden" name="property[min_price]" value="<%= params["property"]["min_price"] %>">
+			<input type="hidden" name="property[max_price]" value="<%= params["property"]["max_price"] %>">
+			<input type="hidden" name="property[beds]" value="<%= params["property"]["beds"] %>">
+			<input type="hidden" name="property[baths]" value="<%= params["property"]["baths"] %>">
+			<input type="hidden" name="property[sq_ft]" value="<%= params["property"]["sq_ft"] %>">
+			<input type="hidden" name="property[apt_type]" value="<%= params["property"]["apt_type"] %>">
+		  <button class="view-switch">LIST</button>
+		</form>
+	</li>
+	<li>
+		<form action="<%= index_map_url %>" method="GET">
+		  <%= auth_token %>
+			<input type="hidden" name="property[photo]">
+			<input type="hidden" name="property[address]" value="<%= params["property"]["address"] %>">
+			<input type="hidden" name="property[zip]" value="<%= params["property"]["zip"] %>">
+			<input type="hidden" name="property[borough]" value="<%= params["property"]["borough"] %>">
+			<input type="hidden" name="property[neighborhood]" value="<%= params["property"]["neighborhood"] %>">
+			<input type="hidden" name="property[min_price]" value="<%= params["property"]["min_price"] %>">
+			<input type="hidden" name="property[max_price]" value="<%= params["property"]["max_price"] %>">
+			<input type="hidden" name="property[beds]" value="<%= params["property"]["beds"] %>">
+			<input type="hidden" name="property[baths]" value="<%= params["property"]["baths"] %>">
+			<input type="hidden" name="property[sq_ft]" value="<%= params["property"]["sq_ft"] %>">
+			<input type="hidden" name="property[apt_type]" value="<%= params["property"]["apt_type"] %>">
+		  <button class="view-switch">MAP</button>
+		</form>
+	</li>
 </ul>
 
 <%= paginate @properties %>
