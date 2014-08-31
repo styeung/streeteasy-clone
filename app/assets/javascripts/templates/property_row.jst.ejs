@@ -1,0 +1,19 @@
+
+	<ul class="group">
+		<li class="listing-component">
+			<img src="<%= property.escape("property_photo_url") %>">
+		</li>
+		<li class="listing-component">
+			<h3 class="listing-text"><a href="<%= "#/property/" + property.escape("id") %>"><%= property.escape("address") %> <%= property.escape("unit") %></a></h3>
+			<% if (property.escape("following_users").indexOf(StreetEasyClone.currentUser) === -1) { %>
+				<button class="save-button">★ SAVE</button>
+			<% } else {%>
+				<button class="already-saved-button" disabled>SAVED</button>
+			<% } %>
+			<ul>
+				<li>Price: <%= property.escape("price") %></li>
+				<li class="listing-text">Borough: <%= property.escape("borough") %></li>
+				<li class="listing-text">Neighborhood: <%= property.escape("neighborhood") %></li>
+			</ul>
+		</li>
+	</ul>

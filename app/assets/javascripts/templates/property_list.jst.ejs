@@ -1,23 +1,6 @@
 <div class="property-list-container">
 	<ul class="property-list">
-	<% properties.each(function(property) { %>
-		<li class="property-listing" data-lat="<%= property.escape("latitude") %>" data-lng="<%= property.escape("longitude") %>">
-			<ul class="group">
-				<li class="listing-component">
-					<img src="<%= property.escape("property_photo_url") %>">
-				</li>
-				<li class="listing-component">
-					<h3 class="listing-text"><a href="<%= "#/property/" + property.escape("id") %>"><%= property.escape("address") %> <%= property.escape("unit") %></a></h3>
-					<button class="save-button">★ SAVE</button>
-					<ul>
-						<li>Price: <%= property.escape("price") %></li>
-						<li class="listing-text">Borough: <%= property.escape("borough") %></li>
-						<li class="listing-text">Neighborhood: <%= property.escape("neighborhood") %></li>
-					</ul>
-				</li>
-			</ul>
-		</li>
-	<% }); %>
+	
 	</ul>
 </div>
 
@@ -38,13 +21,19 @@ map.setView([defaultLat, defaultLng], 12);
 var address, borough, queryString, queryResult, lat, lng
 	$(document).ready( function() {
 		//want default on first property on page
-		$(".main").on("mouseenter", "li.property-listing", function(event) {
+		$(".main").off().on("mouseenter", "li.property-listing", function(event) {
 			lat = $(event.currentTarget).attr("data-lat");
 			lng = $(event.currentTarget).attr("data-lng");
 		
 			if(lat && lng) {
-				map.setView([lat, lng], 15);
-				L.marker([lat, lng]).addTo(map);
+				if($(event.currentTarget).hasClass("visited")) {
+					map.setView([lat, lng], 15);
+				}
+				else {
+					$(event.currentTarget).toggleClass("visited");
+					L.marker([lat, lng]).addTo(map);
+					map.setView([lat, lng], 15);
+				}
 			}
 			else {
 				map.setView([defaultLat, defaultLng], 12);

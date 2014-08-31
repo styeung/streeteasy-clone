@@ -77,13 +77,20 @@ class Api::PropertiesController < ApplicationController
   def update
     @property = Property.find(params[:id])
     
-    if @property.update(property_params)
-      redirect_to property_url(@property)
-    else
-      flash.now[:errors] = @property.errors.full_messages
-      render :edit
-      
+    if !save_params.empty?
+      if @property.following_users << User.find(save_params[:following_user_id])
+        render json: @property
+      else
+        render json: "Sorry, something went wrong with the save. Please try again."
+      end
+    elsif !property_params.empty?
+      if @property.update(property_params)
+        render json: @property
+      else
+        render json: "Sorry, something went wrong with the save. Please try again."
+      end
     end
+    
 
   end
 
@@ -123,6 +130,10 @@ class Api::PropertiesController < ApplicationController
                                      :baths,
                                      :sq_ft,
                                      :apt_type)
+  end
+  
+  def save_params
+    params.permit(:following_user_id)
   end
 
 end

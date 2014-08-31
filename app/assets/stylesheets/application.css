@@ -261,6 +261,17 @@ div.map-view#map {
 
 .save-button:hover {
 	background-color: #fdc435;
+	cursor: pointer;
+}
+
+.already-saved-button {
+	width: 72px;
+	height: 24px;
+	border: 1px solid #bbb;
+	padding: 0 12px;
+	margin: 5px 0;
+	background-color: #eee;
+	color: #bbb;
 }
 
 .listing-text {

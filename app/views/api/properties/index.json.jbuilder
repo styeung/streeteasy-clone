@@ -16,4 +16,5 @@ json.array! @properties do |property|
   json.property_photo_url asset_path(property.property_photo.url(:small))
   json.latitude property.latitude
   json.longitude property.longitude
+  json.following_users property.following_users.pluck(:id)
 end
