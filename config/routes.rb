@@ -17,6 +17,8 @@ Rails.application.routes.draw do
   
   namespace :api, defaults: {format: :json} do
     resources :properties
+    
+    get "/auth/check_current_user", to: "auth#check_current_user"
   end
 
 end

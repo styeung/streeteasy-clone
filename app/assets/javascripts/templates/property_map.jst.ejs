@@ -5,6 +5,7 @@
 			data-lat="<%= property.escape('latitude') %>" 
 			data-lng="<%= property.escape('longitude') %>"
 			data-address="<%= property.escape('address')%>"
+			data-unit="<%= property.escape('unit') %>"
 			data-price="<%= property.escape('price') %>"
 			data-photo="<%= property.escape('property_photo_url') %>"
 			data-link="#/property/<%= property.escape("id") %>">
@@ -27,11 +28,12 @@ $(document).ready( function() {
 		var lat = $(this).attr("data-lat");
 		var lng = $(this).attr("data-lng");
 		var address = $(this).attr("data-address");
+		var unit = $(this).attr("data-address");
 		var price = $(this).attr("data-price");
 		var link = $(this).attr("data-link");
 		var photo = $(this).attr("data-photo");
 		if(lat && lng) {
-			var popupContent = "<ul><li><img src='"+ photo + "'><a href='" + link + "'>" + address + "</a><p>" + price + "</p></li></ul>";
+			var popupContent = "<ul><li><img src='"+ photo + "'><a href='" + link + "'>" + address + " " + unit + "</a><p>" + price + "</p></li></ul>";
 			var marker = L.marker([lat, lng]).bindPopup(popupContent).addTo(map);
 		}
 	});

@@ -1,0 +1,16 @@
+<h2 class="listing-text"><%= property.escape("address") %> <%= property.escape("unit") %></h2>
+<h3 class="listing-text"><%= property.escape("neighborhood") %></h3>
+<% if (property.escape("id") === StreetEasyClone.currentUser) {%>
+	<a href="#">Edit this listing</a>
+<% } %>
+<br>
+	<button class="save-button">★ SAVE</button>
+	<img src="<%= property.escape("property_photo_url") %>">
+<br>
+<ul>
+<% for(var key in property.attributes) { %>
+	<% if(StreetEasyClone.detailed_attributes.indexOf(key) != -1) { %>
+		<li class="listing-text"><%= key %>: <%= property.escape(key) %></li>
+	<% } %>
+<% } %>
+</ul>

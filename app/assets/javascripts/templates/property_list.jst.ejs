@@ -7,7 +7,7 @@
 					<img src="<%= property.escape("property_photo_url") %>">
 				</li>
 				<li class="listing-component">
-					<h3 class="listing-text"><a href="<%= "#" %>"><%= property.escape("address") %></a></h3>
+					<h3 class="listing-text"><a href="<%= "#/property/" + property.escape("id") %>"><%= property.escape("address") %> <%= property.escape("unit") %></a></h3>
 					<button class="save-button">★ SAVE</button>
 					<ul>
 						<li>Price: <%= property.escape("price") %></li>

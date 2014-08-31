@@ -13,7 +13,7 @@ StreetEasyClone.Routers.AppRouter = Backbone.Router.extend({
 	},
 	
 	search: function() {
-		var view = new StreetEasyClone.Views.Search({boroughs: this.boroughs});
+		var view = new StreetEasyClone.Views.Search({boroughs: StreetEasyClone.boroughs});
 		this.$rootEl.html(view.render().$el);
 	},
 	
@@ -26,8 +26,17 @@ StreetEasyClone.Routers.AppRouter = Backbone.Router.extend({
 				that.$rootEl.html(view.render().$el);
 			}
 		});
-		
-		// var view = new StreetEasyClone.Views.PropertyList({query: query});
-		// this.$rootEl.html(view.render().$el);
+	},
+	
+	propertyShow: function(id) {
+		var that = this;
+		var model = new StreetEasyClone.Models.Property({id: id});
+		model.fetch({
+			success: function(model, resp) {
+				console.log(model);
+				var view = new StreetEasyClone.Views.PropertyShow({model: model});
+				that.$rootEl.html(view.render().$el);
+			}
+		});
 	}
 });

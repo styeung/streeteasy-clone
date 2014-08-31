@@ -10,38 +10,32 @@ window.StreetEasyClone = {
 		StreetEasyClone.router = new StreetEasyClone.Routers.AppRouter({
 			$rootEl: $(".main"),
 			properties: collection,
-			boroughs: {
+		});
+
+		Backbone.history.start(); 
+	},
+	boroughs: {
 			    "manhattan": "Manhattan",
 			    "brooklyn": "Brooklyn",
 			    "queens": "Queens",
 			    "bronx": "The Bronx",
 			    "staten_island": "Staten Island"
-		  },
-			detailed_attributes: ["zip", "price", "beds", "baths", "sq_ft", "apt_type", "borough"]
-		});
-
-		Backbone.history.start();
-// 		collection.fetch({
-// 			success: function(resp) {
-// 				StreetEasyClone.router = new StreetEasyClone.Routers.AppRouter({
-// 					$rootEl: $(".main"),
-// 					properties: collection,
-// 					boroughs: {
-// 					    "manhattan": "Manhattan",
-// 					    "brooklyn": "Brooklyn",
-// 					    "queens": "Queens",
-// 					    "bronx": "The Bronx",
-// 					    "staten_island": "Staten Island"
-// 				  },
-// 					detailed_attributes: ["zip", "price", "beds", "baths", "sq_ft", "apt_type", "borough"]
-// 				});
-//
-// 				Backbone.history.start();
-// 			}
-// 		});
-  }
+  },
+	detailed_attributes: ["zip", "price", "beds", "baths", "sq_ft", "apt_type", "borough"]
 };
 
 $(document).ready(function(){
-  StreetEasyClone.initialize();
+	$.ajax("api/auth/check_current_user", {
+		type: "GET",
+		success: function(resp) {
+			if(isNaN(resp.id)){
+				StreetEasyClone.currentUser = false;
+				StreetEasyClone.initialize();
+			}
+			else {
+				StreetEasyClone.currentUser = resp.id
+				StreetEasyClone.initialize();
+			}
+		}
+	});
 });
