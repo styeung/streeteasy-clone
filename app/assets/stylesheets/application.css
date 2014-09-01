@@ -264,6 +264,10 @@ div.map-view#map {
 	cursor: pointer;
 }
 
+.save-button:after {
+	content: "★ SAVE";
+}
+
 .already-saved-button {
 	width: 72px;
 	height: 24px;
@@ -274,7 +278,130 @@ div.map-view#map {
 	color: #bbb;
 }
 
+.already-saved-button:after {
+	content: "SAVED";
+}
+
 .listing-text {
 	text-transform: capitalize;
 }
 
+/* signin modal */
+#sign-in {
+	display: none;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: 100;
+	
+}
+
+#sign-in.is-active {
+	display: block;
+}
+
+#sign-in:before {
+	content: "";
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	background: rgba(255, 255, 255, 0.7);;
+}
+
+#sign-in > article {
+  position: fixed;
+  top: 100px;
+  left: 38%;
+  width: 318px;
+  margin: auto;
+  height: 324px;
+  padding: 15px;
+  background: white;
+  border-radius: 5px;
+	box-shadow: 3px 3px 5px 3px #ccc;
+	-webkit-box-shadow: 3px 3px 5px 3px #ccc;
+	-moz-box-shadow: 3px 3px 5px 3px #ccc;
+}
+
+.sign-in-cancel {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  font-size: 12px;
+  font-weight: 400;
+  cursor: pointer;
+  color: white;
+	background-color: transparent;
+}
+
+#sign-in header {
+	position: absolute;
+	top:0;
+	left: 0;
+	width: 100%;
+	height: 45px;
+	background-color: #0080c6;
+	text-align: center;
+	color: white;
+}
+
+#sign-in header > h3{
+	padding-top: 14px;
+	font-weight: 600;
+	font-size: 16px;
+}
+
+.modal-input {
+	width: 302px;
+	height: 24px;
+	padding: 7px;
+	margin: 8px 0;
+	background-color: white;
+	border: 1px solid #ccc;
+	border-radius: 0;
+	font-size: 14px;
+	font-weight: 100;
+}
+
+.sign-in-button {
+	width: 318px;
+	height: 40px;
+	padding: 0px 20px;
+	margin: 8px 0;
+	border: 1px solid #0080c6;
+	background-color: #0080c6;
+	color: white;
+}
+
+.sign-in-body {
+	padding-top: 40px;
+}
+
+.sign-in-body > p {
+	text-align: center;
+	font-size: 12px;
+	padding: 10px;
+	color: #555;
+}
+
+.switch-button-container {
+	display: block;
+	position: relative;
+	left: 50px;
+	padding: 10px;
+}
+
+.signin-switch {
+	width: 100px;
+	height: 40px;
+	border: 1px solid #ccc;
+	padding: 0 15px;
+	margin: 5px 0;
+	background-color: white;
+}
+
+.signin-switch:hover {
+	background-color: #eee;
+	font-weight: bold;
+}

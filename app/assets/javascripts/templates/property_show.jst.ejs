@@ -4,7 +4,13 @@
 	<a href="#">Edit this listing</a>
 <% } %>
 <br>
-	<button class="save-button">★ SAVE</button>
+	<% if(StreetEasyClone.currentUser) { %>
+		<% if (property.escape("following_users").indexOf(StreetEasyClone.currentUser) === -1) { %>
+			<button class="save-button"><span></span></button>
+		<% } else {%>
+			<button class="already-saved-button" disabled><span></span></button>
+		<% } %>
+	<% } %>
 	<img src="<%= property.escape("property_photo_url") %>">
 <br>
 <ul>

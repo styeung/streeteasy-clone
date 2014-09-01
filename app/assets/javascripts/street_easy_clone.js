@@ -1,4 +1,3 @@
-
 window.StreetEasyClone = {
   Models: {},
   Collections: {},
@@ -23,19 +22,3 @@ window.StreetEasyClone = {
   },
 	detailed_attributes: ["zip", "price", "beds", "baths", "sq_ft", "apt_type", "borough"]
 };
-
-$(document).ready(function(){
-	$.ajax("api/auth/check_current_user", {
-		type: "GET",
-		success: function(resp) {
-			if(isNaN(resp.id)){
-				StreetEasyClone.currentUser = false;
-				StreetEasyClone.initialize();
-			}
-			else {
-				StreetEasyClone.currentUser = resp.id
-				StreetEasyClone.initialize();
-			}
-		}
-	});
-});

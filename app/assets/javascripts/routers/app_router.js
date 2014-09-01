@@ -1,6 +1,7 @@
 StreetEasyClone.Routers.AppRouter = Backbone.Router.extend({
 	routes: {
 		"": "search",
+		"search": "search",
 		"properties/:query": "propertyIndex",
 		"property/:id": "propertyShow"
 	},

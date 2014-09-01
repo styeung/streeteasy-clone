@@ -5,10 +5,12 @@
 		</li>
 		<li class="listing-component">
 			<h3 class="listing-text"><a href="<%= "#/property/" + property.escape("id") %>"><%= property.escape("address") %> <%= property.escape("unit") %></a></h3>
-			<% if (property.escape("following_users").indexOf(StreetEasyClone.currentUser) === -1) { %>
-				<button class="save-button">★ SAVE</button>
-			<% } else {%>
-				<button class="already-saved-button" disabled>SAVED</button>
+			<% if(StreetEasyClone.currentUser) { %>
+				<% if (property.escape("following_users").indexOf(StreetEasyClone.currentUser) === -1) { %>
+					<button class="save-button"><span></span></button>
+				<% } else {%>
+					<button class="already-saved-button" disabled><span></span></button>
+				<% } %>
 			<% } %>
 			<ul>
 				<li>Price: <%= property.escape("price") %></li>

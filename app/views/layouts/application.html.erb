@@ -13,18 +13,20 @@
 	<div class="nav-logo">
 		<ul class="group">
 			<li>
-				<a href="<%= root_url %>" class="logo-link"><h1>STREETEASY CLONE</h1></a>
+				<a href="/#" class="logo-link"><h1>STREETEASY CLONE</h1></a>
 			</li>
 		</ul>
 	</div>
 <% if !signed_in? %>
 	<div class="nav-settings">
-		<ul class=" group">
+		<ul class="group">
 			<li>
-				<a href="<%= new_session_url %>" class="settings-link">SIGN IN</a>
+				<a href="#" class="settings-link">Sign In</a>
+				<!-- <a href="<%= new_session_url %>" class="settings-link">SIGN IN</a> -->
 			</li>
 			<li>
-			  <a href="<%= new_user_url %>" class="register-link">REGISTER(IT'S FREE)</a> |
+				<a href="#" class="register-link">REGISTER (IT'S FREE)</a>
+			  <!-- <a href="<%= new_user_url %>" class="register-link">REGISTER(IT'S FREE)</a> | -->
 			</li>
 		</ul>
 	</div>
@@ -52,6 +54,64 @@
 <div class="main">
 	<%= yield %>
 </div>
+
+<section id="sign-in">
+	<article>
+		<header>
+			<button class="sign-in-cancel">CANCEL</button>
+			<h3>Sign In</h3>
+		</header>
+		<div class="sign-in-body">
+			<p>Register for free to access all StreetEasy has to offer including premium data and advanced features.</p>
+			<div class="switch-button-container">
+				<ul class="group">
+					<li class="register-view"><button class="signin-switch">REGISTER</button></li>
+					<li class="signin-view"><button class="signin-switch">SIGN IN</li>
+				</ul>
+			</div>
+			<form action="<%= session_url %>" method="POST">
+				<%= auth_token %>
+				<input type="text" name="user[email]" placeholder="Email Address" class="modal-input">
+				<input type="password" name="user[password]" placeholder="Password" class="modal-input">
+				<button class="sign-in-button">SIGN IN</button>
+			</form>
+		</div>
+	</article>
+</section>
+
+
+<script>
+	$(document).ready(function() {
+		$.ajax("api/auth/check_current_user", {
+			type: "GET",
+			success: function(resp) {
+				if(isNaN(resp.id)){
+					StreetEasyClone.currentUser = false;
+					StreetEasyClone.initialize();
+				}
+				else {
+					StreetEasyClone.currentUser = resp.id
+					StreetEasyClone.initialize();
+				}
+			}
+		});
+		
+		$(".settings-link").on("click", function() {
+			$("#sign-in").toggleClass("is-active");
+		});
+		
+		$(".sign-in-cancel").on("click", function() {
+			$("#sign-in").toggleClass("is-active");
+		});
+		
+    $("#sign-in").on("click", function(event){
+      if(event.target.id == this.id){
+        event.preventDefault();
+        $("#sign-in").removeClass("is-active");
+      }
+    });
+	});
+</script>
 
 
 </body>
