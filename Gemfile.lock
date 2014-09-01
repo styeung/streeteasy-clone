@@ -107,6 +107,10 @@ GEM
       cocaine (~> 0.5.3)
       mime-types
     pg (0.17.1)
+    pg_search (0.7.6)
+      activerecord (>= 3.1)
+      activesupport (>= 3.1)
+      arel
     polyglot (0.3.5)
     pry (0.10.0)
       coderay (~> 1.1.0)
@@ -207,6 +211,7 @@ DEPENDENCIES
   kaminari
   paperclip
   pg
+  pg_search
   pry-rails
   quiet_assets
   rails (= 4.1.1)

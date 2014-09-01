@@ -1,4 +1,8 @@
 class Property < ActiveRecord::Base
+  include PgSearch
+  
+  pg_search_scope :search, :against => [:address, :neighborhood, :zip, :borough]
+  
   validates :address, :price, presence: true
   
   geocoded_by :full_address

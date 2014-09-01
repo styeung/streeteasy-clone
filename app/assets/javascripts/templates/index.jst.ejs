@@ -8,7 +8,26 @@
 	<li>
 	  <button class="view-switch">MAP</button>
 	</li>
+	<li class="sort-form-container">
+		<form class="sort-form">Sort By:
+			<select class="sort-select" name="sort-criterion">
+				<option val="price_largest" <% if(sortCriterion === "price_largest") { %> Selected <% }; %>>Most Expensive</option>
+				<option val="price_smallest" <% if(sortCriterion === "price_smallest") { %> Selected <% }; %>>Least Expensive</option>
+				<option val="sq_ft_largest" <% if(sortCriterion === "sq_ft_largest") { %> Selected <% }; %>>Largest</option>
+				<option val="sq_ft_smallest" <% if(sortCriterion === "sq_ft_smallest") { %> Selected <% }; %>>Smallest</option>
+			</select>
+			<button class="sort-button"></button>
+		</form>
+	</li>
 </ul>
 <div class="view-container">
 
 </div>
+
+<script>
+	$(document).ready(function() {
+		$("select").on("change", function(event) {
+			$(".sort-button").click();
+		});
+	});
+</script>

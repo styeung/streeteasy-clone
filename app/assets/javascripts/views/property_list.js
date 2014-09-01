@@ -4,7 +4,7 @@ StreetEasyClone.Views.PropertyList = Backbone.View.extend({
 	initialize: function() {
 		
 	},
-	
+
 	render: function() {
 		var that = this;
 		var content = this.template({properties: this.collection});

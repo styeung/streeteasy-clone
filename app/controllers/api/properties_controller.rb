@@ -4,32 +4,51 @@ class Api::PropertiesController < ApplicationController
   
   def index
     query_string = ""
-    count = 0
-    params_length = search_params.length
+    # count = 0
+    # params_length = search_params.length
     comparator = {
+      apt_type: "=",
       min_price: ">=",
       max_price: "<=",
-      beds: ">=",
+      beds: "=",
       baths: ">=",
-      sq_ft: ">="
     }
-
+    
+    location_value = nil
     values_hash = {}
 
     search_params.each do |key, value|
-      if value != ""
-        count += 1
-        values_hash[key.to_sym] = value
-        if query_string.length == 0 || count == params_length
-          query_string.concat("#{key} #{comparator[key] ||= "="} :#{key}")
+      if !value.empty?
+        if key == "location"
+          location_value = value
         else
-          query_string.concat(" AND ")
-          query_string.concat("#{key} #{comparator[key] ||= "="} :#{key}")
+          # count += 1
+          values_hash[key.to_sym] = value
+          if !query_string.length == 0
+            query_string.concat(" AND ")
+          end
+            
+          if key == "min_price" || key == "max_price"
+            query_string.concat("price #{comparator[key.to_sym]} :#{key}")
+          else
+            query_string.concat("#{key} #{comparator[key.to_sym]} :#{key}")
+          end
+
+          # if query_string.length == 0 # || count == params_length
+          #   query_string.concat("#{key} #{comparator[key] ||= "="} :#{key}")
+          # else
+          #   query_string.concat(" AND ")
+          #   query_string.concat("#{key} #{comparator[key] ||= "="} :#{key}")
+          # end
         end
       end
     end
-
-    @properties = Property.where(query_string, values_hash)
+    
+    if location_value.nil?
+      @properties = Property.where(query_string, values_hash)
+    else
+      @properties = Property.search(location_value).where(query_string, values_hash)
+    end
 
     render :index
     # render json: @properties
@@ -120,16 +139,25 @@ class Api::PropertiesController < ApplicationController
                                      :longitude)
   end
 
+  # def search_params
+  #   params.require(:property).permit(:zip,
+  #                                    :borough,
+  #                                    :neighborhood,
+  #                                    :min_price,
+  #                                    :max_price,
+  #                                    :beds,
+  #                                    :baths,
+  #                                    :sq_ft,
+  #                                    :apt_type)
+  # end
+  
   def search_params
-    params.require(:property).permit(:zip,
-                                     :borough,
-                                     :neighborhood,
+    params.require(:property).permit(:location,
+                                     :apt_type,
                                      :min_price,
                                      :max_price,
                                      :beds,
-                                     :baths,
-                                     :sq_ft,
-                                     :apt_type)
+                                     :baths)
   end
   
   def save_params

@@ -156,6 +156,7 @@ select.small-input {
 	font-size: 14px;
 }
 
+
 .form-element > label {
 	font-size: 11px;
 	font-weight: bold;
@@ -404,4 +405,29 @@ div.map-view#map {
 .signin-switch:hover {
 	background-color: #eee;
 	font-weight: bold;
+}
+
+.sort-form-container {
+	display: absolute;
+	padding: 5px 30px;
+}
+
+.sort-form{
+	font-size: 14px;
+}
+
+
+.sort-select {
+	border: 1px solid #ccc;
+	background: white;
+	border-radius: 0px;
+	width: 165px;
+	height: 30px;
+	margin: auto;
+	padding: 0 10px;
+	font-size: 12px;
+}
+
+.sort-button {
+	display: none;
 }

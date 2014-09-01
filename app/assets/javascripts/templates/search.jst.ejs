@@ -2,49 +2,61 @@
 
 <form class="search-form">
 	<div class="form-main">
-	<ul class="group">
-<li class="form-element">
-  <label for="search-address">ADDRESS</label>
-  <input type="text" name="property[address]" value="" class="big-input" id="search-address">
-</li>
-	<li class="form-element">
-  <label for="search-zip">ZIP</label>
-  <input type="text" name="property[zip]" value="" class="small-input" id="search-id">
-</li>
-<li class="form-element">
-  <label for="borough-select" for="borough-select">BOROUGH</label>
-  <select name="property[borough]" id="borough-select" class="small-input">
-		<option value="">(Choose one)</option>
-		<% for( var key in boroughs) { %>
-			<option value="<%= key %>">
-				<%= boroughs[key] %>
-			</option>
-		<%	} %>
-  </select>
-</li>
-<li class="form-element">
-  <label for="search-min-price">MIN PRICE</label>
-  <input type="number" name="property[min_price]" value="" class="small-input" id="search-min-price">
-</li>
-<li class="form-element">
-  <label for="search-max-price">MAX PRICE</label>
-  <input type="number" name="property[max_price]" value="" class="small-input" id="search-max-price">
-</li>
-<li class="form-element">
-  <label for="search-beds">BEDS</label>
-  <input type="number" name="property[beds]" value="" class="small-input" id="search-beds">
-</li>
-<li class="form-element">
-  <label for="search-baths">BATHS</label>
-    <input type="text" name="property[baths]" value="" class="small-input" id="search-baths">
-</li>
-<li class="form-element">
-  <label for="search-sq-ft">SQUARE FEET</label>
-    <input type="number" name="property[sq_ft]" class="small-input" id="search-sq-ft">
-</li>
-<li class="form-element">
-  <button class="search-button">SEARCH</button>
-</li>
-</ul>
+		<ul class="group">
+			<li class="form-element">
+			  <label for="search-address">LOCATION</label>
+			  <input type="text" name="property[location]" value="" class="big-input" id="search-address" placeholder="Borough / Neighborhood / Address">
+			</li>
+			<li class="form-element">
+				<label for="search-apt-type">TYPE</label>
+			  <select name="property[apt_type]" id="search-apt-type" class="small-input">
+					<option value="">Any Type</option>
+					<% StreetEasyClone.apt_types.forEach(function(apt_type){ %>
+						<option value="<%= apt_type %>">
+							<%= apt_type %>
+						</option>
+					<% });%>
+				</select>
+			</li>
+			<li class="form-element">
+			  <label for="search-min-price">MIN PRICE</label>
+			  <input type="number" name="property[min_price]" value="" class="small-input" id="search-min-price" placeholder="Any">
+			</li>
+			<li class="form-element">
+			  <label for="search-max-price">MAX PRICE</label>
+			  <input type="number" name="property[max_price]" value="" class="small-input" id="search-max-price" placeholder="Any">
+			</li>
+			<li class="form-element">
+			  <label for="search-beds">BEDS</label>
+				<select name="property[beds]" id="search-bed-type" class="small-input">
+					<option value="">Any</option>
+					<% StreetEasyClone.bed_types.forEach(function(bed_type){ %>
+						<% if(bed_type === "0") { %>
+							<option value="<%= bed_type %>">
+								Studio
+							</option>
+						<% } else { %>
+						<option value="<%= bed_type %>">
+							<%= bed_type %> bedrooms
+						</option>
+						<% } %>
+					<% });%>
+				</select>
+			</li>
+			<li class="form-element">
+			  <label for="search-baths">BATHS</label>
+				<select name="property[baths]" id="search-bath-type" class="small-input">
+					<option value="">Any</option>
+					<% StreetEasyClone.bath_types.forEach(function(bath_type){ %>
+						<option value="<%= bath_type %>">
+							<%= bath_type %> or more
+						</option>
+					<% });%>
+				</select>
+			</li>
+			<li class="form-element">
+				<button class="search-button">SEARCH</button>
+			</li>
+		</ul>
 	</div>
 </form>

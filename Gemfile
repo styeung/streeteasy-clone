@@ -44,6 +44,7 @@ gem 'paperclip'
 gem 'aws-sdk'
 gem 'figaro'
 gem 'geocoder'
+gem 'pg_search'
 
 group :development do
   gem 'pry-rails'
