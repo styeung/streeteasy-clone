@@ -3,9 +3,8 @@ class Api::PropertiesController < ApplicationController
   before_action :require_owner, only: [:edit, :update, :destroy]
   
   def index
-    query_string = ""
-    # count = 0
-    # params_length = search_params.length
+    sql_query = ""
+    
     comparator = {
       apt_type: "=",
       min_price: ">=",
@@ -22,36 +21,29 @@ class Api::PropertiesController < ApplicationController
         if key == "location"
           location_value = value
         else
-          # count += 1
           values_hash[key.to_sym] = value
-          if !query_string.length == 0
-            query_string.concat(" AND ")
+          
+          if !sql_query.empty?
+            sql_query.concat(" AND ")
           end
             
           if key == "min_price" || key == "max_price"
-            query_string.concat("price #{comparator[key.to_sym]} :#{key}")
+            sql_query.concat("price #{comparator[key.to_sym]} :#{key}")
           else
-            query_string.concat("#{key} #{comparator[key.to_sym]} :#{key}")
+            sql_query.concat("#{key} #{comparator[key.to_sym]} :#{key}")
           end
 
-          # if query_string.length == 0 # || count == params_length
-          #   query_string.concat("#{key} #{comparator[key] ||= "="} :#{key}")
-          # else
-          #   query_string.concat(" AND ")
-          #   query_string.concat("#{key} #{comparator[key] ||= "="} :#{key}")
-          # end
         end
       end
     end
     
     if location_value.nil?
-      @properties = Property.where(query_string, values_hash)
+      @properties = Property.where(sql_query, values_hash).page(params[:page]).per(12)
     else
-      @properties = Property.search(location_value).where(query_string, values_hash)
+      @properties = Property.search(location_value).where(sql_query, values_hash).page(params[:page]).per(12)
     end
 
     render :index
-    # render json: @properties
   end
 
   def new

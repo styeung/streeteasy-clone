@@ -62,5 +62,46 @@ class Property < ActiveRecord::Base
     query_string = query_array.join(", ")
     
   end
+  
+  def self.indexQuery(search_params)
+    query_string = ""
+    # count = 0
+    # params_length = search_params.length
+    comparator = {
+      apt_type: "=",
+      min_price: ">=",
+      max_price: "<=",
+      beds: "=",
+      baths: ">=",
+    }
+    
+    location_value = nil
+    values_hash = {}
+
+    search_params.each do |key, value|
+      if !value.empty?
+        if key == "location"
+          location_value = value
+        else
+          values_hash[key.to_sym] = value
+          if !query_string.length == 0
+            query_string.concat(" AND ")
+          end
+            
+          if key == "min_price" || key == "max_price"
+            query_string.concat("price #{comparator[key.to_sym]} :#{key}")
+          else
+            query_string.concat("#{key} #{comparator[key.to_sym]} :#{key}")
+          end
+        end
+      end
+    end
+    
+    if location_value.nil?
+      return Property.where(query_string, values_hash)
+    else
+      return Property.search(location_value).where(query_string, values_hash)
+    end
+  end
 
 end

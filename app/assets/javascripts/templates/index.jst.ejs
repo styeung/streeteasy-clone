@@ -1,5 +1,5 @@
 <div class="search-filter">
-	<h2 class="title"><b><%= properties.length %></b> Properties Found</h2>
+	<h2 class="title"><b><%= count %></b> Properties Found</h2>
 </div>
 <ul class="view-switch-container group">
 	<li>
@@ -15,6 +15,8 @@
 				<option val="price_smallest" <% if(sortCriterion === "price_smallest") { %> Selected <% }; %>>Least Expensive</option>
 				<option val="sq_ft_largest" <% if(sortCriterion === "sq_ft_largest") { %> Selected <% }; %>>Largest</option>
 				<option val="sq_ft_smallest" <% if(sortCriterion === "sq_ft_smallest") { %> Selected <% }; %>>Smallest</option>
+				<option val="beds_largest" <% if(sortCriterion === "beds_largest") { %> Selected <% }; %>>Most Bedrooms</option>
+				<option val="beds_smallest" <% if(sortCriterion === "beds_smallest") { %> Selected <% }; %>>Least Bedrooms</option>
 			</select>
 			<button class="sort-button"></button>
 		</form>
@@ -22,6 +24,11 @@
 </ul>
 <div class="view-container">
 
+</div>
+<div>
+<!-- <% for(var i = 0; i < count/12; i++) {%>
+	<a href="#properties/<%= StreetEasyClone.searchQuery %>&page=<%= i + 1 %>"><%= i + 1 %></a>
+<% } %> -->
 </div>
 
 <script>

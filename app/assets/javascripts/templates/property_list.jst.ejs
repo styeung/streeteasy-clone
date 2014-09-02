@@ -2,6 +2,15 @@
 	<ul class="property-list">
 	
 	</ul>
+	<div class="page-link-container">
+	<% for(var i = 0; i < count/12; i++) {%>
+		<% if ((i + 1) === parseInt(StreetEasyClone.currentPage)) { %>
+			<a href="#" class="property-page-link disabled-link"><%= i + 1 %></a>
+		<% } else { %>
+			<a href="#properties/<%= StreetEasyClone.searchQuery %>&page=<%= i + 1 %>" class="property-page-link"><%= i + 1 %></a>
+		<% } %>
+	<% } %>
+	</div>
 </div>
 
 <div class="map-sidebar-container">
@@ -20,7 +29,6 @@ map.setView([defaultLat, defaultLng], 12);
 
 var address, borough, queryString, queryResult, lat, lng
 	$(document).ready( function() {
-		//want default on first property on page
 		$(".main").off().on("mouseenter", "li.property-listing", function(event) {
 			lat = $(event.currentTarget).attr("data-lat");
 			lng = $(event.currentTarget).attr("data-lng");

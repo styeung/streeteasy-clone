@@ -230,7 +230,6 @@ div.map-view#map {
 
 .property-list-container {
 	width: 638px;
-	height: 146px;
 }
 
 .view-switch {
@@ -431,3 +430,31 @@ div.map-view#map {
 .sort-button {
 	display: none;
 }
+
+.page-link-container {
+	width: 638px;
+	padding: 20px 0;
+	text-align: center;
+}
+
+.page-link-container a {
+	font-weight: 100;
+	padding: 0 10px;
+}
+
+.disabled-link {
+	cursor: default;
+	color: #ccc;
+}
+
+
+
+
+
+
+
+
+
+
+
+

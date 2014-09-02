@@ -4,10 +4,14 @@ StreetEasyClone.Views.PropertyList = Backbone.View.extend({
 	initialize: function() {
 		
 	},
+	
+	events: {
+		"click .property-page-link": "updateCurrentPage"
+	},
 
 	render: function() {
 		var that = this;
-		var content = this.template({properties: this.collection});
+		var content = this.template({properties: this.collection, count: StreetEasyClone.totalCount});
 		this.$el.html(content);
 
 		this.collection.each(function(property) {
@@ -16,5 +20,9 @@ StreetEasyClone.Views.PropertyList = Backbone.View.extend({
 		});
 		
 		return this;
+	},
+	
+	updateCurrentPage: function(event) {
+		StreetEasyClone.currentPage = $(event.currentTarget).html();
 	}
 });

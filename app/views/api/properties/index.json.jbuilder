@@ -17,4 +17,5 @@ json.array! @properties do |property|
   json.latitude property.latitude
   json.longitude property.longitude
   json.following_users property.following_users.pluck(:id)
+  json.total_count @properties.total_count
 end

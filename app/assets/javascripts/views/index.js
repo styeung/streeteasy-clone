@@ -11,15 +11,15 @@ StreetEasyClone.Views.PropertyIndex = Backbone.View.extend({
 	sortCriterion: "price_largest",
 	
 	initialize: function() {
-		// var content = this.template({properties: this.collection, sortCriterion: this.sortCriterion});
-		// this.$el.html(content);
-		//
+		var content = this.template({properties: this.collection, sortCriterion: this.sortCriterion, count: StreetEasyClone.totalCount});
+		this.$el.html(content);
+		
 		this.listenTo(this.collection, "sort", this.render)
 	},
 	
 	render: function() {
-		var content = this.template({properties: this.collection, sortCriterion: this.sortCriterion});
-		this.$el.html(content);
+		// var content = this.template({properties: this.collection, sortCriterion: this.sortCriterion, count: this.collection.first().escape("total_count")});
+// 		this.$el.html(content);
 		
 		var activeButton = this.$(".view-switch.active").html();
 		if(activeButton === "LIST") {
@@ -37,6 +37,7 @@ StreetEasyClone.Views.PropertyIndex = Backbone.View.extend({
 	
 	switchView: function(event) {
 		if(!$(event.currentTarget).hasClass("active")) {
+			console.log("here")
 			$(".view-switch-container").find(".view-switch").toggleClass("active");
 			this.render();
 		}
@@ -48,22 +49,27 @@ StreetEasyClone.Views.PropertyIndex = Backbone.View.extend({
 		if (formData["sort-criterion"] === "Largest") {
 			this.sortCriterion = "sq_ft_largest"
 			this.collection.comparatorHelper("sq_ft", true);
-			this.collection.sort();
 		}
 		else if (formData["sort-criterion"] === "Smallest") {
 			this.sortCriterion = "sq_ft_smallest"
 			this.collection.comparatorHelper("sq_ft");
-			this.collection.sort();
 		}
 		else if (formData["sort-criterion"] === "Most Expensive") {
 			this.sortCriterion = "price_largest"
 			this.collection.comparatorHelper("price", true);
-			this.collection.sort();
 		}
 		else if (formData["sort-criterion"] === "Least Expensive") {
 			this.sortCriterion = "price_smallest"
 			this.collection.comparatorHelper("price");
-			this.collection.sort();
 		}
+		else if (formData["sort-criterion"] === "Most Bedrooms") {
+			this.sortCriterion = "beds_largest"
+			this.collection.comparatorHelper("beds", true);
+		}
+		else if (formData["sort-criterion"] === "Least Bedrooms") {
+			this.sortCriterion = "beds_smallest"
+			this.collection.comparatorHelper("beds");
+		}
+		this.collection.sort();
 	}
 });
