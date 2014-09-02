@@ -1,0 +1,34 @@
+<h2>Add New Property</h2>
+
+<form>
+	<div class="form-main">
+		<label>Main Photo</label>
+		<input type="file" name="property[property_photo]">
+	<ul class="group">
+		<li class="form-element">
+  <label>Address (Required)</label>
+    <input type="text" name="property[address]" class="big-input">
+</li>
+<li class="form-element">
+  <label>Unit</label>
+    <input type="text" name="property[unit]" class="small-input">
+ </li>
+ <li class="form-element">
+  <label>Zip (Required)</label>
+    <input type="text" name="property[zip]" class="small-input">
+</li>
+<li class="form-element">
+  <label for="borough-select">Borough (Required)</label>
+  <select name="property[borough]" id="borough-select" class="small-input">
+		<option value="">(Choose one)</option>
+		<% for(var key in StreetEasyClone.boroughs) { %>
+			<option value="<%= key %>">
+				<%= StreetEasyClone[key] %>
+			</option>
+		<% } %>
+  </select>
+</li>
+
+</form>
+
+

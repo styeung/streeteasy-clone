@@ -4,7 +4,7 @@
 	</ul>
 	<div class="page-link-container">
 	<% for(var i = 0; i < count/12; i++) {%>
-		<% if ((i + 1) === parseInt(StreetEasyClone.currentPage)) { %>
+		<% if ((i + 1) === currentPage) { %>
 			<a href="#" class="property-page-link disabled-link"><%= i + 1 %></a>
 		<% } else { %>
 			<a href="#properties/<%= StreetEasyClone.searchQuery %>&page=<%= i + 1 %>" class="property-page-link"><%= i + 1 %></a>
@@ -25,7 +25,7 @@ var geocoder = L.mapbox.geocoder('mapbox.places-v1');
 var defaultLat = 40.714728;
 var defaultLng = -73.998672;
 
-map.setView([defaultLat, defaultLng], 12);
+map.setView([defaultLat, defaultLng], 11);
 
 var address, borough, queryString, queryResult, lat, lng
 	$(document).ready( function() {

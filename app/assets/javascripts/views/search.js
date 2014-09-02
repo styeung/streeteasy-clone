@@ -19,7 +19,6 @@ StreetEasyClone.Views.Search = Backbone.View.extend({
 		event.preventDefault();
 		var formData = $(event.currentTarget).serialize();
 		StreetEasyClone.searchQuery = formData;
-		StreetEasyClone.currentPage = 1;
 
 		StreetEasyClone.router.navigate("properties/" + formData, {trigger: true});
 	}

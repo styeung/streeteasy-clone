@@ -16,3 +16,4 @@ json.property_photo_url asset_path(@property.property_photo.url(:big))
 json.latitude @property.latitude
 json.longitude @property.longitude
 json.following_users @property.following_users.pluck(:id)
+json.current_user current_user.nil? ? false : current_user.id

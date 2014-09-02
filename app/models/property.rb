@@ -9,7 +9,7 @@ class Property < ActiveRecord::Base
   after_validation :geocode
   
   has_attached_file :property_photo, :styles => {
-          :big => "576x400>",
+          :big => "576x400#",
           :small => "170x110#"
           }, :default_url => "/images/missing_:style.png"
           
@@ -38,6 +38,14 @@ class Property < ActiveRecord::Base
   has_many(
     :comments,
     class_name: "Comment",
+    foreign_key: :property_id,
+    primary_key: :id,
+    inverse_of: :property
+  )
+  
+  has_many(
+    :album_photos,
+    class_name: "AlbumPhoto",
     foreign_key: :property_id,
     primary_key: :id,
     inverse_of: :property

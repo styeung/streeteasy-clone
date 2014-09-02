@@ -34,6 +34,9 @@
 	<div class="nav-settings">
 		<ul class="group">
 			<li>
+				<a href="#/property/new" class="new-property-link">Add a new property</a>
+			</li>
+			<li>
 			  <a href="<%= user_url(current_user) %>" class="settings-link"><%= current_user.email %></a>
 			</li>
 			<li>
@@ -79,22 +82,32 @@
 	</article>
 </section>
 
+<script template="application/json" id="bootstrapped-current-user">
+	<%= current_user.nil? ? false : current_user.id%>
+</script>
+
+<script template="application/json" id="bootstrapped-all-neighborhoods">
+	<%= all_neighborhoods.to_json.html_safe %>
+</script>
+
 
 <script>
 	$(document).ready(function() {
-		$.ajax("api/auth/check_current_user", {
-			type: "GET",
-			success: function(resp) {
-				if(isNaN(resp.id)){
-					StreetEasyClone.currentUser = false;
-					StreetEasyClone.initialize();
-				}
-				else {
-					StreetEasyClone.currentUser = resp.id
-					StreetEasyClone.initialize();
-				}
-			}
-		});
+		StreetEasyClone.all_neighborhoods = JSON.parse($("script#bootstrapped-all-neighborhoods").html());
+		
+		StreetEasyClone.currentUser = JSON.parse($("script#bootstrapped-current-user").html());
+		StreetEasyClone.initialize();
+		// $.ajax("api/auth/check_current_user", {
+		// 	type: "GET",
+		// 	success: function(resp) {
+		// 		if(isNaN(resp.id)){
+		// 			StreetEasyClone.currentUser = false;
+		// 		}
+		// 		else {
+		// 			StreetEasyClone.currentUser = resp.id
+		// 		}
+		// 	}
+		// });
 		
 		$(".settings-link").on("click", function() {
 			$("#sign-in").toggleClass("is-active");

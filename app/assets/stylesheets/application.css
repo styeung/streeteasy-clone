@@ -448,6 +448,18 @@ div.map-view#map {
 }
 
 
+.new-property-link {
+	font-color: #004c75;
+	padding: 10px 20px;
+}
+
+.obj {
+	width: 30px;
+	height: 30px;
+	overflow: hidden;
+	
+}
+
 
 
 

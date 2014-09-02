@@ -1,0 +1,39 @@
+<div id="image-container">
+</div>
+
+<form>
+<input type="file" multiple accept="image/*" class="image-upload">
+</form>
+
+<script>
+$(document).ready(function() {
+	var preview = document.getElementById("image-container");
+	
+	$(".image-upload").on("change", function(event) {
+		handleFiles(event.currentTarget.files)
+	});
+	
+	function handleFiles(files) {
+		console.log(files);
+		for(var i = 0; i < files.length; i++) {
+			var file = files[i];
+			var imageType = /image.*/;
+		
+			if(!file.type.match(imageType)) {
+				continue;
+			}
+		
+			var img = document.createElement("img");
+			img.classList.add("obj");
+			img.file = file;
+			
+			preview.appendChild(img);
+			
+			var reader = new FileReader();
+			reader.onload = (function(aImg) { return function(e) { aImg.src = e.target.result; }; })(img);
+			reader.readAsDataURL(file)
+		}
+	}
+}); 
+	
+</script>

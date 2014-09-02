@@ -18,4 +18,5 @@ json.array! @properties do |property|
   json.longitude property.longitude
   json.following_users property.following_users.pluck(:id)
   json.total_count @properties.total_count
+  json.current_user current_user.nil? ? false : current_user.id
 end

@@ -131,18 +131,6 @@ class Api::PropertiesController < ApplicationController
                                      :longitude)
   end
 
-  # def search_params
-  #   params.require(:property).permit(:zip,
-  #                                    :borough,
-  #                                    :neighborhood,
-  #                                    :min_price,
-  #                                    :max_price,
-  #                                    :beds,
-  #                                    :baths,
-  #                                    :sq_ft,
-  #                                    :apt_type)
-  # end
-  
   def search_params
     params.require(:property).permit(:location,
                                      :apt_type,

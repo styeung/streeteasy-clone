@@ -2,7 +2,9 @@ StreetEasyClone.Routers.AppRouter = Backbone.Router.extend({
 	routes: {
 		"": "search",
 		"search": "search",
-		"properties/:query": "propertyIndex",
+		"properties/:query": "propertiesIndex",
+		"property/new": "propertyNew",
+		"property/edit/:id": "propertyEdit",
 		"property/:id": "propertyShow"
 	},
 	
@@ -18,7 +20,7 @@ StreetEasyClone.Routers.AppRouter = Backbone.Router.extend({
 		this.$rootEl.html(view.render().$el);
 	},
 	
-	propertyIndex: function(query) {
+	propertiesIndex: function(query) {
 		var that = this;
 		this.properties.fetch({
 			data: query,
@@ -34,9 +36,24 @@ StreetEasyClone.Routers.AppRouter = Backbone.Router.extend({
 		var model = new StreetEasyClone.Models.Property({id: id});
 		model.fetch({
 			success: function(model, resp) {
-				console.log(model);
 				var view = new StreetEasyClone.Views.PropertyShow({model: model});
 				that.$rootEl.html(view.render().$el);
+			}
+		});
+	},
+	
+	propertyNew: function() {
+		var view = new StreetEasyClone.Views.PropertyNew();
+		this.$rootEl.html(view.render().$el);
+	},
+	
+	propertyEdit: function(id) {
+		var that = this;
+		var model = new StreetEasyClone.Models.Property({id: id});
+		model.fetch({
+			success: function(model, resp) {
+				var view = new StreetEasyClone.Views.PropertyEdit({model: model});
+				that.$rootel.html(view.render().$el);
 			}
 		});
 	}

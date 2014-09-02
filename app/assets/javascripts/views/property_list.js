@@ -4,14 +4,10 @@ StreetEasyClone.Views.PropertyList = Backbone.View.extend({
 	initialize: function() {
 		
 	},
-	
-	events: {
-		"click .property-page-link": "updateCurrentPage"
-	},
 
 	render: function() {
 		var that = this;
-		var content = this.template({properties: this.collection, count: StreetEasyClone.totalCount});
+		var content = this.template({properties: this.collection, count: StreetEasyClone.totalCount, currentPage: this.getCurrentPage()});
 		this.$el.html(content);
 
 		this.collection.each(function(property) {
@@ -22,7 +18,24 @@ StreetEasyClone.Views.PropertyList = Backbone.View.extend({
 		return this;
 	},
 	
-	updateCurrentPage: function(event) {
-		StreetEasyClone.currentPage = $(event.currentTarget).html();
+	getCurrentPage: function() {
+		var fullUrl = window.location.href;
+		var pageParamStart = fullUrl.indexOf("page=");
+		
+		if (pageParamStart !== -1) {
+			var pageNumberStart = pageParamStart + 5;
+			var nextParamStart = fullUrl.slice(pageNumberStart).indexOf("&")
+			if(nextParamStart === -1) {
+				var pageNumberEnd = fullUrl.length;
+			}
+			else {
+				var pageNumberEnd = nextParamStart; 
+			}
+			
+			return parseInt(fullUrl.slice(pageNumberStart, pageNumberEnd));
+		}
+		else {
+			return 1;
+		}
 	}
 });
