@@ -21,10 +21,11 @@ StreetEasyClone.Views.PropertyEdit = Backbone.View.extend({
 	handleFiles: function(event) {
 		var that = this;
 		var files = event.currentTarget.files;
-		console.log(files.length);
 		
 		var preview = document.getElementById("main-photo-container");
 		var oldChild = document.getElementById("main-photo-default");
+		
+		console.log(oldChild);
 		
 		for(var i = 0; i < files.length; i++) {
 			var file = files[i];

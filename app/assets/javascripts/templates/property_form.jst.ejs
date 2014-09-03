@@ -11,7 +11,7 @@
 			<% if(action === "new") { %>
 				<img src="/images/missing_big.png" id="main-photo-default">
 			<% } else if (action === "edit") { %>
-				<% if(property.escape("property_photo_url")) { %>
+				<% if(property.escape("property_photo_url").indexOf("missing") === -1) { %>
 					<img src="<%= property.escape('property_photo_url') %>">
 				<% } else { %>
 					<img src="/images/missing_big.png" id="main-photo-default">
