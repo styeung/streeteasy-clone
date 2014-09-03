@@ -93,7 +93,7 @@ class Api::PropertiesController < ApplicationController
       if @property.update(property_params)
         render json: @property
       else
-        render json: "Sorry, something went wrong with the save. Please try again."
+        render json: @property.errors.full_messages, status: 422
       end
     end
     

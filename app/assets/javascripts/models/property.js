@@ -18,7 +18,6 @@ StreetEasyClone.Models.Property = Backbone.Model.extend({
 	
 	album_photos: function() {
 		if(!this._album_photos) {
-			console.log("property", this);
 			this._album_photos = new StreetEasyClone.Collections.AlbumPhotos([], {
 				property: this
 			});

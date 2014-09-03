@@ -25,10 +25,9 @@ class Api::AlbumPhotosController < ApplicationController
     @album_photo = AlbumPhoto.find(params[:id])
     
     if @album_photo.destroy
-      redirect_to property_url(params[:property_id])
+      render json: @album_photo
     else
-      flash[:errors] = ["Sorry, an error occurred when trying to delete your photo. Please try again"]
-      redirect_to property_url(params[:property_id])
+      render json: @album_photo.errors.full_messages
     end
       
   end

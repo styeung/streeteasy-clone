@@ -1,7 +1,7 @@
 <h2 class="listing-text"><%= property.escape("address") %> <%= property.escape("unit") %></h2>
 <h3 class="listing-text"><%= property.escape("neighborhood") %></h3>
-<% if (property.escape("id") === StreetEasyClone.currentUser) {%>
-	<a href="#">Edit this listing</a>
+<% if (parseInt(property.escape("owner_id")) === StreetEasyClone.currentUser) {%>
+	<a href="#/property/edit/<%= property.escape('id') %>">Edit this listing</a>
 <% } %>
 <br>
 	<% if(StreetEasyClone.currentUser) { %>

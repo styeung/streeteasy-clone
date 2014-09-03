@@ -1,4 +1,4 @@
-StreetEasyClone.Views.PropertyNew = Backbone.View.extend({
+StreetEasyClone.Views.PropertyEdit = Backbone.View.extend({
 	template: JST["templates/property_form"],
 	
 	events: {
@@ -9,8 +9,12 @@ StreetEasyClone.Views.PropertyNew = Backbone.View.extend({
 	},
 	
 	render: function() {
-		var content = this.template({property: this.model, action: "new"});
+		var content = this.template({property: this.model, action: "edit"});
 		this.$el.html(content);
+		if(this.model.album_photos().length > 0) {
+			var subView = new StreetEasyClone.Views.PhotoUpload({model: this.model});
+			this.$(".additional-photos-container").html(subView.render().$el);
+		}
 		return this;
 	},
 	

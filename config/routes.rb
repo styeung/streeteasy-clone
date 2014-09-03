@@ -18,8 +18,10 @@ Rails.application.routes.draw do
   
   namespace :api, defaults: {format: :json} do
     resources :properties do 
-      resources :album_photos, except: [:edit, :update]
+      resources :album_photos, except: [:show, :destroy]
     end
+    
+    resources :album_photos, only: [:show, :destroy]
     
     get "/auth/check_current_user", to: "auth#check_current_user"
   end

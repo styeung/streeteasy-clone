@@ -457,12 +457,51 @@ div.map-view#map {
 	width: 170px;
 	height: 110px;
 	overflow: hidden;
-	
+}
+
+.existing-photo-preview {
+	width: 170px;
+	height: 110px;
+	overflow: hidden;
 }
 
 #main-photo-container img{
 	width: 400px;
 	height: 300px;
+}
+
+.add-more-photos-button {
+	width: 180px;
+	height: 38px;
+	padding: 7px;
+	color: white;
+	background-color: #0080c6;
+	font-size: 13px;
+}
+
+.add-property-button {
+	width: 180px;
+	height: 38px;
+	padding: 7px;
+	color: white;
+	background-color: #0080c6;
+	font-size: 13px;
+}
+
+.delete-cover {
+	display: block;
+	position: absolute;
+	background-color: rgba(0, 0, 0, .7);
+	width: 170px;
+	height: 60px;
+	z-index: 100;
+	color: white;
+	text-align: center;
+	padding-top: 50px;
+}
+
+.delete-cover:hover {
+	cursor: pointer;
 }
 
 
