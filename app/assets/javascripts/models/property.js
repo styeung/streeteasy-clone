@@ -2,15 +2,17 @@ StreetEasyClone.Models.Property = Backbone.Model.extend({
 	urlRoot: "/api/properties",
 	
 	parse: function(response) {
+		
 		if (response.current_user) {
 			StreetEasyClone.currentUser = response.current_user;
 			delete response.current_user
 		}
-		else if (response.album_photos) {
+		
+		if (response.album_photos.length > 0) {
 			this.album_photos().set(response.album_photos);
 			delete response.album_photos;
 		}
-		console.log(this.album_photos())
+		
 		return response;
 	},
 	

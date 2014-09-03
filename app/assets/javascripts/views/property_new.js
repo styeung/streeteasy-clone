@@ -31,7 +31,7 @@ StreetEasyClone.Views.PropertyNew = Backbone.View.extend({
 			}
 		
 			var img = document.createElement("img");
-			img.classList.add("obj");
+			img.classList.add("main-photo-preview");
 			img.file = file;
 			
 			preview.replaceChild(img, oldChild);

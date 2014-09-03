@@ -25,7 +25,7 @@ StreetEasyClone.Views.PhotoUpload = Backbone.View.extend({
 			}
 		
 			var img = document.createElement("img");
-			img.classList.add("obj");
+			img.classList.add("additional-photo-preview");
 			img.file = file;
 			
 			preview.appendChild(img);
