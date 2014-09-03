@@ -2,6 +2,8 @@ class Api::PropertiesController < ApplicationController
   before_action :require_signed_in, only: [:new, :create, :edit, :update, :destroy]
   before_action :require_owner, only: [:edit, :update, :destroy]
   
+  wrap_parameters false
+    
   def index
     sql_query = ""
     
@@ -46,22 +48,15 @@ class Api::PropertiesController < ApplicationController
     render :index
   end
 
-  def new
-    @user = User.find(params[:user_id])
-    @property = @user.properties.new()
-    render :new
-  end
-
   def create
-    @user = User.find(params[:user_id])
+    @user = User.find(current_user.id)
 
     @property = @user.properties.new(property_params)
 
     if @property.save
-      redirect_to property_url(@property)
+      render json: @property
     else
-      flash.now[:errors] = @property.errors.full_messages
-      render :new
+      render json: @property.errors.full_messages, status: 422
     end
   end
 
@@ -116,19 +111,19 @@ class Api::PropertiesController < ApplicationController
   end
 
   def property_params
-    params.require(:property).permit(:address,
-                                     :unit,
-                                     :zip,
-                                     :borough,
-                                     :neighborhood,
-                                     :price,
-                                     :beds,
-                                     :baths,
-                                     :sq_ft,
-                                     :apt_type,
-                                     :property_photo,
-                                     :latitude,
-                                     :longitude)
+    params.permit(:address,
+                   :unit,
+                   :zip,
+                   :borough,
+                   :neighborhood,
+                   :price,
+                   :beds,
+                   :baths,
+                   :sq_ft,
+                   :apt_type,
+                   :property_photo,
+                   :latitude,
+                   :longitude)
   end
 
   def search_params

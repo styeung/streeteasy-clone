@@ -460,6 +460,11 @@ div.map-view#map {
 	
 }
 
+#main-photo-container img{
+	width: 400px;
+	height: 300px;
+}
+
 
 
 

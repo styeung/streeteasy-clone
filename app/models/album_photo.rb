@@ -1,5 +1,5 @@
 class AlbumPhoto < ActiveRecord::Base
-  validates :property_id
+  validates :property_id, presence: true
   
   has_attached_file :photo, :styles => {
       :big => "576x400#",

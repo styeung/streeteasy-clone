@@ -20,15 +20,7 @@ window.StreetEasyClone = {
 			    "bronx": "The Bronx",
 			    "staten_island": "Staten Island"
   },
-	apt_types: [
-		"apartment",
-		"building",
-		"co-op",
-		"condo",
-		"house",
-		"multi-family",
-		"townhouse"
-	],
+
 	bed_types: [
 		"0",
 		"1",
