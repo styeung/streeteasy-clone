@@ -22,3 +22,14 @@ json.album_photos(@property.album_photos) do |album_photo|
   json.property_id album_photo.property_id
   json.photo_url asset_path(album_photo.photo.url(:big))
 end
+
+json.comments(@property.comments) do |comment|
+  json.id comment.id
+  json.author_id comment.author_id
+  json.property_id comment.property_id
+  json.title comment.title
+  json.body comment.body
+  json.created_at comment.created_at
+  json.updated_at comment.created_at
+end
+  

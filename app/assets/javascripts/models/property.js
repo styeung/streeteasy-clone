@@ -13,6 +13,11 @@ StreetEasyClone.Models.Property = Backbone.Model.extend({
 			delete response.album_photos;
 		}
 		
+		if (response.comments) {
+			this.comments().set(response.comments);
+			delete response.comments;
+		}
+		
 		return response;
 	},
 	
@@ -24,5 +29,15 @@ StreetEasyClone.Models.Property = Backbone.Model.extend({
 		}
 
 		return this._album_photos
+	},
+	
+	comments: function () {
+		if(!this._comments) {
+			this._comments = new StreetEasyClone.Collectoins.Comments([], {
+				property: this
+			});
+		}
+		
+		return this._comments;
 	}
 });
