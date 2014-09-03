@@ -43,8 +43,10 @@ StreetEasyClone.Views.PhotoUpload = Backbone.View.extend({
 	saveAll: function(event) {
 		event.preventDefault();
 		var property = this.model;
+		console.log("property", property);
+		console.log("property.album_photos()", property.album_photos());
 		
-		var imgs = document.querySelectorAll(".obj");
+		var imgs = document.querySelectorAll(".additional-photo-preview");
 		
 		for(var i = 0; i < imgs.length; i++) {
 			if(i < imgs.length - 1) {
@@ -62,7 +64,7 @@ StreetEasyClone.Views.PhotoUpload = Backbone.View.extend({
 			}
 			else if (i === imgs.length - 1) {
 				property.album_photos().create({
-					"property_id": this.model.id,
+					"property_id": property.id,
 					"photo": imgs[i].src
 				}, {
 					success: function(model, resp) {

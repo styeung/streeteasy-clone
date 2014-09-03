@@ -8,7 +8,7 @@ StreetEasyClone.Models.Property = Backbone.Model.extend({
 			delete response.current_user
 		}
 		
-		if (response.album_photos.length > 0) {
+		if (response.album_photos) {
 			this.album_photos().set(response.album_photos);
 			delete response.album_photos;
 		}
@@ -18,6 +18,7 @@ StreetEasyClone.Models.Property = Backbone.Model.extend({
 	
 	album_photos: function() {
 		if(!this._album_photos) {
+			console.log("property", this);
 			this._album_photos = new StreetEasyClone.Collections.AlbumPhotos([], {
 				property: this
 			});
