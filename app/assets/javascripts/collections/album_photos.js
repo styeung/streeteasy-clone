@@ -5,5 +5,7 @@ StreetEasyClone.Collections.AlbumPhotos = Backbone.Collection.extend({
 		this.property = options.property;
 	},
 	
-	url: this.property.url() + "/album_photos"
+	url: function() {
+		return this.property.url() + "/album_photos"
+	}
 })

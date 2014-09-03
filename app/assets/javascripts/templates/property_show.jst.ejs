@@ -12,6 +12,11 @@
 		<% } %>
 	<% } %>
 	<img src="<%= property.escape("property_photo_url") %>">
+	<div>
+	<% property.album_photos().each(function(album_photo) { %>
+		<img src="<%= album_photo.escape('photo_url') %>">
+	<% }); %>
+	</div>
 <br>
 <ul>
 <% for(var key in property.attributes) { %>

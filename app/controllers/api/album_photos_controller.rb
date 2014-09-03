@@ -1,31 +1,30 @@
 class Api::AlbumPhotosController < ApplicationController
   def index
-    @photos = AlbumPhoto.where(property_id: params[:property_id])
+    @album_photos = AlbumPhoto.where(property_id: params[:property_id])
     
-    render json: @photos
+    render json: @album_photos
   end
   
   def show
-    @photo = AlbumPhoto.find(params[:id])
+    @album_photo = AlbumPhoto.find(params[:id])
     
-    render json: @photo
+    render json: @album_photo
   end
   
   def create
-    @photo = AlbumPhoto.new(album_photo_params)
+    @album_photo = AlbumPhoto.new(album_photo_params)
     
-    if @photo.save
-      redirect_to property_url(params[:property_id])
+    if @album_photo.save
+      render json: @album_photo
     else
-      flash[:errors] = @photo.errors.full_messages
-      redirect_to property_url(params[:property_id])
+      render json: @album_photo.errors.full_messages
     end
   end
   
   def destroy
-    @photo = AlbumPhoto.find(params[:id])
+    @album_photo = AlbumPhoto.find(params[:id])
     
-    if @photo.destroy
+    if @album_photo.destroy
       redirect_to property_url(params[:property_id])
     else
       flash[:errors] = ["Sorry, an error occurred when trying to delete your photo. Please try again"]
@@ -35,6 +34,6 @@ class Api::AlbumPhotosController < ApplicationController
   end
   
   def album_photo_params
-    params.require(:album_photo).permit(:property_id, :photo)
+    params.permit(:property_id, :photo)
   end
 end

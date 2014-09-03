@@ -17,3 +17,8 @@ json.latitude @property.latitude
 json.longitude @property.longitude
 json.following_users @property.following_users.pluck(:id)
 json.current_user current_user.nil? ? false : current_user.id
+json.album_photos(@property.album_photos) do |album_photo|
+  json.id album_photo.id
+  json.property_id album_photo.property_id
+  json.photo_url asset_path(album_photo.photo.url(:big))
+end
