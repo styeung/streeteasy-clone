@@ -10,7 +10,8 @@ StreetEasyClone.Views.CommentRow = Backbone.View.extend({
 	className: "comment-row",
 	
 	render: function() {
-		
+		console.log("model", this.model)
+		console.log("title", this.model.escape("title"));
 		var content = this.template({comment: this.model});
 		this.$el.html(content);
 		return this;

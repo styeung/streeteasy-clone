@@ -10,10 +10,8 @@ StreetEasyClone.Views.CommentNew = Backbone.View.extend({
 	},
 	
 	render: function() {
-		console.log('here');
 		var content = this.template();
 		this.$el.html(content);
-		console.log(this)
 		return this;
 	},
 	
@@ -24,7 +22,8 @@ StreetEasyClone.Views.CommentNew = Backbone.View.extend({
 			success: function(model, response, options) {
 				$(event.currentTarget).empty();
 				console.log("model saved", model);
-			}
+			},
+			wait: true
 		});
 	}
 })

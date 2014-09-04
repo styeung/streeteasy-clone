@@ -16,7 +16,7 @@ StreetEasyClone.Views.CommentsList = Backbone.View.extend({
 		
 		this.collection.each(function(comment) {
 			var rowView = new StreetEasyClone.Views.CommentRow({model: comment});
-			that.$(".comments-list").append(rowView.render().$el);
+			that.$(".comments-list").prepend(rowView.render().$el);
 		});
 		
 		return this;

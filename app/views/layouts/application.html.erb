@@ -97,21 +97,12 @@
 
 <script>
 	$(document).ready(function() {
+		$("abbr.timeago").timeago();
+		
 		StreetEasyClone.neighborhoods = JSON.parse($("script#bootstrapped-all-neighborhoods").html());
 		StreetEasyClone.apt_types = JSON.parse($("script#bootstrapped-all-apt-types").html());
 		StreetEasyClone.currentUser = JSON.parse($("script#bootstrapped-current-user").html());
 		StreetEasyClone.initialize();
-		// $.ajax("api/auth/check_current_user", {
-		// 	type: "GET",
-		// 	success: function(resp) {
-		// 		if(isNaN(resp.id)){
-		// 			StreetEasyClone.currentUser = false;
-		// 		}
-		// 		else {
-		// 			StreetEasyClone.currentUser = resp.id
-		// 		}
-		// 	}
-		// });
 		
 		$(".settings-link").on("click", function() {
 			$("#sign-in").toggleClass("is-active");

@@ -1,7 +1,8 @@
 class Api::CommentsController < ApplicationController
 
   def index
-    @comments = Comment.where(property_id: params[:property_id])
+    @comments = Comment.includes(:author).where(property_id: params[:property_id])
+    
     render :index
   end
   
@@ -18,8 +19,8 @@ class Api::CommentsController < ApplicationController
   end
   
   def show
-    @comment = Comment.find(params[:id])
-    
+    @comment = Comment.includes(:author).find(params[:id])
+
     render :show
   end
 
