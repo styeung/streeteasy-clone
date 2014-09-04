@@ -13,13 +13,20 @@ window.StreetEasyClone = {
 
 		Backbone.history.start(); 
 	},
-	boroughs: {
-			    "manhattan": "Manhattan",
-			    "brooklyn": "Brooklyn",
-			    "queens": "Queens",
-			    "bronx": "The Bronx",
-			    "staten_island": "Staten Island"
-  },
+	boroughs: [
+		"Manhattan", 
+		"Brooklyn", 
+		"Queens", 
+		"The Bronx", 
+		"Staten Island"
+	],
+	// boroughs: {
+// 			    "manhattan": "Manhattan",
+// 			    "brooklyn": "Brooklyn",
+// 			    "queens": "Queens",
+// 			    "bronx": "The Bronx",
+// 			    "staten_island": "Staten Island"
+//   },
 
 	bed_types: [
 		"0",

@@ -90,6 +90,10 @@
 	<%= all_neighborhoods.to_json.html_safe %>
 </script>
 
+<script template="application/json" id="bootstrapped-all-addresses">
+	<%= all_addresses.to_json.html_safe %>
+</script>
+
 <script template="application/json" id="bootstrapped-all-apt-types">
 	<%= all_apt_types.to_json.html_safe %>
 </script>
@@ -97,10 +101,10 @@
 
 <script>
 	$(document).ready(function() {
-		$("abbr.timeago").timeago();
 		
 		StreetEasyClone.neighborhoods = JSON.parse($("script#bootstrapped-all-neighborhoods").html());
 		StreetEasyClone.apt_types = JSON.parse($("script#bootstrapped-all-apt-types").html());
+		StreetEasyClone.addresses = JSON.parse($("script#bootstrapped-all-addresses").html());
 		StreetEasyClone.currentUser = JSON.parse($("script#bootstrapped-current-user").html());
 		StreetEasyClone.initialize();
 		

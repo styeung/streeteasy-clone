@@ -6,7 +6,7 @@ StreetEasyClone.Views.Search = Backbone.View.extend({
 	},
 	
 	events: {
-		"submit .search-form": "submitSearch"
+		"submit .search-form": "submitSearch",
 	},
 	
 	render: function() {
