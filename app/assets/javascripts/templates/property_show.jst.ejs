@@ -1,26 +1,48 @@
-<h2 class="listing-text"><%= property.escape("address") %> <%= property.escape("unit") %></h2>
-<h3 class="listing-text"><%= property.escape("neighborhood") %></h3>
-<% if (parseInt(property.escape("owner_id")) === StreetEasyClone.currentUser) {%>
-	<a href="#/property/edit/<%= property.escape('id') %>">Edit this listing</a>
-<% } %>
-<br>
+<div class="save-button-row group">
+	<ul class="save-button-list group">
 	<% if(StreetEasyClone.currentUser) { %>
+		<% if (parseInt(property.escape("owner_id")) === StreetEasyClone.currentUser) {%>
+			<li><a href="#/property/edit/<%= property.escape('id') %>" class="edit-button">Edit this listing</a><li>
+		<% } %>
+		
 		<% if (property.escape("following_users").indexOf(StreetEasyClone.currentUser) === -1) { %>
-			<button class="save-button"><span></span></button>
+			<li><button class="save-button"><span></span></button></li>
 		<% } else {%>
-			<button class="already-saved-button" disabled><span></span></button>
+			<li><button class="already-saved-button" disabled><span></span></button></li>
 		<% } %>
 	<% } %>
-	<div class="photos-container">
+	
+	</ul>
+</div>
+
+<div class="show-content group">
+	<div class="left-side-show">
+		<div class="photos-container">
+		</div>
+		<div class="description-container">
+			<h4>DESCRIPTION</h4>
+			<p><%= property.escape("description") %></p>
+		</div>
 	</div>
-<br>
-<ul>
-<% for(var key in property.attributes) { %>
-	<% if(StreetEasyClone.detailed_attributes.indexOf(key) != -1) { %>
-		<li class="listing-text"><%= key %>: <%= property.escape(key) %></li>
-	<% } %>
-<% } %>
-</ul>
+
+	<div class="right-side-show">
+		<h2><%= property.escape("address") %> <%= property.escape("unit") %></h2>
+		<h3 class="totalSum"><%= property.escape("price_text") %></h3>
+		<ul class="group">
+			<% for(var i = 0; i < StreetEasyClone.stat_attributes.length; i++) { %>
+				<% if (property.escape(StreetEasyClone.stat_attributes[i]).length > 0) { %>
+					<li><p><%= property.escape(StreetEasyClone.stat_attributes[i]) %> <%= StreetEasyClone.stat_attributes[i] %></p></li>
+				<% } %>
+			<% } %>
+		</ul>
+		<div class="type-and-location-container">
+			<p><%= property.escape("apt_type") %> in <%= property.escape("neighborhood") %>, <%= property.escape("borough") %></p>
+		</div>
+		<div class="show-map-container">
+			<div id="map"></div>
+		</div>
+	</div>
+</div>
 
 <div class="comments-container">
 	<div class="new-comment-container">
@@ -28,3 +50,25 @@
 	<div class="comments-list-container">
 	</div>
 </div>
+
+
+<script>
+
+	L.mapbox.accessToken = 'pk.eyJ1Ijoic2FpdG95ZXVuZyIsImEiOiJPOXA3aUowIn0.spWqAgo8-BgTGtYiLbOztg';
+	var map = L.mapbox.map('map', 'saitoyeung.jbj6oj44');
+	var geocoder = L.mapbox.geocoder('mapbox.places-v1');
+	var defaultLat = 40.714728;
+	var defaultLng = -73.998672;
+
+	var propertyLatitude  = <%= property.escape("latitude") %>;
+	var propertyLongitude = <%= property.escape("longitude") %>;
+
+	if( propertyLatitude && propertyLongitude) {
+		map.setView([propertyLatitude, propertyLongitude], 15);
+		L.marker([propertyLatitude, propertyLongitude]).addTo(map);
+	} 
+	else {
+		map.setView([defaultLat, defaultLng], 11);
+	}
+
+</script>

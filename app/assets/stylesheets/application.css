@@ -23,7 +23,7 @@ html, body, header, div, ul, li, h1, h2, h3, h4, h5, p, a, option, select, input
 }
 
 body {
-	font-family: Source Sans Pro,Helvetica,Arial,Geneva,sans-serif;
+	font-family: "HelveticaNeue-Light",Arial,sans-serif;
 }
 
 h1 {
@@ -287,9 +287,53 @@ div.map-view#map {
 	content: "SAVED";
 }
 
+.listing-header-container {
+	width: 410px;
+}
+
+.listing-header-container h3 {
+	float: left;
+}
+
+.listing-header-container button {
+	float: right;
+}
+
+.listing-header {
+	font-size: 18px;
+	font-weight: 100;
+	text-transform: capitalize;
+	padding-top: 6px;
+}
+
+.listing-price {
+	font-size: 18px;
+	font-weight: 100;
+	text-transform: capitalize;
+	padding-top: 6px;
+}
+
 .listing-text {
+	font-size: 14px;
+	font-weight: 100;
 	text-transform: capitalize;
 }
+
+.listing-row {
+	border-top: 1px solid #ccc;
+	padding: 4px 0;
+}
+
+.listing-row li {
+	padding: 0 4px;
+	border-left: 1px solid #ccc;
+}
+
+.listing-row li:first-child {
+	border-left: none;
+	padding-left: 0;
+}
+
 
 /* signin modal */
 #sign-in {
@@ -528,11 +572,100 @@ div.map-view#map {
 	background-color: #0080c6;
 }
 
+.save-button-list {
+	float: right;
+	padding-bottom: 10px;
+}
 
+.show-content {
 
+}
 
+.left-side-show {
+	float: left;
+	width: 574px;
+	padding-right: 14px;
+}
 
+.right-side-show {
+	float: left;
+	width: 386px;
+	padding: 3px;
+}
 
+.right-side-show h2 {
+	font-size: 30px;
+	font-weight: 100;
+	line-height: 30px;
+	padding: 0 7px;
+	text-transform: capitalize;
+}
 
+.right-side-show h3 {
+	font-size: 27px;
+	font-weight: bold;
+	padding: 8px 7px;
+}
 
+.right-side-show ul {
+	border-top: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+}
+
+.right-side-show li{
+	padding: 5px 7px;
+	border-right: 1px solid #ccc;
+}
+
+.right-side-show li:last-child{
+	border-right: 0;
+}
+
+.type-and-location-container {
+	border-bottom: 1px solid #ccc;
+	padding: 5px 7px;
+}
+
+.right-side-show p {
+	font-size: 14px;
+	text-transform: capitalize;
+}
+
+.description-container {
+	border-top: 4px solid black;
+	border-bottom: 4px solid black;
+	padding-top: 8px;
+	padding-bottom: 20px;
+}
+
+.description-container h4{
+	font-size: 16px;
+	font-weight: bold;
+	padding-bottom: 12px
+}
+
+.description-container p {
+	font-size: 14px;
+	padding-bottom: 12px;
+}
+
+.show-map-container {
+	padding: 20px;
+}
+
+.show-map-container > #map {
+	margin: auto;
+}
+
+.edit-button {
+	display: block;
+	width: 100px;
+	height: 14px;
+	padding: 5px;
+	color: white;
+	background-color: #0080c6;
+	font-size: 13px;
+	margin: 5px 10px;
+	text-align: center;
+}
 

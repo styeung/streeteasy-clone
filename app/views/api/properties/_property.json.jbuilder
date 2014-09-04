@@ -6,6 +6,7 @@ json.zip property.zip
 json.borough property.borough
 json.neighborhood property.neighborhood
 json.price property.price
+json.price_text number_to_currency(property.price, precision: 0)
 json.beds property.beds
 json.baths property.baths
 json.sq_ft property.sq_ft

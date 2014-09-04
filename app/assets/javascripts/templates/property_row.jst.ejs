@@ -4,20 +4,30 @@
 			<img src="<%= property.escape("property_photo_url") %>">
 		</li>
 		<li class="listing-component">
-			<h3 class="listing-text"><a href="<%= "#/property/" + property.escape("id") %>"><%= property.escape("address") %> <%= property.escape("unit") %></a></h3>
-			<% if(StreetEasyClone.currentUser) { %>
-				<% if (property.escape("following_users").indexOf(StreetEasyClone.currentUser) === -1) { %>
-					<button class="save-button"><span></span></button>
-				<% } else {%>
-					<button class="already-saved-button" disabled><span></span></button>
+			<div class="listing-header-container group">
+				<h3 class="listing-header"><a href="<%= "#/property/" + property.escape("id") %>"><%= property.escape("address") %> <%= property.escape("unit") %></a></h3>
+				<% if(StreetEasyClone.currentUser) { %>
+					<% if (property.escape("following_users").indexOf(StreetEasyClone.currentUser) === -1) { %>
+						<button class="save-button"><span></span></button>
+					<% } else { %>
+						<button class="already-saved-button" disabled><span></span></button>
+					<% } %>
 				<% } %>
-			<% } %>
+			</div>
+			
+			
 			<ul>
-				<li>Price: <%= property.escape("price") %></li>
-				<li class="listing-text">Borough: <%= property.escape("borough") %></li>
-				<li class="listing-text">Neighborhood: <%= property.escape("neighborhood") %></li>
-				<li class-"listing-text"><%= property.escape("sq_ft") %> sq. ft.</li>
-				<li class-"listing-text"><%= property.escape("beds") %> bd(s)</li>
+				<li class="listing-price"><%= property.escape("price_text") %></li>
+				<li class="listing-row">
+					<ul class="group">
+						<% for(var i = 0; i < StreetEasyClone.stat_attributes.length; i++) { %>
+							<% if (property.escape(StreetEasyClone.stat_attributes[i]).length > 0) { %>
+								<li class="listing-text"><p><%= property.escape(StreetEasyClone.stat_attributes[i]) %> <%= StreetEasyClone.stat_attributes[i] %></p></li>
+							<% } %>
+						<% } %>
+					</ul>
+				</li>
+				<li class="listing-row listing-text"><%= property.escape("apt_type") %> in <%= property.escape("neighborhood") %>, <%= property.escape("borough") %></li>
 			</ul>
 		</li>
 	</ul>
