@@ -82,23 +82,27 @@
 		  <label>Square Footage</label>
 		    <input type="number" name="sq_ft" value="<%= property.escape("sq_ft") %>"class="small-input">
 		</li>
-<li class="form-element">
-  <label for="apt-type-select">Apartment Type (Required)</label>
-  <select name="apt_type" id="apt-type-select" class="small-input">
-		<option value="">(Choose one)</option>
-		<% for(var i = 0; i < StreetEasyClone.apt_types.length; i++) { %>
-			<% if(property.escape("apt_type") === StreetEasyClone.apt_types[i]) { %>
-				<option value="<%= StreetEasyClone.apt_types[i] %>" Selected>
-					<%= StreetEasyClone.apt_types[i] %>
-				</option>
-			<% } else { %>
-				<option value="<%= StreetEasyClone.apt_types[i] %>">
-					<%= StreetEasyClone.apt_types[i] %>
-				</option>
-			<% } %>
-		<% } %>
-  </select>
-</li>
+		<li class="form-element">
+		  <label for="apt-type-select">Apartment Type (Required)</label>
+		  <select name="apt_type" id="apt-type-select" class="small-input">
+				<option value="">(Choose one)</option>
+				<% for(var i = 0; i < StreetEasyClone.apt_types.length; i++) { %>
+					<% if(property.escape("apt_type") === StreetEasyClone.apt_types[i]) { %>
+						<option value="<%= StreetEasyClone.apt_types[i] %>" Selected>
+							<%= StreetEasyClone.apt_types[i] %>
+						</option>
+					<% } else { %>
+						<option value="<%= StreetEasyClone.apt_types[i] %>">
+							<%= StreetEasyClone.apt_types[i] %>
+						</option>
+					<% } %>
+				<% } %>
+		  </select>
+		</li>
+		<li class="form-element">
+			<label>Description</label>
+			<textarea name="description"><%= property.escape("description") %></textarea>
+		</li>
 </ul>
 <button class="add-more-photos-button">Add More Photos</button>
 <button class="add-property-button">Submit Without Photos</button>
@@ -117,4 +121,6 @@ $(".new-property-form").on("submit", function(event) {
 	event.preventDefault();
 });	
 </script>
+
+
 

@@ -108,11 +108,13 @@
 		StreetEasyClone.currentUser = JSON.parse($("script#bootstrapped-current-user").html());
 		StreetEasyClone.initialize();
 		
-		$(".settings-link").on("click", function() {
+		$(".settings-link").on("click", function(event) {
+			event.preventDefault();
 			$("#sign-in").toggleClass("is-active");
 		});
 		
-		$(".sign-in-cancel").on("click", function() {
+		$(".sign-in-cancel").on("click", function(event) {
+			event.preventDefault();
 			$("#sign-in").toggleClass("is-active");
 		});
 		

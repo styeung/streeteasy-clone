@@ -14,6 +14,7 @@ json.created_at property.created_at
 json.updated_at property.updated_at
 
 
+
 json.latitude property.latitude
 json.longitude property.longitude
 json.following_users property.following_users.pluck(:id)
@@ -23,6 +24,7 @@ if properties
   json.total_count properties.total_count
 else
   json.property_photo_url asset_path(property.property_photo.url(:big))
+  json.description property.description
 end
 
 json.current_user current_user.nil? ? false : current_user.id

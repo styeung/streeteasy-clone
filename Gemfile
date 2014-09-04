@@ -45,6 +45,7 @@ gem 'aws-sdk'
 gem 'figaro'
 gem 'geocoder'
 gem 'pg_search'
+gem 'faker'
 
 group :development do
   gem 'pry-rails'

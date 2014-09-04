@@ -46,5 +46,5 @@ window.StreetEasyClone = {
 		"4"
 	],
 	
-	detailed_attributes: ["zip", "price", "beds", "baths", "sq_ft", "apt_type", "borough"]
+	detailed_attributes: ["zip", "price", "beds", "baths", "sq_ft", "apt_type", "borough", "description"]
 };

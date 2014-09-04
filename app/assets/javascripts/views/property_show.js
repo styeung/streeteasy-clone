@@ -11,6 +11,8 @@ StreetEasyClone.Views.PropertyShow = Backbone.View.extend({
 		
 		this.$el.html(content);
 		
+		console.log("photos", property.album_photos());
+		
 		var albumPhotosView = new StreetEasyClone.Views.AlbumPhotosView({ collection: property.album_photos(), main_photo_url: property.escape("property_photo_url") });
 		this.$(".photos-container").html(albumPhotosView.render().$el);
 

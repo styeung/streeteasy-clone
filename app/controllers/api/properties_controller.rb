@@ -123,7 +123,8 @@ class Api::PropertiesController < ApplicationController
                    :apt_type,
                    :property_photo,
                    :latitude,
-                   :longitude)
+                   :longitude,
+                   :description)
   end
 
   def search_params

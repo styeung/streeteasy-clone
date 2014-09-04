@@ -19,6 +19,10 @@ html, body, header, div, ul, li, h1, h2, h3, h4, h5, p, a, option, select, input
 	padding: 0;
 	margin: 0;
 	border: 0;
+	font-family: inherit;
+}
+
+body {
 	font-family: Source Sans Pro,Helvetica,Arial,Geneva,sans-serif;
 }
 
@@ -32,10 +36,11 @@ a {
 }
 
 button, select, option, input {
-	padding: 0px; 
+	padding: 0; 
 	margin: 0;
 	border: 0;
 	-webkit-appearance: none;
+	background-color: none;
 }
 
 button:focus {
