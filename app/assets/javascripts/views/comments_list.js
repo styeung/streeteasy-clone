@@ -1,20 +1,24 @@
 StreetEasyClone.Views.CommentsList = Backbone.View.extend({
 	template: JST["templates/comments_list"],
 	
-	tagName: "ul",
-	
-	className: "comments-list",
-	
 	initialize: function (options) {
 		this.listenTo(this.collection, "add remove", this.render);
 	},
 	
 	render: function() {
-		//put comments_new subview in here so we can use listeners for collection change
+		var that = this;
+		
+		var content = this.template();
+		this.$el.html(content);
+		
+		var newView = new StreetEasyClone.Views.CommentNew({collection: this.collection});
+		this.$(".new-comment-container").html(newView.render().$el);
 		
 		this.collection.each(function(comment) {
 			var rowView = new StreetEasyClone.Views.CommentRow({model: comment});
-			this.$el.append(row.render().$el);
+			that.$(".comments-list").append(rowView.render().$el);
 		});
+		
+		return this;
 	}
 })

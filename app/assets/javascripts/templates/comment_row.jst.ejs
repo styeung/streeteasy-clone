@@ -2,7 +2,7 @@
 	<i>Posted <%= comment.escape("created_at") %> ago by <%= comment.escape("author_email") %></i>
 </h5>
 <h4><strong><%= comment.escape("title") %></strong></h4>
-<% if (comment.escape("author_id") === StreetEasyClone.currentUser {%>
+<% if (comment.escape("author_id") === StreetEasyClone.currentUser) {%>
 	<button class="delete-comment">Delete Comment</button>
 <% } %>
 <p><%= comment.escape("body") %></p>

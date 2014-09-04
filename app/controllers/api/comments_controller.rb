@@ -6,7 +6,7 @@ class Api::CommentsController < ApplicationController
   end
   
   def create
-    @comment = current_user.authored_comments.new(comments_params)
+    @comment = current_user.authored_comments.new(comment_params)
 
     @comment.property_id = params[:property_id]
     if @comment.save

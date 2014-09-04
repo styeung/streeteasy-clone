@@ -33,7 +33,7 @@ StreetEasyClone.Models.Property = Backbone.Model.extend({
 	
 	comments: function () {
 		if(!this._comments) {
-			this._comments = new StreetEasyClone.Collectoins.Comments([], {
+			this._comments = new StreetEasyClone.Collections.Comments([], {
 				property: this
 			});
 		}

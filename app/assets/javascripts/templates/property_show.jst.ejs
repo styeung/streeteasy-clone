@@ -32,12 +32,3 @@
 	<div class="comments-list-container">
 	</div>
 </div>
-
-<ul>
-<% property.comments().each(function(comment) { %>
-	<li>
-		<h4><%= comment.escape("title") %></h4>
-		<p><%= comment.escape("body")  %></p>
-	</li>
-<% });  %>
-</ul>
