@@ -1,0 +1,10 @@
+<img class="displayed_image" src="<%= main_photo_url %>">
+
+<div class="thumbnail-container">
+	<ul class="thumbnail-list group">
+		<li><img class="thumbnail" src="<%= main_photo_url %>"></li>
+	<% album_photos.each(function(album_photo) { %>
+		<li><img class="thumbnail" src="<%= album_photo.escape("photo_url") %>"></li>
+	<% }); %>
+	</ul>
+</div>

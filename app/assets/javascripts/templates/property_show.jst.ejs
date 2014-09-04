@@ -11,11 +11,7 @@
 			<button class="already-saved-button" disabled><span></span></button>
 		<% } %>
 	<% } %>
-	<img src="<%= property.escape("property_photo_url") %>">
-	<div>
-	<% property.album_photos().each(function(album_photo) { %>
-		<img src="<%= album_photo.escape('photo_url') %>">
-	<% }); %>
+	<div class="photos-container">
 	</div>
 <br>
 <ul>
