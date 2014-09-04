@@ -3,6 +3,8 @@ StreetEasyClone.Views.Search = Backbone.View.extend({
 	
 	initialize: function(options) {
 		this.boroughs = options.boroughs;
+		this.$rootEl = options.$rootEl;
+		this.properties = options.properties
 	},
 	
 	events: {
@@ -16,6 +18,7 @@ StreetEasyClone.Views.Search = Backbone.View.extend({
 	},
 	
 	submitSearch: function(event) {
+		var that = this;
 		event.preventDefault();
 		var formData = $(event.currentTarget).serialize();
 		StreetEasyClone.searchQuery = $(event.currentTarget).serializeJSON();

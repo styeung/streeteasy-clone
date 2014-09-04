@@ -255,6 +255,10 @@ div.map-view#map {
 	padding-right: 20px;
 }
 
+.search-terms {
+	padding-bottom: 10px;
+}
+
 .save-button {
 	width: 72px;
 	height: 24px;

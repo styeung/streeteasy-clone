@@ -1,6 +1,28 @@
 <div class="search-filter">
 	<h2 class="title"><b><%= count %></b> Properties Found</h2>
 </div>
+<div class="search-terms">
+	<p>
+	<% if(StreetEasyClone.searchQuery && StreetEasyClone.searchQuery.property.location.length > 0) { %>
+		<b>Location:</b> "<%= StreetEasyClone.searchQuery.property.location %>"
+	<% } %>
+	<% if(StreetEasyClone.searchQuery && StreetEasyClone.searchQuery.property.apt_type.length > 0) { %>
+		<b>Type:</b> "<%= StreetEasyClone.searchQuery.property.apt_type %>"
+	<% } %>
+	<% if(StreetEasyClone.searchQuery && StreetEasyClone.searchQuery.property.beds.length > 0) { %>
+		<b>Bedrooms:</b> "<%= StreetEasyClone.searchQuery.property.beds %>"
+	<% } %>
+	<% if(StreetEasyClone.searchQuery && StreetEasyClone.searchQuery.property.baths.length > 0) { %>
+		<b>Bathrooms:</b> "<%= StreetEasyClone.searchQuery.property.baths %>"
+	<% } %>
+	<% if(StreetEasyClone.searchQuery && StreetEasyClone.searchQuery.property.min_price.length > 0) { %>
+		<b>Min Price:</b> "<%= StreetEasyClone.searchQuery.property.min_price %>"
+	<% } %>
+	<% if(StreetEasyClone.searchQuery && StreetEasyClone.searchQuery.property.max_price.length > 0) { %>
+		<b>Max Price:</b> "<%= StreetEasyClone.searchQuery.property.max_price %>"
+	<% } %>
+	</p>
+</div>
 <ul class="view-switch-container group">
 	<li>
 	  <button class="view-switch active">LIST</button>

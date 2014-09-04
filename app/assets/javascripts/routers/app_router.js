@@ -16,7 +16,7 @@ StreetEasyClone.Routers.AppRouter = Backbone.Router.extend({
 	},
 	
 	search: function() {
-		var view = new StreetEasyClone.Views.Search({boroughs: StreetEasyClone.boroughs});
+		var view = new StreetEasyClone.Views.Search({boroughs: StreetEasyClone.boroughs, $rootEl: this.$rootEl, properties: this.properties });
 		this.$rootEl.html(view.render().$el);
 	},
 	
