@@ -208,19 +208,25 @@ select.small-input {
 }
 
 .map-scrolling {
-	position: fixed; 
-	top:200px;
-	left: 900px;
+	position: absolute;
+	top: 10px;
 }
 
-.map-container {
+.map-scrolling.locked {
+	position: fixed;
+}
+
+.map-sidebar-container {
+	float: left;
+	width: 304px;
 	position: relative;
+	padding-left: 38px;
 }
 
 .search-filter {
 	padding: 30px 0px 7px 0px;
 }
-
+	
 div.map-view#map {
 	position: absolute;
 	top: 240px;
@@ -248,7 +254,9 @@ div.map-view#map {
 	display: none;
 }
 
+
 .property-list-container {
+	float: left;
 	width: 638px;
 }
 

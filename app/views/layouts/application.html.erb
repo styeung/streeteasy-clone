@@ -76,10 +76,10 @@
 				</div>
 				<form action="<%= session_url %>" method="POST">
 					<%= auth_token %>
-					<input type="text" name="user[email]" placeholder="Email Address" class="modal-input">
-					<input type="password" name="user[password]" placeholder="Password" class="modal-input">
+					<input type="text" name="user[email]" placeholder="Email Address" class="modal-input" id="signin-email">
+					<input type="password" name="user[password]" placeholder="Password" class="modal-input" id="signin-password">
 					<button class="sign-in-button">SIGN IN</button>
-					<button class="sign-in-button dummy">SIGN IN AS DEMO USER</button>
+					<button class="sign-in-dummy">SIGN IN AS DEMO USER</button>
 				</form>
 			</div>
 		</article>
@@ -184,7 +184,9 @@
 		
 		$(".dummy").on("click", function (event) {
 			event.preventDefault();
-			
+			$("#signin-email").val("agent1@gmail.com");
+			$("#signin-password").val("agent1agent1");
+			$(".signin-view .sign-in-button").click();
 			
 		});
 	});

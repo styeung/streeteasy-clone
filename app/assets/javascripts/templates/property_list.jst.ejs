@@ -1,20 +1,22 @@
-<div class="property-list-container">
-	<ul class="property-list">
+<div class="property-container group">
+	<div class="property-list-container">
+		<ul class="property-list">
 	
-	</ul>
-	<div class="page-link-container">
-	<% for(var i = 0; i < count/12; i++) {%>
-		<% if ((i + 1) === currentPage) { %>
-			<a href="#" class="property-page-link disabled-link"><%= i + 1 %></a>
-		<% } else { %>
-			<a href="#properties/<%= StreetEasyClone.searchQuery %>&page=<%= i + 1 %>" class="property-page-link"><%= i + 1 %></a>
+		</ul>
+		<div class="page-link-container">
+		<% for(var i = 0; i < count/12; i++) {%>
+			<% if ((i + 1) === currentPage) { %>
+				<a href="#" class="property-page-link disabled-link"><%= i + 1 %></a>
+			<% } else { %>
+				<a href="#properties/<%= StreetEasyClone.searchQuery %>&page=<%= i + 1 %>" class="property-page-link"><%= i + 1 %></a>
+			<% } %>
 		<% } %>
-	<% } %>
+		</div>
 	</div>
-</div>
 
-<div class="map-sidebar-container">
-	<div id="map" class="map-scrolling"></div>
+	<div class="map-sidebar-container">
+		<div id="map" class="map-scrolling"></div>
+	</div>
 </div>
 
 <script>
@@ -27,7 +29,7 @@ var defaultLng = -73.998672;
 
 map.setView([defaultLat, defaultLng], 11);
 
-var address, borough, queryString, queryResult, lat, lng
+var address, borough, queryString, queryResult, lat, lng;
 	$(document).ready( function() {
 		$(".main").off().on("mouseenter", "li.property-listing", function(event) {
 			lat = $(event.currentTarget).attr("data-lat");
@@ -45,6 +47,22 @@ var address, borough, queryString, queryResult, lat, lng
 			}
 			else {
 				map.setView([defaultLat, defaultLng], 12);
+			}
+		});
+		
+		$(document).on("scroll", function(event) {
+			
+			console.log($(document).scrollTop());
+			if($(document).scrollTop() >= 226) {
+				console.log("here");
+				if(!$(".map-scrolling").hasClass("locked")) {
+					$(".map-scrolling").addClass("locked");
+				}
+			}
+			else {
+				if($(".map-scrolling").hasClass("locked")) {
+					$(".map-scrolling").removeClass("locked");
+				}
 			}
 		});
 	});
