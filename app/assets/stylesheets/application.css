@@ -272,6 +272,11 @@ div.map-view#map {
 	background-color: white;
 }
 
+.view-switch.active {
+	background-color: #ddd;
+	font-weight: bold;
+}
+
 .view-switch:hover {
 	background-color: #eee;
 	font-weight: bold;
@@ -516,7 +521,7 @@ div.map-view#map {
 
 .sort-form-container {
 	display: absolute;
-	padding: 5px 30px;
+	padding: 5px 0px 5px 260px;
 }
 
 .sort-form{
@@ -528,11 +533,11 @@ div.map-view#map {
 	border: 1px solid #ccc;
 	background: white;
 	border-radius: 0px;
-	width: 165px;
+	width: 185px;
 	height: 30px;
 	margin: auto;
 	padding: 0 10px;
-	font-size: 12px;
+	font-size: 14px;
 }
 
 .sort-button {
