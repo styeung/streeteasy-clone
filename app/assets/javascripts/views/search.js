@@ -23,7 +23,7 @@ StreetEasyClone.Views.Search = Backbone.View.extend({
 		var formData = $(event.currentTarget).serialize();
 		StreetEasyClone.searchQuery = formData;
 		StreetEasyClone.searchQueryJSON = $(event.currentTarget).serializeJSON();
-
+		StreetEasyClone.sortString = "sort=price+desc";
 		StreetEasyClone.router.navigate("properties/" + formData, {trigger: true});
 	}
 });
