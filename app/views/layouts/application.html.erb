@@ -59,52 +59,54 @@
 	<%= yield %>
 </div>
 
-<section id="sign-in-sign-up">
-	<article class="signin-view">
-		<header>
-			<button class="sign-in-cancel">CANCEL</button>
-			<h3>Sign In</h3>
-		</header>
-		<div class="sign-in-body">
-			<p>Please sign in.</p>
-			<div class="switch-button-container">
-				<ul class="group">
-					<li><button class="signin-switch">SIGN IN</li>
-					<li><button class="register-switch">REGISTER</button></li>
-				</ul>
+<% if !signed_in? %>
+	<section id="sign-in-sign-up">
+		<article class="signin-view">
+			<header>
+				<button class="sign-in-cancel">CANCEL</button>
+				<h3>Sign In</h3>
+			</header>
+			<div class="sign-in-body">
+				<p>Please sign in.</p>
+				<div class="switch-button-container">
+					<ul class="group">
+						<li><button class="signin-switch">SIGN IN</li>
+						<li><button class="register-switch">REGISTER</button></li>
+					</ul>
+				</div>
+				<form action="<%= session_url %>" method="POST">
+					<%= auth_token %>
+					<input type="text" name="user[email]" placeholder="Email Address" class="modal-input">
+					<input type="password" name="user[password]" placeholder="Password" class="modal-input">
+					<button class="sign-in-button">SIGN IN</button>
+					<button class="sign-in-button dummy">SIGN IN AS DEMO USER</button>
+				</form>
 			</div>
-			<form action="<%= session_url %>" method="POST">
-				<%= auth_token %>
-				<input type="text" name="user[email]" placeholder="Email Address" class="modal-input">
-				<input type="password" name="user[password]" placeholder="Password" class="modal-input">
-				<button class="sign-in-button">SIGN IN</button>
-				<button class="sign-in-button dummy">SIGN IN AS DEMO USER</button>
-			</form>
-		</div>
-	</article>
+		</article>
 	
-	<article class="register-view">
-		<header>
-			<button class="sign-in-cancel">CANCEL</button>
-			<h3>Register</h3>
-		</header>
-		<div class="sign-in-body">
-			<p>Register for free to access all StreetEasy has to offer including premium data and advanced features.</p>
-			<div class="switch-button-container">
-				<ul class="group">
-					<li><button class="signin-switch">SIGN IN</li>
-					<li><button class="register-switch">REGISTER</button></li>
-				</ul>
+		<article class="register-view">
+			<header>
+				<button class="sign-in-cancel">CANCEL</button>
+				<h3>Register</h3>
+			</header>
+			<div class="sign-in-body">
+				<p>Register for free to access all StreetEasy has to offer including premium data and advanced features.</p>
+				<div class="switch-button-container">
+					<ul class="group">
+						<li><button class="signin-switch">SIGN IN</li>
+						<li><button class="register-switch">REGISTER</button></li>
+					</ul>
+				</div>
+				<form action="<%= users_url %>" method="POST">
+					<%= auth_token %>
+					<input type="text" name="user[email]" placeholder="Email Address" class="modal-input">
+					<input type="password" name="user[password]" placeholder="Password" class="modal-input">
+					<button class="sign-in-button">REGISTER</button>
+				</form>
 			</div>
-			<form action="<%= users_url %>" method="POST">
-				<%= auth_token %>
-				<input type="text" name="user[email]" placeholder="Email Address" class="modal-input">
-				<input type="password" name="user[password]" placeholder="Password" class="modal-input">
-				<button class="sign-in-button">REGISTER</button>
-			</form>
-		</div>
-	</article>
-</section>
+		</article>
+	</section>
+<% end %>
 
 <script template="application/json" id="bootstrapped-current-user">
 	<%= current_user.nil? ? false : current_user.id %>
