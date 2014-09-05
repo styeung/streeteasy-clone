@@ -22,8 +22,12 @@ StreetEasyClone.Routers.AppRouter = Backbone.Router.extend({
 	
 	propertiesIndex: function(query) {
 		var that = this;
+		if(!StreetEasyClone.sortString) {
+			StreetEasyClone.sortString = "sort=price+desc";
+		}
+		console.log(StreetEasyClone.sortString);
 		this.properties.fetch({
-			data: query,
+			data: query + "&" + StreetEasyClone.sortString,
 			success: function(resp) {
 				var view = new StreetEasyClone.Views.PropertyIndex({collection: that.properties});
 				that.$rootEl.html(view.render().$el);

@@ -33,12 +33,12 @@
 	<li class="sort-form-container">
 		<form class="sort-form">Sort By:
 			<select class="sort-select" name="sort-criterion">
-				<option val="price_largest" <% if(sortCriterion === "price_largest") { %> Selected <% }; %>>Most Expensive</option>
-				<option val="price_smallest" <% if(sortCriterion === "price_smallest") { %> Selected <% }; %>>Least Expensive</option>
-				<option val="sq_ft_largest" <% if(sortCriterion === "sq_ft_largest") { %> Selected <% }; %>>Largest</option>
-				<option val="sq_ft_smallest" <% if(sortCriterion === "sq_ft_smallest") { %> Selected <% }; %>>Smallest</option>
-				<option val="beds_largest" <% if(sortCriterion === "beds_largest") { %> Selected <% }; %>>Most Bedrooms</option>
-				<option val="beds_smallest" <% if(sortCriterion === "beds_smallest") { %> Selected <% }; %>>Least Bedrooms</option>
+				<option val="price_largest" <% if(StreetEasyClone.sortString === "sort=price+desc") { %> Selected <% }; %>>Most Expensive</option>
+				<option val="price_smallest" <% if(StreetEasyClone.sortString === "sort=price+asc") { %> Selected <% }; %>>Least Expensive</option>
+				<option val="sq_ft_largest" <% if(StreetEasyClone.sortString === "sort=sq_ft+desc") { %> Selected <% }; %>>Largest</option>
+				<option val="sq_ft_smallest" <% if(StreetEasyClone.sortString === "sort=sq_ft+asc") { %> Selected <% }; %>>Smallest</option>
+				<option val="beds_largest" <% if(StreetEasyClone.sortString === "sort=beds+desc") { %> Selected <% }; %>>Most Bedrooms</option>
+				<option val="beds_smallest" <% if(StreetEasyClone.sortString === "sort=beds+asc") { %> Selected <% }; %>>Least Bedrooms</option>
 			</select>
 			<button class="sort-button"></button>
 		</form>

@@ -14,17 +14,17 @@ StreetEasyClone.Collections.Properties = Backbone.Collection.extend({
 		return response;
 	},
 	
-	comparator: function(model1, model2) {
-		if (model1.escape("price") === "") {
-			return 1;
-		}
-		else if (model2.escape("price") === "") {
-			return -1;
-		}
-		else {
-			return parseInt(model1.escape("price")) > parseInt(model2.escape("price")) ? -1 : 1;
-		}
-	},
+	// comparator: function(model1, model2) {
+	// 	if (model1.escape("price") === "") {
+	// 		return 1;
+	// 	}
+	// 	else if (model2.escape("price") === "") {
+	// 		return -1;
+	// 	}
+	// 	else {
+	// 		return parseInt(model1.escape("price")) > parseInt(model2.escape("price")) ? -1 : 1;
+	// 	}
+	// },
 	
 	comparatorHelper: function(attribute, inverse) {
 		if(inverse ===  true){

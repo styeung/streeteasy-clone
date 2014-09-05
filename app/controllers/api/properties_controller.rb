@@ -40,9 +40,9 @@ class Api::PropertiesController < ApplicationController
     end
     
     if location_value.nil?
-      @properties = Property.where(sql_query, values_hash).page(params[:page]).per(12)
+      @properties = Property.where(sql_query, values_hash).reorder(params[:sort].concat(" NULLS LAST")).page(params[:page]).per(12)
     else
-      @properties = Property.search(location_value).where(sql_query, values_hash).page(params[:page]).per(12)
+      @properties = Property.search(location_value).where(sql_query, values_hash).reorder(params[:sort].concat(" NULLS LAST")).page(params[:page]).per(12)
     end
 
     render :index
