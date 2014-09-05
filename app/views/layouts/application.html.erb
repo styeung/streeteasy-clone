@@ -5,6 +5,7 @@
   <%= stylesheet_link_tag    'application', media: 'all'%>
   <%= javascript_include_tag 'application'%>
   <%= csrf_meta_tags %>
+	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 	<script src='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/leaflet.markercluster.js'></script>
 
 </head>
@@ -13,7 +14,7 @@
 	<div class="nav-logo">
 		<ul class="group">
 			<li>
-				<a href="/#" class="logo-link"><h1>STREETEASY CLONE</h1></a>
+				<a href="/#" class="logo-link"><h1><i class="fa fa-home"></i>  STREET<sup>EASY </sup>  CLONE</h1></a>
 			</li>
 		</ul>
 	</div>
@@ -58,18 +59,18 @@
 	<%= yield %>
 </div>
 
-<section id="sign-in">
-	<article>
+<section id="sign-in-sign-up">
+	<article class="signin-view">
 		<header>
 			<button class="sign-in-cancel">CANCEL</button>
 			<h3>Sign In</h3>
 		</header>
 		<div class="sign-in-body">
-			<p>Register for free to access all StreetEasy has to offer including premium data and advanced features.</p>
+			<p>Please sign in.</p>
 			<div class="switch-button-container">
 				<ul class="group">
-					<li class="register-view"><button class="signin-switch">REGISTER</button></li>
-					<li class="signin-view"><button class="signin-switch">SIGN IN</li>
+					<li><button class="signin-switch">SIGN IN</li>
+					<li><button class="register-switch">REGISTER</button></li>
 				</ul>
 			</div>
 			<form action="<%= session_url %>" method="POST">
@@ -77,6 +78,29 @@
 				<input type="text" name="user[email]" placeholder="Email Address" class="modal-input">
 				<input type="password" name="user[password]" placeholder="Password" class="modal-input">
 				<button class="sign-in-button">SIGN IN</button>
+				<button class="sign-in-button dummy">SIGN IN AS DEMO USER</button>
+			</form>
+		</div>
+	</article>
+	
+	<article class="register-view">
+		<header>
+			<button class="sign-in-cancel">CANCEL</button>
+			<h3>Register</h3>
+		</header>
+		<div class="sign-in-body">
+			<p>Register for free to access all StreetEasy has to offer including premium data and advanced features.</p>
+			<div class="switch-button-container">
+				<ul class="group">
+					<li><button class="signin-switch">SIGN IN</li>
+					<li><button class="register-switch">REGISTER</button></li>
+				</ul>
+			</div>
+			<form action="<%= users_url %>" method="POST">
+				<%= auth_token %>
+				<input type="text" name="user[email]" placeholder="Email Address" class="modal-input">
+				<input type="password" name="user[password]" placeholder="Password" class="modal-input">
+				<button class="sign-in-button">REGISTER</button>
 			</form>
 		</div>
 	</article>
@@ -110,20 +134,57 @@
 		
 		$(".settings-link").on("click", function(event) {
 			event.preventDefault();
-			$("#sign-in").toggleClass("is-active");
+			$("#sign-in-sign-up").toggleClass("is-active");
+			$(".signin-view").toggleClass("is-active");
+			$(".signin-switch").toggleClass("is-active");
+		});
+		
+		$(".signin-switch").on("click", function(event) {
+			console.log("here")
+			if(!$(event.currentTarget).hasClass("is-active")) {
+				$(".signin-view").toggleClass("is-active");
+				$(".signin-switch").toggleClass("is-active");
+				$(".register-view").toggleClass("is-active");
+				$(".register-switch").toggleClass("is-active");
+			}
+		});
+		
+		$(".register-switch").on("click", function(event) {
+			console.log("here")
+			if(!$(event.currentTarget).hasClass("is-active")) {
+				$(".signin-view").toggleClass("is-active");
+				$(".signin-switch").toggleClass("is-active");
+				$(".register-view").toggleClass("is-active");
+				$(".register-switch").toggleClass("is-active");
+			}
 		});
 		
 		$(".sign-in-cancel").on("click", function(event) {
 			event.preventDefault();
-			$("#sign-in").toggleClass("is-active");
+			$("#sign-in-sign-up").toggleClass("is-active");
+			$(".signin-view").removeClass("is-active");
+			$(".signin-switch").removeClass("is-active");
+			$(".register-view").removeClass("is-active");
+			$(".register-switch").removeClass("is-active");
 		});
 		
-    $("#sign-in").on("click", function(event){
+    $("#sign-in-sign-up").on("click", function(event){
+			console.log("here")
       if(event.target.id == this.id){
         event.preventDefault();
-        $("#sign-in").removeClass("is-active");
+        $("#sign-in-sign-up").toggleClass("is-active");
+				$(".signin-view").removeClass("is-active");
+				$(".signin-switch").removeClass("is-active");
+				$(".register-view").removeClass("is-active");
+				$(".register-switch").removeClass("is-active");
       }
     });
+		
+		$(".dummy").on("click", function (event) {
+			event.preventDefault();
+			
+			
+		});
 	});
 </script>
 
