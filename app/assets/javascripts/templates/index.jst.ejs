@@ -3,23 +3,23 @@
 </div>
 <div class="search-terms">
 	<p>
-	<% if(StreetEasyClone.searchQuery && StreetEasyClone.searchQuery.property.location.length > 0) { %>
-		<b>Location:</b> "<%= StreetEasyClone.searchQuery.property.location %>"
+	<% if(StreetEasyClone.searchQueryJSON && StreetEasyClone.searchQueryJSON.property.location.length > 0) { %>
+		<b>Location:</b> "<%= StreetEasyClone.searchQueryJSON.property.location %>"
 	<% } %>
-	<% if(StreetEasyClone.searchQuery && StreetEasyClone.searchQuery.property.apt_type.length > 0) { %>
-		<b>Type:</b> "<%= StreetEasyClone.searchQuery.property.apt_type %>"
+	<% if(StreetEasyClone.searchQueryJSON && StreetEasyClone.searchQueryJSON.property.apt_type.length > 0) { %>
+		<b>Type:</b> "<%= StreetEasyClone.searchQueryJSON.property.apt_type %>"
 	<% } %>
-	<% if(StreetEasyClone.searchQuery && StreetEasyClone.searchQuery.property.beds.length > 0) { %>
-		<b>Bedrooms:</b> "<%= StreetEasyClone.searchQuery.property.beds %>"
+	<% if(StreetEasyClone.searchQueryJSON && StreetEasyClone.searchQueryJSON.property.beds.length > 0) { %>
+		<b>Bedrooms:</b> "<%= StreetEasyClone.searchQueryJSON.property.beds %>"
 	<% } %>
-	<% if(StreetEasyClone.searchQuery && StreetEasyClone.searchQuery.property.baths.length > 0) { %>
-		<b>Bathrooms:</b> "<%= StreetEasyClone.searchQuery.property.baths %>"
+	<% if(StreetEasyClone.searchQueryJSON && StreetEasyClone.searchQueryJSON.property.baths.length > 0) { %>
+		<b>Bathrooms:</b> "<%= StreetEasyClone.searchQueryJSON.property.baths %>"
 	<% } %>
-	<% if(StreetEasyClone.searchQuery && StreetEasyClone.searchQuery.property.min_price.length > 0) { %>
-		<b>Min Price:</b> "<%= StreetEasyClone.searchQuery.property.min_price %>"
+	<% if(StreetEasyClone.searchQueryJSON && StreetEasyClone.searchQueryJSON.property.min_price.length > 0) { %>
+		<b>Min Price:</b> "<%= StreetEasyClone.searchQueryJSON.property.min_price %>"
 	<% } %>
-	<% if(StreetEasyClone.searchQuery && StreetEasyClone.searchQuery.property.max_price.length > 0) { %>
-		<b>Max Price:</b> "<%= StreetEasyClone.searchQuery.property.max_price %>"
+	<% if(StreetEasyClone.searchQueryJSON && StreetEasyClone.searchQueryJSON.property.max_price.length > 0) { %>
+		<b>Max Price:</b> "<%= StreetEasyClone.searchQueryJSON.property.max_price %>"
 	<% } %>
 	</p>
 </div>

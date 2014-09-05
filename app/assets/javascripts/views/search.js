@@ -21,7 +21,8 @@ StreetEasyClone.Views.Search = Backbone.View.extend({
 		var that = this;
 		event.preventDefault();
 		var formData = $(event.currentTarget).serialize();
-		StreetEasyClone.searchQuery = $(event.currentTarget).serializeJSON();
+		StreetEasyClone.searchQuery = formData;
+		StreetEasyClone.searchQueryJSON = $(event.currentTarget).serializeJSON();
 
 		StreetEasyClone.router.navigate("properties/" + formData, {trigger: true});
 	}

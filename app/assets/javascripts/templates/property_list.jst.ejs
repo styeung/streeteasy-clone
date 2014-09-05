@@ -1,15 +1,52 @@
 <div class="property-container group">
+	<div class="page-link-container">
+	<% if(currentPage > 1) { %>
+		<a href="#properties/<%= StreetEasyClone.searchQuery %>&page=<%= currentPage - 1 %>" class="property-page-link">◄</a>
+	<% } %>
+	
+	<% for(var i = 0; i < count/12; i++) { %>
+		<% if ((i + 1) === currentPage) { %>
+			<a href="#" class="property-page-link disabled-link"><%= i + 1 %></a>
+		<% } else if ((i + 1) === 1){ %>
+			<a href="#properties/<%= StreetEasyClone.searchQuery %>&page=<%= i + 1 %>" class="property-page-link"><%= i + 1 %></a>
+		<% } else if ((i + 1) === count/12){ %>
+			<a href="#properties/<%= StreetEasyClone.searchQuery %>&page=<%= i + 1 %>" class="property-page-link"><%= i + 1 %></a>
+		<% } else if ((i + 1) >= currentPage - 2 && (i + 1) <= currentPage + 2){ %>
+			<a href="#properties/<%= StreetEasyClone.searchQuery %>&page=<%= i + 1 %>" class="property-page-link"><%= i + 1 %></a>
+		<% } else { %>
+			<a href="#" class="disabled-link ellipsis">·</a>
+		<% } %>
+	<% } %>
+	
+	<% if(currentPage < count/12) { %>
+		<a href="#properties/<%= StreetEasyClone.searchQuery %>&page=<%= currentPage + 1 %>" class="property-page-link">►</a>
+	<% } %>
+	</div>
 	<div class="property-list-container">
 		<ul class="property-list">
 	
 		</ul>
 		<div class="page-link-container">
-		<% for(var i = 0; i < count/12; i++) {%>
+		<% if(currentPage > 1) { %>
+			<a href="#properties/<%= StreetEasyClone.searchQuery %>&page=<%= currentPage - 1 %>" class="property-page-link">◄</a>
+		<% } %>
+	
+		<% for(var i = 0; i < count/12; i++) { %>
 			<% if ((i + 1) === currentPage) { %>
 				<a href="#" class="property-page-link disabled-link"><%= i + 1 %></a>
-			<% } else { %>
+			<% } else if ((i + 1) === 1){ %>
 				<a href="#properties/<%= StreetEasyClone.searchQuery %>&page=<%= i + 1 %>" class="property-page-link"><%= i + 1 %></a>
+			<% } else if ((i + 1) === count/12){ %>
+				<a href="#properties/<%= StreetEasyClone.searchQuery %>&page=<%= i + 1 %>" class="property-page-link"><%= i + 1 %></a>
+			<% } else if ((i + 1) >= currentPage - 2 && (i + 1) <= currentPage + 2){ %>
+				<a href="#properties/<%= StreetEasyClone.searchQuery %>&page=<%= i + 1 %>" class="property-page-link"><%= i + 1 %></a>
+			<% } else { %>
+				<a href="#" class="disabled-link ellipsis">·</a>
 			<% } %>
+		<% } %>
+	
+		<% if(currentPage < count/12) { %>
+			<a href="#properties/<%= StreetEasyClone.searchQuery %>&page=<%= currentPage + 1 %>" class="property-page-link">►</a>
 		<% } %>
 		</div>
 	</div>
@@ -50,11 +87,8 @@ var address, borough, queryString, queryResult, lat, lng;
 			}
 		});
 		
-		$(document).on("scroll", function(event) {
-			
-			console.log($(document).scrollTop());
+		$(document).on("scroll", function(event) {			
 			if($(document).scrollTop() >= 226) {
-				console.log("here");
 				if(!$(".map-scrolling").hasClass("locked")) {
 					$(".map-scrolling").addClass("locked");
 				}

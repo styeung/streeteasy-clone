@@ -21,6 +21,8 @@ html, body, header, div, ul, li, h1, h2, h3, h4, h5, p, a, option, select, input
 	margin: 0;
 	border: 0;
 	font-family: inherit;
+	-webkit-font-smoothing: antialiased !important;
+  text-shadow: 1px 1px 1px rgba(0,0,0,0.008);
 }
 
 body {
@@ -115,7 +117,7 @@ a.logo-link {
 }
 
 .logo-link sup {
-	vertical-align: 6px;
+	vertical-align: 5px;
 	font-size: 18px;
 	font-weight: 100;
 }
@@ -131,9 +133,10 @@ a.logo-link {
 }
 
 .title {
+	display: block;
 	font-size: 30px;
 	font-weight: 100;
-	padding: 15px 0px;
+	padding: 10px 0px;
 }
 
 .main {
@@ -209,11 +212,11 @@ select.small-input {
 
 .map-scrolling {
 	position: absolute;
-	top: 10px;
 }
 
 .map-scrolling.locked {
 	position: fixed;
+	top: 10px;
 }
 
 .map-sidebar-container {
@@ -224,7 +227,7 @@ select.small-input {
 }
 
 .search-filter {
-	padding: 30px 0px 7px 0px;
+	padding: 20px 0px 7px 0px;
 }
 	
 div.map-view#map {
@@ -552,6 +555,9 @@ div.map-view#map {
 	color: #ccc;
 }
 
+a.ellipsis {
+	padding: 0 1px;
+}
 
 .new-property-link {
 	font-color: #004c75;

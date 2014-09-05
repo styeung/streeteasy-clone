@@ -2,7 +2,9 @@ StreetEasyClone.Views.PropertyList = Backbone.View.extend({
 	template: JST["templates/property_list"],
 	
 	initialize: function() {
-		
+		if(!StreetEasyClone.searchQuery) {
+			StreetEasyClone.searchQuery = this.getQueryString();
+		}
 	},
 
 	render: function() {
@@ -37,5 +39,21 @@ StreetEasyClone.Views.PropertyList = Backbone.View.extend({
 		else {
 			return 1;
 		}
+	},
+	
+	getQueryString: function () {
+		var fullUrl = window.location.href;
+		var queryParamStart = fullUrl.indexOf("#properties/");
+		var queryStringStart = queryParamStart + 12;
+		var pageParamStart = fullUrl.indexOf("&page=");
+		
+		if(pageParamStart !== -1) {
+			var queryStringEnd = pageParamStart;
+		}
+		else {
+			var queryStringEnd = fullUrl.length;
+		}
+		
+		return fullUrl.slice(queryStringStart, queryStringEnd);
 	}
 });
