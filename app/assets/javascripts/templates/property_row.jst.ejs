@@ -18,16 +18,20 @@
 			
 			<ul>
 				<li class="listing-price"><%= property.escape("price_text") %></li>
-				<li class="listing-row">
-					<ul class="group">
-						<% for(var i = 0; i < StreetEasyClone.stat_attributes.length; i++) { %>
-							<% if (property.escape(StreetEasyClone.stat_attributes[i]).length > 0) { %>
-								<li class="listing-text"><p><%= property.escape(StreetEasyClone.stat_attributes[i]) %> <%= StreetEasyClone.stat_attributes[i] %></p></li>
+				<% if((property.escape("sq_ft") + property.escape("beds") + property.escape("baths")).length > 0) { %>
+					<li class="listing-row">
+						<ul class="group">
+							<% for(var i = 0; i < StreetEasyClone.stat_attributes.length; i++) { %>
+								<% if (property.escape(StreetEasyClone.stat_attributes[i]).length > 0) { %>
+									<li class="listing-text"><p><%= property.escape(StreetEasyClone.stat_attributes[i]) %> <%= StreetEasyClone.stat_attributes[i] %></p></li>
+								<% } %>
 							<% } %>
-						<% } %>
-					</ul>
-				</li>
-				<li class="listing-row listing-text"><%= property.escape("apt_type") %> in <%= property.escape("neighborhood") %>, <%= property.escape("borough") %></li>
+						</ul>
+					</li>
+				<% } %>
+				<% if((property.escape("apt_type") + property.escape("neighborhood") + property.escape("baths")).length > 0) { %>
+					<li class="listing-row listing-text"><%= property.escape("apt_type") %> in <%= property.escape("neighborhood") + ", "%> <%= property.escape("borough") %></li>
+				<% } %>
 			</ul>
 		</li>
 	</ul>

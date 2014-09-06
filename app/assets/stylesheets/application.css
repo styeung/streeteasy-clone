@@ -12,6 +12,7 @@
  *
  *= require mapbox
  *= require font-awesome
+ *= require mta-colors
  *= require_tree .
  *= require_self
  */
@@ -21,7 +22,7 @@ html, body, header, div, ul, li, h1, h2, h3, h4, h5, p, a, option, select, input
 	margin: 0;
 	border: 0;
 	font-family: inherit;
-	-webkit-font-smoothing: antialiased !important;
+	-webkit-font-smoothing: antialiased;
   text-shadow: 1px 1px 1px rgba(0,0,0,0.008);
 }
 
@@ -382,7 +383,7 @@ div.map-view#map {
 	top: 0;
 	left: 0;
 	width: 100%;
-	z-index: 100;
+	z-index: 10000;
 	
 }
 
@@ -565,6 +566,10 @@ div.map-view#map {
 	color: #ccc;
 }
 
+.disabled-link:hover {
+	color: #ccc;
+}
+
 a.ellipsis {
 	padding: 0 1px;
 }
@@ -705,7 +710,6 @@ a.ellipsis {
 
 .description-container {
 	border-top: 4px solid black;
-	border-bottom: 4px solid black;
 	padding-top: 8px;
 	padding-bottom: 20px;
 }
@@ -719,6 +723,7 @@ a.ellipsis {
 .description-container p {
 	font-size: 14px;
 	padding-bottom: 12px;
+	line-height: 1.6;
 }
 
 .show-map-container {
@@ -746,4 +751,33 @@ a.ellipsis {
 	background-color: #00669d;
 	color: white;
 }
+
+.zoom-in {
+	position: absolute;
+	z-index: 10000;
+}
+
+.zoom-out {
+	position: absolute;
+	z-index: 10000;
+}
+
+.subway-stations-container {
+	padding: 10px;
+	width: 366px;
+}
+
+.subway-station {
+	display: block;
+	
+	padding: 10px 0;
+	font-size: 12px;
+}
+
+.comments-container {
+	border-top: 4px solid black;
+	padding-top: 8px;
+	padding-bottom: 20px;
+}
+
 

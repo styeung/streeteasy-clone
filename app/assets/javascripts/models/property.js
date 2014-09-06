@@ -18,6 +18,12 @@ StreetEasyClone.Models.Property = Backbone.Model.extend({
 			delete response.comments;
 		}
 		
+		if (response.subway_stations) {
+			this.subway_stations = response.subway_stations;
+			console.log(this.subway_stations);
+			delete response.subway_stations
+		}
+		
 		return response;
 	},
 	

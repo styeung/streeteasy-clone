@@ -137,7 +137,6 @@
 		});
 		
 		$(".signin-switch").on("click", function(event) {
-			console.log("here")
 			if(!$(event.currentTarget).hasClass("is-active")) {
 				$(".signin-view").toggleClass("is-active");
 				$(".signin-switch").toggleClass("is-active");
@@ -147,7 +146,6 @@
 		});
 		
 		$(".register-switch").on("click", function(event) {
-			console.log("here")
 			if(!$(event.currentTarget).hasClass("is-active")) {
 				$(".signin-view").toggleClass("is-active");
 				$(".signin-switch").toggleClass("is-active");
@@ -166,7 +164,6 @@
 		});
 		
     $("#sign-in-sign-up").on("click", function(event){
-			console.log("here")
       if(event.target.id == this.id){
         event.preventDefault();
         $("#sign-in-sign-up").toggleClass("is-active");

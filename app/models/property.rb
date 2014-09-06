@@ -111,5 +111,6 @@ class Property < ActiveRecord::Base
       return Property.search(location_value).where(query_string, values_hash)
     end
   end
+  
 
 end

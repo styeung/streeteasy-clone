@@ -62,6 +62,9 @@ class Api::PropertiesController < ApplicationController
 
   def show
     @property = Property.find(params[:id])
+    unless @property.latitude.nil? && @property.longitude.nil?
+      @subway_stations = get_closest_subway_stations(@property.latitude, @property.longitude)
+    end
 
     if @property
       render :show
@@ -140,4 +143,5 @@ class Api::PropertiesController < ApplicationController
     params.permit(:following_user_id)
   end
 
+  
 end

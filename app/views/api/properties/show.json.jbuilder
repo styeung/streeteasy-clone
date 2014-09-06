@@ -9,3 +9,9 @@ end
 json.comments(@property.comments) do |comment|
   json.partial! "api/comments/comment", comment: comment
 end
+
+# json.subway_stations @subway_stations do |subway_station|
+#   json.partial! "subway", subway_station: subway_station
+# end
+
+json.subway_stations @subway_stations

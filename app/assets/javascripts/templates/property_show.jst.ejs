@@ -23,6 +23,13 @@
 			<h4>DESCRIPTION</h4>
 			<p><%= property.escape("description") %></p>
 		</div>
+		<div class="comments-container">
+			<h4>COMMENTS</h4>
+			<div class="new-comment-container">
+			</div>
+			<div class="comments-list-container">
+			</div>
+		</div>
 	</div>
 
 	<div class="right-side-show">
@@ -41,32 +48,47 @@
 		<div class="show-map-container">
 			<div id="map"></div>
 		</div>
+		
+		<div class="subway-stations-container">
+			<h4>TRANSPORTATION</h4>
+			<% if (property.subway_stations) {%>
+				<% for (var key in property.subway_stations) { %>
+					<p class="subway-station">
+					<% property.subway_stations[key].forEach( function(line) { %>
+						<span class='mta-bullet mta-<%= line[0].toLowerCase() %>'><%= line[0] %></span>
+					<% }); %>
+					at <%= key %> <strong><%= property.subway_stations[key][0][1].toFixed(2) %> miles</strong></p>
+				<% } %>
+			<% } else { %>
+				<p>No information available</p>
+			<% } %>
+		</div>
+
 	</div>
 </div>
 
-<div class="comments-container">
-	<div class="new-comment-container">
-	</div>
-	<div class="comments-list-container">
-	</div>
-</div>
+
 
 
 <script>
-
 	L.mapbox.accessToken = 'pk.eyJ1Ijoic2FpdG95ZXVuZyIsImEiOiJPOXA3aUowIn0.spWqAgo8-BgTGtYiLbOztg';
 	var map = L.mapbox.map('map', 'saitoyeung.jbj6oj44');
 	var geocoder = L.mapbox.geocoder('mapbox.places-v1');
 	var defaultLat = 40.714728;
 	var defaultLng = -73.998672;
 
-	var propertyLatitude  = <%= property.escape("latitude") %>;
-	var propertyLongitude = <%= property.escape("longitude") %>;
-
+	<% if (property.escape("latitude") && property.escape("longitude")) { %>
+		var propertyLatitude  = <%= property.escape("latitude") %>;
+		var propertyLongitude = <%= property.escape("longitude") %>;
+	<% } else { %>
+		var propertyLatitude  = false;
+		var propertyLongitude = false;
+	<% }%>
+	
 	if( propertyLatitude && propertyLongitude) {
 		map.setView([propertyLatitude, propertyLongitude], 15);
 		L.marker([propertyLatitude, propertyLongitude]).addTo(map);
-	} 
+	}
 	else {
 		map.setView([defaultLat, defaultLng], 11);
 	}
