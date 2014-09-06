@@ -15,7 +15,7 @@ StreetEasyClone.Views.PropertyShow = Backbone.View.extend({
 		this.$(".photos-container").html(albumPhotosView.render().$el);
 
 		var commentsListView = new StreetEasyClone.Views.CommentsList({ collection: property.comments() });
-		this.$(".comments-list-container").html(commentsListView.render().$el);
+		this.$(".comments-container").html(commentsListView.render().$el);
 		
 		return this;
 	}

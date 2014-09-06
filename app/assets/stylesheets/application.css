@@ -17,7 +17,7 @@
  *= require_self
  */
 
-html, body, header, div, ul, li, h1, h2, h3, h4, h5, p, a, option, select, input, br, hr {
+html, body, header, div, ul, li, h1, h2, h3, h4, h5, p, a, option, br, hr {
 	padding: 0;
 	margin: 0;
 	border: 0;
@@ -43,12 +43,13 @@ a:hover {
 	color: #004B74;
 }
 
-button, select, option, input {
+button, select, option, input, textarea {
 	padding: 0; 
 	margin: 0;
 	border: 0;
 	-webkit-appearance: none;
 	background-color: none;
+	font-family: inherit;
 }
 
 button:focus {
@@ -60,12 +61,12 @@ button:focus {
 }*/
 
 input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
+input::-webkit-inner-spin-button{
 	-webkit-appearance: none;
 	
 }
 
-input {
+input, textarea{
 	-webkit-user-select: none;
 }
 
@@ -654,14 +655,23 @@ a.ellipsis {
 	padding-bottom: 10px;
 }
 
-.show-content {
-
+.show-content h4{
+	font-size: 16px;
+	font-weight: bold;
+	padding-bottom: 12px
 }
+
 
 .left-side-show {
 	float: left;
 	width: 574px;
 	padding-right: 14px;
+}
+
+.left-side-show p {
+	font-size: 14px;
+	padding-bottom: 12px;
+	line-height: 1.6;
 }
 
 .right-side-show {
@@ -712,12 +722,6 @@ a.ellipsis {
 	border-top: 4px solid black;
 	padding-top: 8px;
 	padding-bottom: 20px;
-}
-
-.description-container h4{
-	font-size: 16px;
-	font-weight: bold;
-	padding-bottom: 12px
 }
 
 .description-container p {
@@ -778,6 +782,45 @@ a.ellipsis {
 	border-top: 4px solid black;
 	padding-top: 8px;
 	padding-bottom: 20px;
+}
+
+.new-comment-container {
+	border-top: 1px solid #ccc;
+	padding: 20px 0;
+}
+
+.new-comment-form label {
+	font-size: 14px;
+	padding-bottom: 12px;
+	line-height: 1.6;
+}
+
+.new-comment-form input[type="text"] {
+	width: 540px;
+	font-size: 14px;
+}
+
+.new-comment-form textarea {
+	width: 540px;
+	height: 50px;
+	font-size: 14px;
+	padding: 6px;
+	background-color: white;
+	border: 1px solid #ccc;
+}
+
+.new-comment-form button {
+	width: 138px;
+	height: 38px;
+	padding: 7px;
+	color: white;
+	background-color: #0080c6;
+	font-size: 13px;
+	margin-top: 10px;
+}
+
+.new-comment-form button:hover {
+	background-color: #00669d;
 }
 
 

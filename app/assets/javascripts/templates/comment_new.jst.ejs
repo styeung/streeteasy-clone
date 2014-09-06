@@ -1,13 +1,16 @@
-<form>
-	<label>
-    Title (Required)
-    <input type="text" name="comment[title]" class="small-input">
-  </label>
-  <br>
-  <label>
-    Comment
-    <input type="text" name="comment[body]" class="small-input">
-  </label>
-	<br>
-	<button>Submit</button>
-</form>
+<% if(StreetEasyClone.currentUser) { %>
+	<h4>NEW COMMENT</h4>
+	<form class="new-comment-form">
+		<label>
+			<p>Title (Required)</p>
+	    <input type="text" name="comment[title]" class="big-input">
+	  </label>
+	  <br>
+	  <label>Comment (Required)</label>
+			<textarea name="comment[body]"></textarea>
+		<br>
+		<button>Submit</button>
+	</form>
+<% } else { %>
+	<p>You must be signed in to post a comment</p>
+<% } %>
