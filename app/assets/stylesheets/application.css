@@ -56,14 +56,13 @@ button:focus {
 	outline: none;
 }
 
-/*hr {
-	border-bottom: 1px solid black;
-}*/
-
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button{
 	-webkit-appearance: none;
-	
+}
+
+input::-webkit-calendar-picker-indicator {
+  display: none;
 }
 
 input, textarea{
@@ -137,6 +136,20 @@ a.logo-link {
 	display: block;
 	font-color: #004c75;
 	padding: 10px 0 10px 20px;
+}
+
+.user-dropdown {
+	display: none;
+	position: absolute;
+	
+}
+
+.user-dropdown-link:hover >.user-dropdown {
+	display: block;
+}
+
+.user-dropdown {
+	background-color: black;
 }
 
 .title {

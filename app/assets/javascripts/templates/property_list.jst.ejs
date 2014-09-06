@@ -77,9 +77,9 @@ map.setView([defaultLat, defaultLng], 11);
 var address, borough, queryString, queryResult, lat, lng;
 	$(document).ready( function() {
 		$(".disabled-link").on("click", function(event) {
-			console.log("hello");
 			event.preventDefault();
 		});
+		
 		$(".main").off().on("mouseenter", "li.property-listing", function(event) {
 			lat = $(event.currentTarget).attr("data-lat");
 			lng = $(event.currentTarget).attr("data-lng");

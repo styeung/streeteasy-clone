@@ -33,7 +33,10 @@
 				<a href="#/property/new" class="new-property-link">Add a new property</a>
 			</li>
 			<li>
-			  <a href="<%= user_url(current_user) %>" class="settings-link"><%= current_user.email %></a>
+			  <a href="<%= user_url(current_user) %>" class="user-dropdown-link"><%= current_user.email %> ▾</a>
+				<ul class="user-dropdown">
+					<li>hello</li>
+				</ul>
 			</li>
 			<li>
 				<%= link_to "Sign out", session_url, method: :delete %>

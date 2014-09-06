@@ -5,6 +5,10 @@ StreetEasyClone.Views.PropertyShow = Backbone.View.extend({
 		
 	},
 	
+	events: {
+		"click .save-button": "saveListing"
+	},
+	
 	render: function() {
 		var property = this.model
 		var content = this.template({property: property});
@@ -18,5 +22,16 @@ StreetEasyClone.Views.PropertyShow = Backbone.View.extend({
 		this.$(".comments-container").html(commentsListView.render().$el);
 		
 		return this;
+	},
+	
+	saveListing: function(event) {
+		var that = this;
+		this.model.save({"following_user_id": StreetEasyClone.currentUser}, {
+			patch: true,
+			success: function(model, response) {
+				$(event.currentTarget).attr("class", "already-saved-button");
+				$(event.currentTarget).prop("disabled", true);
+			}
+		});
 	}
 });
