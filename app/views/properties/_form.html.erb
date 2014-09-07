@@ -10,75 +10,79 @@
 	<%= action_modifier(action) %>
 	
 	<div class="form-main">
-		<label>Main Photo</label>
-		<% unless @property.property_photo_file_name.nil? %>
-			<%= image_tag @property.property_photo.url(:big) %>
-		<% end %>
-		<input type="file" name="property[property_photo]">
-	<ul class="group">
-		<li class="form-element">
-  <label>Address (Required)</label>
-    <input type="text" name="property[address]" value="<%= @property.address %>" class="big-input">
-</li>
-<li class="form-element">
-  <label>Unit</label>
-    <input type="text" name="property[unit]" value="<%= @property.unit %>" class="small-input">
- </li>
- <li class="form-element">
-  <label>Zip (Required)</label>
-    <input type="text" name="property[zip]" value="<%= @property.zip %>" class="small-input">
-</li>
-<li class="form-element">
-  <label for="borough-select">Borough (Required)</label>
-  <select name="property[borough]" id="borough-select" class="small-input">
-		<option value="">(Choose one)</option>
-		<% borough_choices.each do |key, value| %>
-			<option value="<%= key %>" <%= "Selected" if key.to_s == @property.borough %>>
-				<%= value %>
-			</option>
-		<% end %>
-  </select>
-</li>
-<li class="form-element">
-  <label for="neighborhood-select">Neighborhood</label>
-  <select name="property[neighborhood]" id="neighborhood-select" class="small-input">
-    <option value="">(Choose one)</option>
-		<% all_neighborhoods.each do |neighborhood| %>
-			<option value="<%= neighborhood %>" <%= "Selected" if neighborhood == @property.neighborhood %>>
-				<%= neighborhood.split(" ").map(&:capitalize).join(" ") %>
-			</option>
-		<% end %>
-  </select>
-</li>
-<li class="form-element">
-  <label>Price (Required)</label>
-    <input type="number" name="property[price]" value="<%= @property.price %>" class="small-input">
- </li>
- <li class="form-element">
-  <label>Beds</label>
-    <input type="number" name="property[beds]" value="<%= @property.beds %>" class="small-input">
- </li>
- <li class="form-element">
-  <label>Baths</label>
-    <input type="text" name="property[baths]" value="<%= @property.baths %>" class="small-input">
- </li>
- <li class="form-element">
-  <label>Square Footage</label>
-    <input type="number" name="property[sq_ft]" value="<%= @property.sq_ft %>" class="small-input">
-</li>
-<li class="form-element">
-  <label for="apt-type-select">Apartment Type (Required)</label>
-  <select name="property[apt_type]" id="apt-type-select" class="small-input">
-		<option value="">(Choose one)</option>
-		<% all_apt_types.each do |apt_type| %>
-			<option value="<%= apt_type %>" <%= "Selected" if apt_type == @property.apt_type %>>
-				<%= apt_type.split(" ").map(&:capitalize).join(" ") %>
-			</option>
-		<% end %>
-  </select>
-</li>
-</ul>
-<button class="search-button">Submit</button>
-</div>
+		<div class="left-hand-form">
+			<label>Main Photo</label>
+			<% unless @property.property_photo_file_name.nil? %>
+				<%= image_tag @property.property_photo.url(:big) %>
+			<% end %>
+			<input type="file" name="property[property_photo]">
+		</div>
+		<div class="right-hand-form">
+			<ul class="group">
+				<li class="form-element">
+				  <label>Address (Required)</label>
+			    <input type="text" name="property[address]" value="<%= @property.address %>" class="big-input">
+				</li>
+				<li class="form-element">
+				  <label>Unit</label>
+			    <input type="text" name="property[unit]" value="<%= @property.unit %>" class="small-input">
+				</li>
+				<li class="form-element">
+				<label>Zip (Required)</label>
+				  <input type="text" name="property[zip]" value="<%= @property.zip %>" class="small-input">
+				</li>
+				<li class="form-element">
+				  <label for="borough-select">Borough (Required)</label>
+				  <select name="property[borough]" id="borough-select" class="small-input">
+						<option value="">(Choose one)</option>
+						<% borough_choices.each do |key, value| %>
+							<option value="<%= key %>" <%= "Selected" if key.to_s == @property.borough %>>
+								<%= value %>
+							</option>
+						<% end %>
+				  </select>
+				</li>
+				<li class="form-element">
+				  <label for="neighborhood-select">Neighborhood</label>
+				  <select name="property[neighborhood]" id="neighborhood-select" class="small-input">
+				    <option value="">(Choose one)</option>
+						<% all_neighborhoods.each do |neighborhood| %>
+							<option value="<%= neighborhood %>" <%= "Selected" if neighborhood == @property.neighborhood %>>
+								<%= neighborhood.split(" ").map(&:capitalize).join(" ") %>
+							</option>
+						<% end %>
+				  </select>
+				</li>
+				<li class="form-element">
+				  <label>Price (Required)</label>
+				    <input type="number" name="property[price]" value="<%= @property.price %>" class="small-input">
+				 </li>
+				 <li class="form-element">
+				  <label>Beds</label>
+				    <input type="number" name="property[beds]" value="<%= @property.beds %>" class="small-input">
+				 </li>
+				 <li class="form-element">
+				  <label>Baths</label>
+				    <input type="text" name="property[baths]" value="<%= @property.baths %>" class="small-input">
+				 </li>
+				 <li class="form-element">
+				  <label>Square Footage</label>
+				    <input type="number" name="property[sq_ft]" value="<%= @property.sq_ft %>" class="small-input">
+				</li>
+				<li class="form-element">
+				  <label for="apt-type-select">Apartment Type (Required)</label>
+				  <select name="property[apt_type]" id="apt-type-select" class="small-input">
+						<option value="">(Choose one)</option>
+						<% all_apt_types.each do |apt_type| %>
+							<option value="<%= apt_type %>" <%= "Selected" if apt_type == @property.apt_type %>>
+								<%= apt_type.split(" ").map(&:capitalize).join(" ") %>
+							</option>
+						<% end %>
+				  </select>
+				</li>
+			</ul>
+		</div>
+	<button class="search-button">Submit</button>
+	</div>
 </form>
 

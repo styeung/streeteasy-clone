@@ -29,17 +29,14 @@
 <% else %>
 	<div class="nav-settings">
 		<ul class="group">
-			<li>
-				<a href="#/property/new" class="new-property-link">Add a new property</a>
-			</li>
-			<li>
-			  <a href="<%= user_url(current_user) %>" class="user-dropdown-link"><%= current_user.email %> ▾</a>
-				<ul class="user-dropdown">
-					<li>hello</li>
+			<li class="user-dropdown-container">
+			  <a href="#">Welcome <%= current_user.email %> ▾</a>
+				<ul class="dropdown">
+					<li><a href="#">Search Home</a>
+					<li><a href="#/property/new" class="new-property-link">Add a new property</a></li>
+					<li><a href="#/property/saved" class="saved-property-link">Saved Properties</a></li>
+					<li><%= link_to "Sign out", session_url, method: :delete %></li>
 				</ul>
-			</li>
-			<li>
-				<%= link_to "Sign out", session_url, method: :delete %>
 			</li>
 		</ul>
 	</div>
@@ -132,6 +129,7 @@
 		StreetEasyClone.currentUser = JSON.parse($("script#bootstrapped-current-user").html());
 		StreetEasyClone.initialize();
 		
+		
 		$(".settings-link").on("click", function(event) {
 			event.preventDefault();
 			$("#sign-in-sign-up").toggleClass("is-active");
@@ -182,8 +180,9 @@
 			$("#signin-email").val("agent1@gmail.com");
 			$("#signin-password").val("agent1agent1");
 			$(".signin-view .sign-in-button").click();
-			
 		});
+		
+		
 	});
 </script>
 

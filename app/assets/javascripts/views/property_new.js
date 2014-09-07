@@ -69,18 +69,25 @@ StreetEasyClone.Views.PropertyNew = Backbone.View.extend({
 		event.preventDefault();
 		
 		var formData = $(".new-property-form").serializeJSON();
-		
 		this.model.set(formData);
 		
-		this.model.save(null, {
-			success: function(model, response, options) {
-				var subView = new StreetEasyClone.Views.PhotoUpload({model: model});
-				$(".additional-photos-container").html(subView.render().$el);
-			},
-			error: function(model, response, options) {
-				console.log("There was an error");
-			}
-		});
+		var subView = new StreetEasyClone.Views.PhotoUpload({model: this.model});
+		$(".additional-photos-container").html(subView.render().$el);
+		
+		
+		// var formData = $(".new-property-form").serializeJSON();
+		//
+		// this.model.set(formData);
+		//
+		// this.model.save(null, {
+		// 	success: function(model, response, options) {
+		// 		var subView = new StreetEasyClone.Views.PhotoUpload({model: model});
+		// 		$(".additional-photos-container").html(subView.render().$el);
+		// 	},
+		// 	error: function(model, response, options) {
+		// 		console.log("There was an error");
+		// 	}
+		// });
 	},
 	
 	preventDefaultFormSubmission: function(event) {

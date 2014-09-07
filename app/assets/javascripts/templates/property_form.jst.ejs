@@ -5,9 +5,9 @@
 <% } %>
 
 <form class="new-property-form">
-	<div class="form-main">
-		<label>Main Photo</label>
+	<div class="new-form-main group">
 		<div id="main-photo-container">
+			<label>Main Photo</label>
 			<% if(action === "new") { %>
 				<img src="/images/missing_big.png" id="main-photo-default">
 			<% } else if (action === "edit") { %>
@@ -17,96 +17,101 @@
 					<img src="/images/missing_big.png" id="main-photo-default">
 				<% }%>
 			<% } %>
+			<input type="file" name="property_photo" id="main-photo-upload">
 		</div>
-		<input type="file" name="property_photo" id="main-photo-upload">
-	<ul class="group">
-		<li class="form-element">
-  		<label>Address (Required)</label>
-    	<input type="text" name="address" value="<%= property.escape("address") %>" class="big-input">
-		</li>
-		<li class="form-element">
-		  <label>Unit</label>
-	    <input type="text" name="unit" value="<%= property.escape("unit") %>" class="small-input">
-		</li>
-		<li class="form-element">
-		  <label>Zip (Required)</label>
-		  <input type="text" name="zip" value="<%= property.escape("zip") %>" class="small-input">
-		</li>
-		<li class="form-element">
-		  <label for="borough-select">Borough (Required)</label>
-		  <select name="borough" id="borough-select" class="small-input">
-				<option value="">(Choose one)</option>
-				<% for(var key in StreetEasyClone.boroughs) { %>
-					<% if(property.escape("borough") === key) { %>
-						<option value="<%= key %>" Selected>
-							<%= StreetEasyClone.boroughs[key] %>
-						</option>
-					<% } else { %>
-						<option value="<%= key %>">
-							<%= StreetEasyClone.boroughs[key] %>
-						</option>
-					<% } %>
-				<% } %>
-		  </select>
-		</li>
-		<li class="form-element">
-		  <label for="neighborhood-select">Neighborhood</label>
-		  <select name="neighborhood" id="neighborhood-select" class="small-input">
-		    <option value="">(Choose one)</option>
-				<% for(var i = 0; i < StreetEasyClone.neighborhoods.length; i++) { %>
-					<% if(property.escape("neighborhood") === StreetEasyClone.neighborhoods[i]) { %>
-						<option value="<%= StreetEasyClone.neighborhoods[i] %>" Selected>
-							<%= StreetEasyClone.neighborhoods[i] %>
-						</option>
-					<% } else { %>
-						<option value="<%= StreetEasyClone.neighborhoods[i] %>">
-							<%= StreetEasyClone.neighborhoods[i] %>
-						</option>
-					<% } %>
-				<% } %>
-		  </select>
-		</li>
-		<li class="form-element">
-		  <label>Price (Required)</label>
-		    <input type="number" name="price" value="<%= property.escape("price") %>" class="small-input">
-		 </li>
-		 <li class="form-element">
-		  <label>Beds</label>
-		    <input type="number" name="beds" value="<%= property.escape("beds") %>"class="small-input">
-		 </li>
-		 <li class="form-element">
-		  <label>Baths</label>
-		    <input type="text" name="baths" value="<%= property.escape("baths") %>"class="small-input">
-		 </li>
-		 <li class="form-element">
-		  <label>Square Footage</label>
-		    <input type="number" name="sq_ft" value="<%= property.escape("sq_ft") %>"class="small-input">
-		</li>
-		<li class="form-element">
-		  <label for="apt-type-select">Apartment Type (Required)</label>
-		  <select name="apt_type" id="apt-type-select" class="small-input">
-				<option value="">(Choose one)</option>
-				<% for(var i = 0; i < StreetEasyClone.apt_types.length; i++) { %>
-					<% if(property.escape("apt_type") === StreetEasyClone.apt_types[i]) { %>
-						<option value="<%= StreetEasyClone.apt_types[i] %>" Selected>
-							<%= StreetEasyClone.apt_types[i] %>
-						</option>
-					<% } else { %>
-						<option value="<%= StreetEasyClone.apt_types[i] %>">
-							<%= StreetEasyClone.apt_types[i] %>
-						</option>
-					<% } %>
-				<% } %>
-		  </select>
-		</li>
-		<li class="form-element">
-			<label>Description</label>
-			<textarea name="description"><%= property.escape("description") %></textarea>
-		</li>
-</ul>
-<button class="add-more-photos-button">Add More Photos</button>
-<button class="add-property-button">Submit Without Photos</button>
-</div>
+		<div class="right-hand-form">
+			<ul class="group">
+				<li class="form-element">
+		  		<label>Address (Required)</label>
+		    	<input type="text" name="address" value="<%= property.escape("address") %>" class="medium-input">
+				</li>
+				<li class="form-element">
+				  <label>Unit</label>
+			    <input type="text" name="unit" value="<%= property.escape("unit") %>" class="small-input">
+				</li>
+				<li class="form-element">
+				  <label>Zip (Required)</label>
+				  <input type="text" name="zip" value="<%= property.escape("zip") %>" class="small-input">
+				</li>
+				<li class="form-element">
+				  <label for="borough-select">Borough (Required)</label>
+				  <select name="borough" id="borough-select" class="small-input">
+						<option value="">(Choose one)</option>
+						<% for(var i = 0; i < StreetEasyClone.boroughs.length; i++) { %>
+							<% if(property.escape("borough") === StreetEasyClone.boroughs[i]) { %>
+								<option value="<%= StreetEasyClone.boroughs[i] %>" Selected>
+									<%= StreetEasyClone.boroughs[i] %>
+								</option>
+							<% } else { %>
+								<option value="<%= StreetEasyClone.boroughs[i] %>">
+									<%= StreetEasyClone.boroughs[i] %>
+								</option>
+							<% } %>
+						<% } %>
+				  </select>
+				</li>
+				<li class="form-element">
+				  <label for="neighborhood-select">Neighborhood (Required)</label>
+				  <select name="neighborhood" id="neighborhood-select" class="small-input">
+				    <option value="">(Choose one)</option>
+						<% for(var i = 0; i < StreetEasyClone.neighborhoods.length; i++) { %>
+							<% if(property.escape("neighborhood") === StreetEasyClone.neighborhoods[i]) { %>
+								<option value="<%= StreetEasyClone.neighborhoods[i] %>" Selected>
+									<%= StreetEasyClone.neighborhoods[i] %>
+								</option>
+							<% } else { %>
+								<option value="<%= StreetEasyClone.neighborhoods[i] %>">
+									<%= StreetEasyClone.neighborhoods[i] %>
+								</option>
+							<% } %>
+						<% } %>
+				  </select>
+				</li>
+				<li class="form-element">
+				  <label>Price (Required)</label>
+				    <input type="number" name="price" value="<%= property.escape("price") %>" class="medium-input">
+				 </li>
+	 				<li class="form-element">
+	 				  <label for="apt-type-select">Apartment Type (Required)</label>
+	 				  <select name="apt_type" id="apt-type-select" class="small-input">
+	 						<option value="">(Choose one)</option>
+	 						<% for(var i = 0; i < StreetEasyClone.apt_types.length; i++) { %>
+	 							<% if(property.escape("apt_type") === StreetEasyClone.apt_types[i]) { %>
+	 								<option value="<%= StreetEasyClone.apt_types[i] %>" Selected>
+	 									<%= StreetEasyClone.apt_types[i] %>
+	 								</option>
+	 							<% } else { %>
+	 								<option value="<%= StreetEasyClone.apt_types[i] %>">
+	 									<%= StreetEasyClone.apt_types[i] %>
+	 								</option>
+	 							<% } %>
+	 						<% } %>
+	 				  </select>
+	 				</li>
+				 <li class="form-element">
+				  <label>Beds</label>
+				    <input type="number" name="beds" value="<%= property.escape("beds") %>"class="small-input">
+				 </li>
+				 <li class="form-element">
+				  <label>Baths</label>
+				    <input type="text" name="baths" value="<%= property.escape("baths") %>"class="small-input">
+				 </li>
+				 <li class="form-element">
+				  <label>Square Footage</label>
+				    <input type="number" name="sq_ft" value="<%= property.escape("sq_ft") %>"class="small-input">
+				</li>
+				
+				<li class="form-element">
+					<label>Description</label>
+					<textarea name="description" class="new-form-description"><%= property.escape("description") %></textarea>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="form-button-container">
+		<button class="add-more-photos-button">Add More Photos</button>
+		<button class="add-property-button">Submit Without Photos</button>
+	</div>
 </form>
 
 <br>

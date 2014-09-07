@@ -138,18 +138,32 @@ a.logo-link {
 	padding: 10px 0 10px 20px;
 }
 
-.user-dropdown {
+.dropdown {
 	display: none;
 	position: absolute;
-	
+	background-color: white;
+	border-top: 1px solid #ccc;
+	border-right: 1px solid #ccc;
+	border-left: 1px solid #ccc;
+	width: 200px;
+	margin-left: 34px;
 }
 
-.user-dropdown-link:hover >.user-dropdown {
+.dropdown li {
+	border-bottom: 1px solid #ccc;
+}
+
+.dropdown li:hover {
+	background-color: #0081C6;
+}
+
+.dropdown li:hover > a {
+	color: white;
+}
+
+
+.user-dropdown-container:hover > .dropdown{
 	display: block;
-}
-
-.user-dropdown {
-	background-color: black;
 }
 
 .title {
@@ -165,7 +179,11 @@ a.logo-link {
 }
 
 .form-main {
-	width: 637px;
+	width: 660px;
+}
+
+.new-form-main {
+	width: 980px;
 }
 
 .form-sidebar {
@@ -179,6 +197,17 @@ a.logo-link {
 	background-color: white;
 	border: 1px solid #ccc;
 	border-radius: 0;
+	font-size: 14px;
+}
+
+.medium-input {
+	width: 300px;
+	height: 24px;
+	padding: 6px;
+	background-color: white;
+	border: 1px solid #ccc;
+	border-radius: 0;
+	font-size: 14px;
 }
 
 .small-input {
@@ -188,10 +217,22 @@ a.logo-link {
 	border: 1px solid #ccc;
 	background-color: white;
 	border-radius: 0;
+	font-size: 14px;
 }
 
 select.small-input {
+	width: 152px;
+	padding: 6px;
 	height: 38px;
+	font-size: 14px;
+}
+
+.new-form-description {
+	width: 464px;
+	height: 100px;
+	border: 1px solid #ccc;
+	padding: 6px;
+	font-size: 14px;
 }
 
 .form-element {
@@ -836,4 +877,18 @@ a.ellipsis {
 	background-color: #00669d;
 }
 
+#main-photo-container {
+	float: left;
+	width: 460px; 
+}
 
+.right-hand-form {
+	float: left;
+	width: 520px;
+}
+
+.form-button-container {
+	margin: auto;
+	width: 980px;
+	padding: 0 310px;
+}
