@@ -2,7 +2,7 @@ StreetEasyClone.Views.PropertyShow = Backbone.View.extend({
 	template: JST['templates/property_show'],
 	
 	initialize: function () {
-		
+		this.listenTo(this.model, "sync", this.render);
 	},
 	
 	events: {

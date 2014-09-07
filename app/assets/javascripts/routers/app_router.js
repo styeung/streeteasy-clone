@@ -38,12 +38,9 @@ StreetEasyClone.Routers.AppRouter = Backbone.Router.extend({
 	propertyShow: function(id) {
 		var that = this;
 		var model = new StreetEasyClone.Models.Property({id: id});
-		model.fetch({
-			success: function(model, resp) {
-				var view = new StreetEasyClone.Views.PropertyShow({model: model});
-				that.$rootEl.html(view.render().$el);
-			}
-		});
+		model.fetch();
+		var view = new StreetEasyClone.Views.PropertyShow({model: model});
+		that.$rootEl.html(view.render().$el);
 	},
 	
 	propertyNew: function() {
