@@ -52,6 +52,7 @@ button, select, option, input, textarea {
 	font-family: inherit;
 }
 
+
 button:focus {
 	outline: none;
 }
@@ -197,7 +198,7 @@ a.logo-link {
 }
 
 .big-input {
-	width: 450px;
+	width: 462px;
 	height: 24px;
 	padding: 6px;
 	background-color: white;

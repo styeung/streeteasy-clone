@@ -60,15 +60,17 @@ class ApplicationController < ActionController::Base
   end
   
   def all_neighborhoods
-    @all_neighborhoods ||= Property.uniq.pluck(:neighborhood).map(&:strip).reject.sort
+    @all_neighborhoods ||= Property.uniq.pluck(:neighborhood).map(&:strip).reject.sort.map do |entry|
+      entry.split(" ").map(&:capitalize).join(" ")
+    end
   end
   
   def all_apt_types
-    @all_apt_types ||= Property.uniq.pluck(:apt_type).map(&:strip).reject.sort
+    @all_apt_types ||= Property.uniq.pluck(:apt_type).map(&:strip).map(&:capitalize).reject.sort
   end
   
   def all_addresses
-    @all_addresses ||= Property.uniq.pluck(:address).map(&:strip).reject.sort
+    @all_addresses ||= Property.uniq.pluck(:address).map(&:strip).map(&:capitalize).reject.sort
   end
   
   

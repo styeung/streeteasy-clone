@@ -32,10 +32,10 @@
 		<b>Bathrooms:</b> "<%= StreetEasyClone.searchQueryJSON.property.baths %>"
 	<% } %>
 	<% if(StreetEasyClone.searchQueryJSON && StreetEasyClone.searchQueryJSON.property.min_price.length > 0) { %>
-		<b>Min Price:</b> "<%= StreetEasyClone.searchQueryJSON.property.min_price %>"
+		<b>Min Price:</b> "<%= StreetEasyClone.convertNumToCurrency(StreetEasyClone.searchQueryJSON.property.min_price) %>"
 	<% } %>
 	<% if(StreetEasyClone.searchQueryJSON && StreetEasyClone.searchQueryJSON.property.max_price.length > 0) { %>
-		<b>Max Price:</b> "<%= StreetEasyClone.searchQueryJSON.property.max_price %>"
+		<b>Max Price:</b> "<%= StreetEasyClone.convertNumToCurrency(StreetEasyClone.searchQueryJSON.property.max_price) %>"
 	<% } %>
 	</p>
 </div>

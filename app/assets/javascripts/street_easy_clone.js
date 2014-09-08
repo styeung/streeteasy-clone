@@ -20,13 +20,6 @@ window.StreetEasyClone = {
 		"The Bronx", 
 		"Staten Island"
 	],
-	// boroughs: {
-// 			    "manhattan": "Manhattan",
-// 			    "brooklyn": "Brooklyn",
-// 			    "queens": "Queens",
-// 			    "bronx": "The Bronx",
-// 			    "staten_island": "Staten Island"
-//   },
 
 	bed_types: [
 		"0",
@@ -48,5 +41,20 @@ window.StreetEasyClone = {
 	
 	detailed_attributes: ["zip", "price", "beds", "baths", "sq_ft", "apt_type", "borough", "description"],
 	
-	stat_attributes: ["sq_ft", "beds", "baths"]
+	stat_attributes: ["sq_ft", "beds", "baths"],
+	
+	convertNumToCurrency: function(num) {
+		if(num === 0) {
+			return "$0";
+		}
+		else if (num < 1000000) {
+			return "$" + String(num).split("").reverse().slice(3).reverse().join("") + "," +
+			 String(num).split("").reverse().slice(0,3).reverse().join("");
+		}
+		else if (num < 1000000000) {
+			return "$" + String(num).split("").reverse().slice(6).reverse().join("") + "," +
+			String(num).split("").reverse().slice(3, 6).reverse().join("") + "," +
+			 String(num).split("").reverse().slice(0,3).reverse().join("");
+		}
+	}
 };

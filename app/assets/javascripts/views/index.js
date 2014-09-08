@@ -26,7 +26,7 @@ StreetEasyClone.Views.PropertyIndex = Backbone.View.extend({
 		var content = this.template({properties: this.collection, count: count, savedPage: this.savedPage });
 		this.$el.html(content);
 		
-		this.listenTo(this.collection, "sort", this.render)
+		// this.listenTo(this.collection, "sort", this.render)
 	},
 	
 	render: function() {
@@ -60,6 +60,7 @@ StreetEasyClone.Views.PropertyIndex = Backbone.View.extend({
 		else {
 			var formData = $(event.currentTarget).serializeJSON();
 			var currentQueryString = StreetEasyClone.searchQuery;
+			console.log("searchQuery", StreetEasyClone.searchQuery)
 			
 			if (formData["sort-criterion"] === "Most Expensive") {
 				StreetEasyClone.sortString = "sort=price+desc";				
@@ -80,12 +81,15 @@ StreetEasyClone.Views.PropertyIndex = Backbone.View.extend({
 				StreetEasyClone.sortString = "sort=beds+asc";				
 			}
 			
-			var queryWithSort = currentQueryString + "&" + StreetEasyClone.sortString;
-			this.collection.fetch({
-				data: queryWithSort,
-				success: function(resp) {
-				}
-			});
+			StreetEasyClone.router.navigate("properties/" + currentQueryString, {trigger: true});
+			
+			// var queryWithSort = currentQueryString + "&" + StreetEasyClone.sortString;
+// 			this.collection.fetch({
+// 				data: queryWithSort,
+// 				success: function(resp) {
+//
+// 				}
+// 			});
 		}
 		
 	},
