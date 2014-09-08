@@ -2,7 +2,6 @@ StreetEasyClone.Views.PropertyRow = Backbone.View.extend({
 	template: JST["templates/property_row"],
 	
 	initialize: function() {
-
 	},
 	
 	tagName: "li",
@@ -28,12 +27,15 @@ StreetEasyClone.Views.PropertyRow = Backbone.View.extend({
 	
 	saveListing: function(event) {
 		var that = this;
+		// $(event.currentTarget).attr("class", "already-saved-button");
+		$(event.currentTarget).prop("disabled", true);
+		
 		this.model.save({"following_user_id": StreetEasyClone.currentUser}, {
 			patch: true,
 			success: function(model, response) {
-				$(event.currentTarget).attr("class", "already-saved-button");
-				$(event.currentTarget).prop("disabled", true);
-			}
+
+			},
+			wait: true
 		});
 	}
 });

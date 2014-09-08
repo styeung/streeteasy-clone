@@ -9,10 +9,17 @@ StreetEasyClone.Views.PropertyIndex = Backbone.View.extend({
 	children: [],
 		
 	initialize: function() {
-		var content = this.template({properties: this.collection, count: StreetEasyClone.totalCount});
+		if (StreetEasyClone.totalCount) {
+			var count = StreetEasyClone.totalCount;
+		}
+		else {
+			var count = 0;
+		}
+		
+		var content = this.template({properties: this.collection, count: count});
 		this.$el.html(content);
 		
-		this.listenTo(this.collection, "sort sync", this.render)
+		this.listenTo(this.collection, "sort", this.render)
 	},
 	
 	render: function() {

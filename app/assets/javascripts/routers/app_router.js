@@ -18,6 +18,7 @@ StreetEasyClone.Routers.AppRouter = Backbone.Router.extend({
 	search: function() {
 		var view = new StreetEasyClone.Views.Search({boroughs: StreetEasyClone.boroughs, $rootEl: this.$rootEl, properties: this.properties });
 		this.$rootEl.html(view.render().$el);
+		window.scrollTo(0, 0);
 	},
 	
 	propertiesIndex: function(query) {
@@ -25,12 +26,12 @@ StreetEasyClone.Routers.AppRouter = Backbone.Router.extend({
 		if(!StreetEasyClone.sortString) {
 			StreetEasyClone.sortString = "sort=price+desc";
 		}
-		console.log(StreetEasyClone.sortString);
 		this.properties.fetch({
 			data: query + "&" + StreetEasyClone.sortString,
 			success: function(resp) {
 				var view = new StreetEasyClone.Views.PropertyIndex({collection: that.properties});
 				that.$rootEl.html(view.render().$el);
+				window.scrollTo(0, 0);
 			}
 		});
 	},
@@ -38,15 +39,20 @@ StreetEasyClone.Routers.AppRouter = Backbone.Router.extend({
 	propertyShow: function(id) {
 		var that = this;
 		var model = new StreetEasyClone.Models.Property({id: id});
-		model.fetch();
-		var view = new StreetEasyClone.Views.PropertyShow({model: model});
-		that.$rootEl.html(view.render().$el);
+		model.fetch({
+			success: function(model, resp) {
+				var view = new StreetEasyClone.Views.PropertyShow({model: model});
+				that.$rootEl.html(view.render().$el);
+				window.scrollTo(0, 0);
+			}
+		});
 	},
 	
 	propertyNew: function() {
 		var model = new StreetEasyClone.Models.Property();
 		var view = new StreetEasyClone.Views.PropertyNew({model: model});
 		this.$rootEl.html(view.render().$el);
+		window.scrollTo(0, 0);
 	},
 	
 	propertyEdit: function(id) {
@@ -56,6 +62,7 @@ StreetEasyClone.Routers.AppRouter = Backbone.Router.extend({
 			success: function(model, resp) {
 				var view = new StreetEasyClone.Views.PropertyEdit({model: model});
 				that.$rootEl.html(view.render().$el);
+				window.scrollTo(0, 0);
 			}
 		});
 	}

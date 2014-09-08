@@ -2,10 +2,11 @@ StreetEasyClone.Views.PropertyNew = Backbone.View.extend({
 	template: JST["templates/property_form"],
 	
 	events: {
-		"click .add-more-photos-button": "createPropertyAndMore",
+		"click .add-more-photos-button": "addMorePhotos",
 		"click .add-property-button": "createProperty",
 		"change #main-photo-upload": "handleFiles",
-		"submit .new-property-form": "preventDefaultFormSubmission"
+		"submit .new-property-form": "preventDefaultFormSubmission",
+		"click .main-photo-button": "uploadMainPhoto"
 	},
 	
 	render: function() {
@@ -20,7 +21,7 @@ StreetEasyClone.Views.PropertyNew = Backbone.View.extend({
 		console.log(files.length);
 		
 		var preview = document.getElementById("main-photo-container");
-		var oldChild = document.getElementById("main-photo-default");
+		var oldChild = $(".current-image")[0];
 		
 		for(var i = 0; i < files.length; i++) {
 			var file = files[i];
@@ -32,6 +33,7 @@ StreetEasyClone.Views.PropertyNew = Backbone.View.extend({
 		
 			var img = document.createElement("img");
 			img.classList.add("main-photo-preview");
+			img.classList.add("current-image");
 			img.file = file;
 			
 			preview.replaceChild(img, oldChild);
@@ -50,6 +52,8 @@ StreetEasyClone.Views.PropertyNew = Backbone.View.extend({
 	
 	createProperty: function(event) {
 		event.preventDefault();
+		
+		$(event.currentTarget).prop("disabled", true);
 
 		var formData = $(".new-property-form").serializeJSON();
 		
@@ -65,7 +69,7 @@ StreetEasyClone.Views.PropertyNew = Backbone.View.extend({
 		});
 	},
 	
-	createPropertyAndMore: function(event) {
+	addMorePhotos: function(event) {
 		event.preventDefault();
 		
 		var formData = $(".new-property-form").serializeJSON();
@@ -88,6 +92,10 @@ StreetEasyClone.Views.PropertyNew = Backbone.View.extend({
 		// 		console.log("There was an error");
 		// 	}
 		// });
+	},
+	
+	uploadMainPhoto: function (event) {
+		$("#main-photo-upload").click();
 	},
 	
 	preventDefaultFormSubmission: function(event) {

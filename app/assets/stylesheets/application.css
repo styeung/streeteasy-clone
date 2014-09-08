@@ -56,6 +56,11 @@ button:focus {
 	outline: none;
 }
 
+button:hover {
+	cursor: pointer;
+	background-color: #00669d;
+}
+
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button{
 	-webkit-appearance: none;
@@ -176,6 +181,7 @@ a.logo-link {
 .main {
 	width: 980px;
 	margin: auto;
+	padding-bottom: 80px;
 }
 
 .form-main {
@@ -369,7 +375,8 @@ div.map-view#map {
 	content: "★ SAVE";
 }
 
-.already-saved-button {
+.save-button:disabled {
+	cursor: default;
 	width: 72px;
 	height: 24px;
 	border: 1px solid #bbb;
@@ -379,7 +386,7 @@ div.map-view#map {
 	color: #bbb;
 }
 
-.already-saved-button:after {
+.save-button:disabled:after {
 	content: "SAVED";
 }
 
@@ -669,6 +676,20 @@ a.ellipsis {
 	font-size: 13px;
 }
 
+.add-property-button:after {
+	content: "Submit without Photos";
+}
+
+.add-property-button:disabled {
+	cursor: default;
+	color: #bbb;
+	background-color: #eee;
+}
+
+.add-property-button:disabled:after {
+	content: "Saving ...";
+}
+
 .delete-cover {
 	display: block;
 	position: absolute;
@@ -890,5 +911,96 @@ a.ellipsis {
 .form-button-container {
 	margin: auto;
 	width: 980px;
-	padding: 0 310px;
+	padding: 20px 310px;
+}
+
+.#image-container {
+	width: 989px;
+	margin: auto;
+}
+
+.image-list img {
+	margin: 10px 13px 10px 13px;
+}
+
+.image-upload {
+	display: none;
+}
+
+.add-images-button {
+	width: 170px;
+	height: 110px;
+	margin: 10px 13px 10px 13px;
+	border: 2px dashed #888;
+	background-color: #eee;
+	font-size: 14px;
+	color: #888;
+}
+
+.add-images-button:hover {
+	cursor: pointer;
+	background-color: #aaa;
+	color: white;
+}
+
+.additional-photos-form-container {
+	width: 980px;
+	margin: auto;
+	text-align: center;
+}
+
+.save-all-button {
+	width: 180px;
+	height: 38px;
+	padding: 7px;
+	color: white;
+	background-color: #0080c6;
+	font-size: 13px;
+}
+
+.main-photo-button-container {
+	padding: 10px 0;
+}
+
+#main-photo-upload {
+	display: none;
+}
+
+.main-photo-button {
+	width: 180px;
+	height: 38px;
+	padding: 7px;
+	color: white;
+	background-color: #0080c6;
+	font-size: 13px;
+}
+
+.form-page-header {
+	padding-bottom: 20px;
+}
+
+.uploaded-photos-count {
+	display: none;
+	padding: 10px 0;
+}
+
+.uploaded-photos-count.active {
+	display: block;
+}
+
+
+.leaflet-popup-content {
+	width: 240px;
+}
+
+.leaflet-popup-content img {
+	display: block;
+	width: 180px;
+	height: auto;
+	margin: auto;
+}
+
+.leaflet-popup-content h3 {
+	text-align: center;
+	text-transform: capitalize;
 }

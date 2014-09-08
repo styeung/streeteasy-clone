@@ -2,7 +2,6 @@ StreetEasyClone.Views.PropertyShow = Backbone.View.extend({
 	template: JST['templates/property_show'],
 	
 	initialize: function () {
-		this.listenTo(this.model, "sync", this.render);
 	},
 	
 	events: {
@@ -11,8 +10,8 @@ StreetEasyClone.Views.PropertyShow = Backbone.View.extend({
 	
 	render: function() {
 		var property = this.model
+
 		var content = this.template({property: property});
-		
 		this.$el.html(content);
 		
 		var albumPhotosView = new StreetEasyClone.Views.AlbumPhotosView({ collection: property.album_photos(), main_photo_url: property.escape("property_photo_url") });
@@ -26,11 +25,13 @@ StreetEasyClone.Views.PropertyShow = Backbone.View.extend({
 	
 	saveListing: function(event) {
 		var that = this;
+		// $(event.currentTarget).attr("class", "already-saved-button");
+		$(event.currentTarget).prop("disabled", true);
+		
 		this.model.save({"following_user_id": StreetEasyClone.currentUser}, {
 			patch: true,
 			success: function(model, response) {
-				$(event.currentTarget).attr("class", "already-saved-button");
-				$(event.currentTarget).prop("disabled", true);
+				
 			}
 		});
 	}

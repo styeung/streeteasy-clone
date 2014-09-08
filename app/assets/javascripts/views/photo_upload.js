@@ -8,17 +8,23 @@ StreetEasyClone.Views.PhotoUpload = Backbone.View.extend({
 		"mouseleave .delete-cover": "removeDeleteButton",
 		"mouseenter .additional-photo-preview": "addDeleteButton",
 		"mouseleave .delete-cover": "removeDeleteButton",
-		"click .delete-cover": "removePhoto"
+		"click .delete-cover": "removePhoto",
+		"click .add-images-button": "uploadPhoto"
 	},
 	
 	initialize: function(event) {
 		this.toBeRemoved = [];
+		this.uploadedPhotosCount = 0;
+		this.listenTo(this.model.album_photos(), "add", this.showUploadingStatus);
 	},
 	
 	render: function() {
 		var that = this;
-		var content = this.template();
+		var content = this.template({uploadedPhotosCount: this.uploadedPhotosCount});
 		this.$el.html(content);
+		
+		var $addImagesButton = $("<li><button class='add-images-button'>⬆ Upload More Images</button><li>");
+		this.$(".image-list").append($addImagesButton);
 
 		var album_photos = this.model.album_photos();
 		if(album_photos.length > 0) {
@@ -27,8 +33,11 @@ StreetEasyClone.Views.PhotoUpload = Backbone.View.extend({
 			
 				$image.attr("src", album_photo.escape("photo_url"));
 				$image.attr("data-id", album_photo.escape("id"));
+				
+				var $listItem = $("<li></li>");
+				$listItem.append($image);
 
-				that.$("#image-container").append($image);
+				that.$(".image-list").prepend($listItem);
 			});
 		}
 
@@ -36,7 +45,9 @@ StreetEasyClone.Views.PhotoUpload = Backbone.View.extend({
 	},
 	
 	handleAdditionalFiles: function(event) {
-		var preview = document.getElementById("image-container");
+		// var preview = document.getElementById("image-container");
+		var preview = $(".image-list");
+		console.log("preview", preview)
 		var files = event.currentTarget.files;
 		
 		for(var i = 0; i < files.length; i++) {
@@ -52,7 +63,11 @@ StreetEasyClone.Views.PhotoUpload = Backbone.View.extend({
 			img.file = file;
 			$(img).attr("data-id", "temp_" + i );
 			
-			preview.appendChild(img);
+			var $listItem = $("<li></li>");
+			$listItem.append($(img));
+			preview.prepend($listItem);
+			
+			// preview.appendChild(img);
 			
 			var reader = new FileReader();
 			reader.onload = (function(aImg) { 
@@ -71,24 +86,43 @@ StreetEasyClone.Views.PhotoUpload = Backbone.View.extend({
 		
 		property.save(null, {
 			success: function(model_pre, response, options) {
+				
 				var imgs = document.querySelectorAll(".additional-photo-preview");
 				
 				for(var i = 0; i < that.toBeRemoved.length; i++) {
 					console.log(property.album_photos().get(that.toBeRemoved[i]));
-					property.album_photos().get(that.toBeRemoved[i]).destroy({
-						success: function(model, response) {
-							console.log("model " + model.id + " destroyed");
-						}
-					});
+					
+					if(i === (that.toBeRemoved.length - 1) && imgs.length === 0) {
+						property.album_photos().get(that.toBeRemoved[i]).destroy({
+							success: function(model, response) {
+								console.log("model " + model.id + " destroyed");
+								StreetEasyClone.router.navigate("property/" + property.id, {trigger: true});
+							}
+						});
+					}
+					else {
+						property.album_photos().get(that.toBeRemoved[i]).destroy({
+							success: function(model, response) {
+								console.log("model " + model.id + " destroyed");
+							}
+						});
+					}
+					
 				}
 		
 				for(var i = 0; i < imgs.length; i++) {
+					if(i === 0) {
+						$(".uploaded-photos-count").toggleClass("active");
+					}
 					if(i < imgs.length - 1) {
 						property.album_photos().create({
 							"property_id": property.id,
 							"photo": imgs[i].src
 						}, {
 							success: function(model, resp) {
+								that.uploadedPhotosCount++;
+								
+								$(".uploaded-photos-count").html(that.uploadedPhotosCount + " Photos Uploaded");
 								console.log("photo " + model.id + " saved");
 							},
 							error: function(model, resp) {
@@ -102,6 +136,10 @@ StreetEasyClone.Views.PhotoUpload = Backbone.View.extend({
 							"photo": imgs[i].src
 						}, {
 							success: function(model, resp) {
+								that.uploadedPhotosCount++;
+								
+								$(".uploaded-photos-count").html("All Photos Uploaded");
+								
 								StreetEasyClone.router.navigate("property/" + property.id, {trigger: true});
 							}, 
 							error: function(model, resp) {
@@ -160,6 +198,10 @@ StreetEasyClone.Views.PhotoUpload = Backbone.View.extend({
 // 			}
 // 		}
 		
+	},
+	
+	uploadPhoto: function (event) {
+		$(".image-upload").click();
 	},
 	
 	addDeleteButton: function(event) {

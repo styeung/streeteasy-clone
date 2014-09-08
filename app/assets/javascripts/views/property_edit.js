@@ -2,10 +2,11 @@ StreetEasyClone.Views.PropertyEdit = Backbone.View.extend({
 	template: JST["templates/property_form"],
 	
 	events: {
-		"click .add-more-photos-button": "createPropertyAndMore",
+		"click .add-more-photos-button": "addMorePhotos",
 		"click .add-property-button": "createProperty",
 		"change #main-photo-upload": "handleFiles",
-		"submit .new-property-form": "preventDefaultFormSubmission"
+		"submit .new-property-form": "preventDefaultFormSubmission",
+		"click .main-photo-button": "uploadMainPhoto"
 	},
 	
 	render: function() {
@@ -23,7 +24,7 @@ StreetEasyClone.Views.PropertyEdit = Backbone.View.extend({
 		var files = event.currentTarget.files;
 		
 		var preview = document.getElementById("main-photo-container");
-		var oldChild = document.getElementById("main-photo-default");
+		var oldChild = $(".current-image")[0];
 		
 		console.log(oldChild);
 		
@@ -37,6 +38,7 @@ StreetEasyClone.Views.PropertyEdit = Backbone.View.extend({
 		
 			var img = document.createElement("img");
 			img.classList.add("main-photo-preview");
+			img.classList.add("current-image");
 			img.file = file;
 			
 			preview.replaceChild(img, oldChild);
@@ -55,6 +57,8 @@ StreetEasyClone.Views.PropertyEdit = Backbone.View.extend({
 	
 	createProperty: function(event) {
 		event.preventDefault();
+		
+		$(event.currentTarget).prop("disabled", true);
 
 		var formData = $(".new-property-form").serializeJSON();
 		
@@ -70,25 +74,36 @@ StreetEasyClone.Views.PropertyEdit = Backbone.View.extend({
 		});
 	},
 	
-	createPropertyAndMore: function(event) {
+	addMorePhotos: function(event) {
 		event.preventDefault();
 		
 		var formData = $(".new-property-form").serializeJSON();
-		
 		this.model.set(formData);
 		
-		this.model.save(null, {
-			success: function(model, response, options) {
-				var subView = new StreetEasyClone.Views.PhotoUpload({model: model});
-				$(".additional-photos-container").html(subView.render().$el);
-			},
-			error: function(model, response, options) {
-				console.log("There was an error");
-			}
-		});
+		var subView = new StreetEasyClone.Views.PhotoUpload({model: this.model});
+		$(".additional-photos-container").html(subView.render().$el);
+		
+		
+		// var formData = $(".new-property-form").serializeJSON();
+//
+// 		this.model.set(formData);
+//
+// 		this.model.save(null, {
+// 			success: function(model, response, options) {
+// 				var subView = new StreetEasyClone.Views.PhotoUpload({model: model});
+// 				$(".additional-photos-container").html(subView.render().$el);
+// 			},
+// 			error: function(model, response, options) {
+// 				console.log("There was an error");
+// 			}
+// 		});
 	},
 	
 	preventDefaultFormSubmission: function(event) {
 		event.preventDefault();
+	},
+	
+	uploadMainPhoto: function (event) {
+		$("#main-photo-upload").click();
 	}
 });

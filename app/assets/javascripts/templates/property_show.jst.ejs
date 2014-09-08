@@ -5,10 +5,10 @@
 			<li><a href="#/property/edit/<%= property.escape('id') %>" class="edit-button">Edit this listing</a><li>
 		<% } %>
 		
-		<% if (property.escape("following_users").indexOf(StreetEasyClone.currentUser) === -1) { %>
+		<% if (property.escape("following_users").indexOf(StreetEasyClone.currentUser) !== -1) { %>
+			<li><button class="save-button" disabled><span></span></button></li>
+		<% } else { %>
 			<li><button class="save-button"><span></span></button></li>
-		<% } else {%>
-			<li><button class="already-saved-button" disabled><span></span></button></li>
 		<% } %>
 	<% } %>
 	

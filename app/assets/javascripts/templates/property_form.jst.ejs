@@ -1,23 +1,25 @@
 <% if(action === "new") { %>
-	<h2>Add New Property</h2>
+	<h2 class="form-page-header">Add New Property</h2>
 <% } else if (action === "edit") { %>
-	<h2>Edit Property</h2>
+	<h2 class="form-page-header">Edit Property</h2>
 <% } %>
 
 <form class="new-property-form">
 	<div class="new-form-main group">
 		<div id="main-photo-container">
-			<label>Main Photo</label>
 			<% if(action === "new") { %>
-				<img src="/images/missing_big.png" id="main-photo-default">
+				<img src="/images/missing_big.png" id="main-photo-default" class="current-image">
 			<% } else if (action === "edit") { %>
 				<% if(property.escape("property_photo_url").indexOf("missing") === -1) { %>
-					<img src="<%= property.escape('property_photo_url') %>">
+					<img src="<%= property.escape('property_photo_url') %>" id="main-photo-default" class="current-image">
 				<% } else { %>
-					<img src="/images/missing_big.png" id="main-photo-default">
+					<img src="/images/missing_big.png" id="main-photo-default" class="current-image">
 				<% }%>
 			<% } %>
-			<input type="file" name="property_photo" id="main-photo-upload">
+			<div class="main-photo-button-container">
+				<input type="file" name="property_photo" id="main-photo-upload">
+				<button class="main-photo-button"> + Add/Change Main Photo</button>
+			</div>
 		</div>
 		<div class="right-hand-form">
 			<ul class="group">
@@ -110,7 +112,7 @@
 	</div>
 	<div class="form-button-container">
 		<button class="add-more-photos-button">Add More Photos</button>
-		<button class="add-property-button">Submit Without Photos</button>
+		<button class="add-property-button"><span></span></button>
 	</div>
 </form>
 
@@ -122,9 +124,9 @@
 </div>
 
 <script>
-$(".new-property-form").on("submit", function(event) {
-	event.preventDefault();
-});	
+// $(".new-property-form").on("submit", function(event) {
+// 	event.preventDefault();
+// });
 </script>
 
 
