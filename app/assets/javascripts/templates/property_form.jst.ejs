@@ -40,7 +40,7 @@
 				  <select name="borough" id="borough-select" class="small-input">
 						<option value="">(Choose one)</option>
 						<% for(var i = 0; i < StreetEasyClone.boroughs.length; i++) { %>
-							<% if(property.escape("borough") === StreetEasyClone.boroughs[i]) { %>
+							<% if(property.escape("borough").toLowerCase() === StreetEasyClone.boroughs[i].toLowerCase()) { %>
 								<option value="<%= StreetEasyClone.boroughs[i] %>" Selected>
 									<%= StreetEasyClone.boroughs[i] %>
 								</option>
@@ -57,7 +57,7 @@
 				  <select name="neighborhood" id="neighborhood-select" class="small-input">
 				    <option value="">(Choose one)</option>
 						<% for(var i = 0; i < StreetEasyClone.neighborhoods.length; i++) { %>
-							<% if(property.escape("neighborhood") === StreetEasyClone.neighborhoods[i]) { %>
+							<% if(property.escape("neighborhood").toLowerCase() === StreetEasyClone.neighborhoods[i].toLowerCase()) { %>
 								<option value="<%= StreetEasyClone.neighborhoods[i] %>" Selected>
 									<%= StreetEasyClone.neighborhoods[i] %>
 								</option>
@@ -78,7 +78,7 @@
 	 				  <select name="apt_type" id="apt-type-select" class="small-input">
 	 						<option value="">(Choose one)</option>
 	 						<% for(var i = 0; i < StreetEasyClone.apt_types.length; i++) { %>
-	 							<% if(property.escape("apt_type") === StreetEasyClone.apt_types[i]) { %>
+	 							<% if(property.escape("apt_type").toLowerCase() === StreetEasyClone.apt_types[i].toLowerCase()) { %>
 	 								<option value="<%= StreetEasyClone.apt_types[i] %>" Selected>
 	 									<%= StreetEasyClone.apt_types[i] %>
 	 								</option>

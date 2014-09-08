@@ -43,7 +43,7 @@ StreetEasyClone.Models.Property = Backbone.Model.extend({
 				property: this
 			});
 		}
-		
+				
 		return this._comments;
 	}
 });

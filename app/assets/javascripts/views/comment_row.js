@@ -3,6 +3,10 @@ StreetEasyClone.Views.CommentRow = Backbone.View.extend({
 	
 	tagName: "li",
 	
+	initialize: function() {
+		this.listenTo(this.model, "sync", this.render);
+	},
+	
 	events: {
 		"click .delete-comment": "deleteComment"
 	},

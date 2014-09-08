@@ -16,14 +16,16 @@ StreetEasyClone.Views.CommentNew = Backbone.View.extend({
 	},
 	
 	createComment: function(event) {
+		var that = this;
 		event.preventDefault();
 		var formData = $(event.currentTarget).serializeJSON();
 		this.collection.create(formData, {
 			success: function(model, response, options) {
 				$(event.currentTarget).empty();
-				console.log("model saved", model);
+				that.collection.fetch({
+					reset: true
+				});
 			},
-			wait: true
 		});
 	}
 })

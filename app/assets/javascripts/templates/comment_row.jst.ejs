@@ -1,5 +1,5 @@
 <h5>
-	Posted <abbr class="timeago" title="<%= comment.escape("updated_at") %>"></abbr> by <%= comment.escape("author_email") %>
+	Posted <abbr class="timeago" title="<%= comment.escape("created_at") %>"></abbr> by <%= comment.escape("author_email") %>
 </h5>
 <h4><%= comment.escape("title") %></h4>
 <% if (comment.escape("author_id") === StreetEasyClone.currentUser) {%>

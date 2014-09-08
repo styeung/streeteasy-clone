@@ -1,7 +1,7 @@
 class Api::CommentsController < ApplicationController
 
   def index
-    @comments = Comment.includes(:author).where(property_id: params[:property_id]).order(:created_at)
+    @comments = Comment.includes(:author).where(property_id: params[:property_id]).order("created_at desc")
     
     render :index
   end

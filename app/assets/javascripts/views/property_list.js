@@ -8,7 +8,6 @@ StreetEasyClone.Views.PropertyList = Backbone.View.extend({
 		else if(!StreetEasyClone.searchQuery) {
 			StreetEasyClone.searchQuery = this.getQueryString();
 		}
-		
 	},
 
 	render: function() {
