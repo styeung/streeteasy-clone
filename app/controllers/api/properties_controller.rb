@@ -5,44 +5,48 @@ class Api::PropertiesController < ApplicationController
   wrap_parameters false
     
   def index
-    sql_query = ""
+    if params[:saved] && current_user
+      @properties = current_user.saved_properties
+    else
+      sql_query = ""
     
-    comparator = {
-      apt_type: "=",
-      min_price: ">=",
-      max_price: "<=",
-      beds: "=",
-      baths: ">=",
-    }
+      comparator = {
+        apt_type: "=",
+        min_price: ">=",
+        max_price: "<=",
+        beds: "=",
+        baths: ">=",
+      }
     
-    location_value = nil
-    values_hash = {}
+      location_value = nil
+      values_hash = {}
 
-    search_params.each do |key, value|
-      if !value.empty?
-        if key == "location"
-          location_value = value
-        else
-          values_hash[key.to_sym] = value
-          
-          if !sql_query.empty?
-            sql_query.concat(" AND ")
-          end
-            
-          if key == "min_price" || key == "max_price"
-            sql_query.concat("price #{comparator[key.to_sym]} :#{key}")
+      search_params.each do |key, value|
+        if !value.empty?
+          if key == "location"
+            location_value = value
           else
-            sql_query.concat("#{key} #{comparator[key.to_sym]} :#{key}")
-          end
+            values_hash[key.to_sym] = value
+          
+            if !sql_query.empty?
+              sql_query.concat(" AND ")
+            end
+            
+            if key == "min_price" || key == "max_price"
+              sql_query.concat("price #{comparator[key.to_sym]} :#{key}")
+            else
+              sql_query.concat("#{key} #{comparator[key.to_sym]} :#{key}")
+            end
 
+          end
         end
       end
-    end
     
-    if location_value.nil?
-      @properties = Property.where(sql_query, values_hash).reorder(params[:sort].concat(" NULLS LAST")).page(params[:page]).per(12)
-    else
-      @properties = Property.search(location_value).where(sql_query, values_hash).reorder(params[:sort].concat(" NULLS LAST")).page(params[:page]).per(12)
+      if location_value.nil?
+        @properties = Property.where(sql_query, values_hash).reorder(params[:sort].concat(" NULLS LAST")).page(params[:page]).per(12)
+      else
+        @properties = Property.search(location_value).where(sql_query, values_hash).reorder(params[:sort].concat(" NULLS LAST")).page(params[:page]).per(12)
+      end
     end
 
     render :index
@@ -79,7 +83,7 @@ class Api::PropertiesController < ApplicationController
     if @property
       render :edit
     else
-      render json: "Property id #{params[:id]} does not exist"
+      render json: "Property id #{params[:id]} does not exist", status: 422
     end
   end
 

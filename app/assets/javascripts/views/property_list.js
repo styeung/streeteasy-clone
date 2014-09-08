@@ -1,19 +1,23 @@
 StreetEasyClone.Views.PropertyList = Backbone.View.extend({
 	template: JST["templates/property_list"],
 	
-	initialize: function() {
-		if(!StreetEasyClone.searchQuery) {
+	initialize: function(options) {
+		if(options.savedPage) {
+			this.savedPage = options.savedPage;
+		}
+		else if(!StreetEasyClone.searchQuery) {
 			StreetEasyClone.searchQuery = this.getQueryString();
 		}
+		
 	},
 
 	render: function() {
 		var that = this;
-		var content = this.template({properties: this.collection, count: StreetEasyClone.totalCount, currentPage: this.getCurrentPage()});
+		var content = this.template({properties: this.collection, count: StreetEasyClone.totalCount, currentPage: this.getCurrentPage(), savedPage: this.savedPage});
 		this.$el.html(content);
 
 		this.collection.each(function(property) {
-			var subView = new StreetEasyClone.Views.PropertyRow({model: property});
+			var subView = new StreetEasyClone.Views.PropertyRow({model: property, savedPage: that.savedPage });
 			that.$(".property-list").append(subView.render().$el);
 		});
 		

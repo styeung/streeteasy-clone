@@ -1,7 +1,8 @@
 StreetEasyClone.Views.PropertyRow = Backbone.View.extend({
 	template: JST["templates/property_row"],
 	
-	initialize: function() {
+	initialize: function(options) {
+		this.savedPage = options.savedPage;
 	},
 	
 	tagName: "li",
@@ -19,7 +20,7 @@ StreetEasyClone.Views.PropertyRow = Backbone.View.extend({
 	},
 	
 	render: function() {
-		var content = this.template({property: this.model});
+		var content = this.template({property: this.model, savedPage: this.savedPage });
 		this.$el.html(content);
 		return this;
 		

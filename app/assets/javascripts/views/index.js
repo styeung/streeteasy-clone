@@ -8,7 +8,7 @@ StreetEasyClone.Views.PropertyIndex = Backbone.View.extend({
 	
 	children: [],
 		
-	initialize: function() {
+	initialize: function(options) {
 		if (StreetEasyClone.totalCount) {
 			var count = StreetEasyClone.totalCount;
 		}
@@ -16,23 +16,28 @@ StreetEasyClone.Views.PropertyIndex = Backbone.View.extend({
 			var count = 0;
 		}
 		
-		var content = this.template({properties: this.collection, count: count});
+		if (options.savedPage) {
+			this.savedPage = true;
+		}
+		else {
+			this.savedPage = false;
+		}
+		
+		var content = this.template({properties: this.collection, count: count, savedPage: this.savedPage });
 		this.$el.html(content);
 		
 		this.listenTo(this.collection, "sort", this.render)
 	},
 	
 	render: function() {
-		// var content = this.template({properties: this.collection, sortCriterion: this.sortCriterion, count: this.collection.first().escape("total_count")});
-// 		this.$el.html(content);
 		
 		var activeButton = this.$(".view-switch.active").html();
 		if(activeButton === "LIST") {
-			var subView = new StreetEasyClone.Views.PropertyList({collection: this.collection});
+			var subView = new StreetEasyClone.Views.PropertyList({collection: this.collection, savedPage: this.savedPage });
 			
 		}
 		else if (activeButton === "MAP") {
-			var subView = new StreetEasyClone.Views.PropertyMap({collection: this.collection});
+			var subView = new StreetEasyClone.Views.PropertyMap({collection: this.collection, savedPage: this.savedPage });
 		}
 		
 		this.$(".view-container").html(subView.render().$el);
@@ -49,7 +54,7 @@ StreetEasyClone.Views.PropertyIndex = Backbone.View.extend({
 	
 	sort: function(event) {
 		event.preventDefault();
-		if(StreetEasyClone.totalCount <= 12) {
+		if(this.savedPage || StreetEasyClone.totalCount <= 12) {
 			this.sortOnePage(event);
 		}
 		else {

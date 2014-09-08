@@ -1,10 +1,20 @@
 <div class="search-filter">
-	<% if(count === 0) { %>
-		<h2 class="title">No Properties Found</h2>
-	<% } else if (count === 1) { %>
-		<h2 class="title"><b><%= count %></b> Property Found</h2>
+	<% if(savedPage) { %>
+		<% if(count === 0) { %>
+			<h2 class="title">No Saved Properties</h2>
+		<% } else if (count === 1) { %>
+			<h2 class="title"><b><%= count %></b> Saved Properties</h2>
+		<% } else { %>
+			<h2 class="title"><b><%= count %></b> Saved Properties</h2>
+		<% } %>
 	<% } else { %>
-		<h2 class="title"><b><%= count %></b> Properties Found</h2>
+		<% if(count === 0) { %>
+			<h2 class="title">No Properties Found</h2>
+		<% } else if (count === 1) { %>
+			<h2 class="title"><b><%= count %></b> Property Found</h2>
+		<% } else { %>
+			<h2 class="title"><b><%= count %></b> Properties Found</h2>
+		<% } %>
 	<% } %>
 </div>
 <div class="search-terms">

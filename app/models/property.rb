@@ -9,8 +9,8 @@ class Property < ActiveRecord::Base
   after_validation :geocode
   
   has_attached_file :property_photo, :styles => {
-          :big => "576x400#",
-          :small => "170x110#"
+          :big => "574x385#",
+          :small => "180x113#"
           }, :default_url => "/images/missing_:style.png"
           
   validates_attachment_content_type(

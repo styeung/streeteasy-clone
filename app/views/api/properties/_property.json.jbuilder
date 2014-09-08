@@ -22,7 +22,12 @@ json.following_users property.following_users.pluck(:id)
 
 if properties
   json.property_photo_url asset_path(property.property_photo.url(:small))
-  json.total_count properties.total_count
+  
+  begin
+    json.total_count properties.total_count
+  rescue NoMethodError
+    json.total_count properties.length
+  end
 else
   json.property_photo_url asset_path(property.property_photo.url(:big))
   json.description property.description
