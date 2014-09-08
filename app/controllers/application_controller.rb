@@ -249,7 +249,6 @@ class ApplicationController < ActionController::Base
     {station_name:"14th St - 8th Av",latitude:40.740893,longitude:-74.00169,route_1:"A",route_2:"C",route_3:"E",route_4:"L",route_5:"",route_6:"",route_7:"",route_8:"",route_9:"",route_10:"",route_11:""},
     {station_name:"155th St",latitude:40.830518,longitude:-73.941514,route_1:"C",route_2:"",route_3:"",route_4:"",route_5:"",route_6:"",route_7:"",route_8:"",route_9:"",route_10:"",route_11:""},
     {station_name:"163rd St - Amsterdam Av",latitude:40.836013,longitude:-73.939892,route_1:"C",route_2:"",route_3:"",route_4:"",route_5:"",route_6:"",route_7:"",route_8:"",route_9:"",route_10:"",route_11:""},
-    {station_name:"168th St - Washington Heights",latitude:40.840719,longitude:-73.939561,route_1:"A",route_2:"C",route_3:"",route_4:"",route_5:"",route_6:"",route_7:"",route_8:"",route_9:"",route_10:"",route_11:""},
     {station_name:"175th St",latitude:40.847391,longitude:-73.939704,route_1:"A",route_2:"",route_3:"",route_4:"",route_5:"",route_6:"",route_7:"",route_8:"",route_9:"",route_10:"",route_11:""},
     {station_name:"181st St",latitude:40.851695,longitude:-73.937969,route_1:"A",route_2:"",route_3:"",route_4:"",route_5:"",route_6:"",route_7:"",route_8:"",route_9:"",route_10:"",route_11:""},
     {station_name:"190th St",latitude:40.859022,longitude:-73.93418,route_1:"A",route_2:"",route_3:"",route_4:"",route_5:"",route_6:"",route_7:"",route_8:"",route_9:"",route_10:"",route_11:""},

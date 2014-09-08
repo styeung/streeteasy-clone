@@ -17,8 +17,9 @@ random_description = ""
   random_description.concat(random_sentence.slice(0,1).capitalize + random_sentence.slice(1..-1)).concat(". ")
 end
 
+
 properties = Property.create([{owner_id:2,apt_type:"Co-op".downcase,price:399000,neighborhood:"Lincoln Square".downcase,borough:"Manhattan".downcase,address:"243 West End Avenue".downcase,unit:"#1212".downcase,zip:"10023".downcase,beds:0,baths:1,description: random_description},
-{owner_id:1,apt_type:"Townhouse".downcase,price:1500000,neighborhood:"Washington Heights".downcase,borough:"Manhattan".downcase,address:"18 Sylvan Terrace".downcase,unit:"".downcase,zip:"10032".downcase,sq_ft:1425,beds:4,baths:3,description: random_description},
+{owner_id:1,property_photo:File.new("#{Rails.root}/public/images/nyc7.jpg"),apt_type:"Townhouse".downcase,price:1500000,neighborhood:"Washington Heights".downcase,borough:"Manhattan".downcase,address:"18 Sylvan Terrace".downcase,unit:"".downcase,zip:"10032".downcase,sq_ft:1425,beds:4,baths:3,description: random_description},
 {owner_id:2,apt_type:"Co-op".downcase,price:709000,neighborhood:"Lenox Hill".downcase,borough:"Manhattan".downcase,address:"345 E 69TH ST.".downcase,unit:"#15G".downcase,zip:"10021".downcase,beds:1,baths:1,description: random_description},
 {owner_id:1,apt_type:"Condo".downcase,price:26900000,neighborhood:"Central Park South".downcase,borough:"Manhattan".downcase,address:"1 Central Park South".downcase,unit:"1707-1807".downcase,zip:"10019".downcase,sq_ft:4368,beds:4,baths:4,description: random_description},
 {owner_id:1,apt_type:"Condo".downcase,price:17950000,neighborhood:"Central Park South".downcase,borough:"Manhattan".downcase,address:"1 Central Park South".downcase,unit:"#1707".downcase,zip:"10019".downcase,sq_ft:2975,beds:3,baths:3,description: random_description},
@@ -74,8 +75,7 @@ properties = Property.create([{owner_id:2,apt_type:"Co-op".downcase,price:399000
 {owner_id:2,apt_type:"Co-op".downcase,price:412000,neighborhood:"Central Harlem".downcase,borough:"Manhattan".downcase,address:"92 Saint Nicholas Avenue".downcase,unit:"#7H".downcase,zip:"10026".downcase,beds:3,baths:1,description: random_description},
 {owner_id:1,apt_type:"Condo".downcase,price:995000,neighborhood:"Upper East Side".downcase,borough:"Manhattan".downcase,address:"22 East 82nd Street".downcase,unit:"#C".downcase,zip:"10028".downcase,sq_ft:900,beds:1,baths:1,description: random_description},
 {owner_id:1,apt_type:"Condo".downcase,price:850000,neighborhood:"Upper East Side".downcase,borough:"Manhattan".downcase,address:"22 East 82nd Street".downcase,unit:"#C2".downcase,zip:"10028".downcase,sq_ft:300,beds:0,baths:1,description: random_description},
-{owner_id:1,apt_type:"Condo".downcase,price:1420000,neighborhood:"Gramercy Park".downcase,borough:"Manhattan".downcase,address:"
-East 23rd Street".downcase,unit:"#9A".downcase,zip:"10010".downcase,sq_ft:733,beds:1,baths:1,description: random_description},
+{owner_id:1,apt_type:"Condo".downcase,price:1420000,neighborhood:"Gramercy Park".downcase,borough:"Manhattan".downcase,address:"East 23rd Street".downcase,unit:"#9A".downcase,zip:"10010".downcase,sq_ft:733,beds:1,baths:1,description: random_description},
 {owner_id:1,apt_type:"Condo".downcase,price:1850000,neighborhood:"Lower East Side".downcase,borough:"Manhattan".downcase,address:"38 Delancey Street".downcase,unit:"#8B".downcase,zip:"10002".downcase,sq_ft:1002,beds:2,baths:2,description: random_description},
 {owner_id:2,apt_type:"Co-op".downcase,price:349000,neighborhood:"Upper West Side".downcase,borough:"Manhattan".downcase,address:"205 West 95th Street".downcase,unit:"#4G".downcase,zip:"10025".downcase,beds:0,baths:1,description: random_description},
 {owner_id:2,apt_type:"Co-op".downcase,price:820000,neighborhood:"Flatiron".downcase,borough:"Manhattan".downcase,address:"7 East 14th Street".downcase,unit:"#1108".downcase,zip:"10003".downcase,beds:1,baths:1,description: random_description},
