@@ -51,7 +51,6 @@ StreetEasyClone.Views.PropertyRow = Backbone.View.extend({
 			success: function() {
 				that.collection.remove(that.model);
 				StreetEasyClone.totalCount = that.collection.length;
-				console.log("totalLength:", that.collection.length);
 				that.indexView.render();
 			}
 		})

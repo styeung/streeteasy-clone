@@ -53,7 +53,6 @@ StreetEasyClone.Views.PropertyIndex = Backbone.View.extend({
 	switchView: function(event) {
 		if(!$(event.currentTarget).hasClass("active")) {
 			StreetEasyClone.currentView = $(event.currentTarget).attr("data-id");
-			// $(".view-switch-container").find(".view-switch").toggleClass("active");
 			this.render();
 		}
 	},

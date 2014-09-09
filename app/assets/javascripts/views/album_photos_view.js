@@ -16,7 +16,6 @@ StreetEasyClone.Views.AlbumPhotosView = Backbone.View.extend({
 	},
 	
 	switchPhoto: function(event) {
-		console.log("here");
 		$(".thumbnail-container li").removeClass("active")
 		$(event.currentTarget).parent().toggleClass("active");
 		$(".displayed_image").attr("src", $(event.currentTarget).attr("src"));

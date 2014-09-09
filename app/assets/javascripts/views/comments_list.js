@@ -9,9 +9,7 @@ StreetEasyClone.Views.CommentsList = Backbone.View.extend({
 			
 		var content = this.template({properties: this.collection});
 		this.$el.html(content);
-		console.log("before sort", this.collection);
 		this.collection.sort();
-		console.log("after sort", this.collection);
 		
 		this.collection.each(function(comment) {
 			var rowView = new StreetEasyClone.Views.CommentRow({model: comment});

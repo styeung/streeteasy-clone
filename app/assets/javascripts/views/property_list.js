@@ -47,7 +47,6 @@ StreetEasyClone.Views.PropertyList = Backbone.View.extend({
 		}
 		else {
 			if (this.savedPage) {
-				console.log("here 1")
 				return false;
 			}
 			else {

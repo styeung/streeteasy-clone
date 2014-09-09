@@ -45,9 +45,7 @@ StreetEasyClone.Views.PhotoUpload = Backbone.View.extend({
 	},
 	
 	handleAdditionalFiles: function(event) {
-		// var preview = document.getElementById("image-container");
 		var preview = $(".image-list");
-		console.log("preview", preview)
 		var files = event.currentTarget.files;
 		
 		for(var i = 0; i < files.length; i++) {
@@ -90,12 +88,10 @@ StreetEasyClone.Views.PhotoUpload = Backbone.View.extend({
 				var imgs = document.querySelectorAll(".additional-photo-preview");
 				
 				for(var i = 0; i < that.toBeRemoved.length; i++) {
-					console.log(property.album_photos().get(that.toBeRemoved[i]));
 					
 					if(i === (that.toBeRemoved.length - 1) && imgs.length === 0) {
 						property.album_photos().get(that.toBeRemoved[i]).destroy({
 							success: function(model, response) {
-								console.log("model " + model.id + " destroyed");
 								StreetEasyClone.router.navigate("property/" + property.id, {trigger: true});
 							}
 						});
@@ -103,7 +99,6 @@ StreetEasyClone.Views.PhotoUpload = Backbone.View.extend({
 					else {
 						property.album_photos().get(that.toBeRemoved[i]).destroy({
 							success: function(model, response) {
-								console.log("model " + model.id + " destroyed");
 							}
 						});
 					}
@@ -123,10 +118,8 @@ StreetEasyClone.Views.PhotoUpload = Backbone.View.extend({
 								that.uploadedPhotosCount++;
 								
 								$(".uploaded-photos-count").html(that.uploadedPhotosCount + " Photos Uploaded");
-								console.log("photo " + model.id + " saved");
 							},
 							error: function(model, resp) {
-								console.log(imgs[i].name + "Not saved")
 							}
 						});
 					}
@@ -143,61 +136,14 @@ StreetEasyClone.Views.PhotoUpload = Backbone.View.extend({
 								StreetEasyClone.router.navigate("property/" + property.id, {trigger: true});
 							}, 
 							error: function(model, resp) {
-								console.log(imgs[i].name + " Not saved");
 							}
 						});
 					}
 				}
 			},
 			error: function(model, response, options) {
-				console.log("There was an error");
 			}
 		});
-		
-		// event.preventDefault();
-// 		var that = this;
-// 		var property = this.model;
-//
-// 		var imgs = document.querySelectorAll(".additional-photo-preview");
-//
-// 		for(var i = 0; i < this.toBeRemoved.length; i++) {
-// 			console.log(property.album_photos().get(this.toBeRemoved[i]));
-// 			property.album_photos().get(this.toBeRemoved[i]).destroy({
-// 				success: function(model, response) {
-// 					console.log("model " + model.id + " destroyed");
-// 				}
-// 			});
-// 		}
-//
-// 		for(var i = 0; i < imgs.length; i++) {
-// 			if(i < imgs.length - 1) {
-// 				property.album_photos().create({
-// 					"property_id": property.id,
-// 					"photo": imgs[i].src
-// 				}, {
-// 					success: function(model, resp) {
-// 						console.log("photo " + model.id + " saved");
-// 					},
-// 					error: function(model, resp) {
-// 						console.log(imgs[i].name + "Not saved")
-// 					}
-// 				});
-// 			}
-// 			else if (i === imgs.length - 1) {
-// 				property.album_photos().create({
-// 					"property_id": property.id,
-// 					"photo": imgs[i].src
-// 				}, {
-// 					success: function(model, resp) {
-// 						StreetEasyClone.router.navigate("property/" + property.id, {trigger: true});
-// 					},
-// 					error: function(model, resp) {
-// 						console.log(imgs[i].name + " Not saved");
-// 					}
-// 				});
-// 			}
-// 		}
-		
 	},
 	
 	uploadPhoto: function (event) {
@@ -210,8 +156,6 @@ StreetEasyClone.Views.PhotoUpload = Backbone.View.extend({
 		var topPos = position["top"];
 		var dataId = $(event.currentTarget).attr("data-id");
 		var $div = $("<div class='delete-cover' data-parent-id='"+ dataId + "' style='left: " + leftPos + "px; top: " + topPos + "px'>Delete Photo</div>");
-		// var $div = $("<div class='delete-cover' style='left: 220px; top: -93px'></div>");
-		// var $div = $("<div class='delete-cover' style='left:" + leftPos + "; top:" + topPos + "'></div>");
 		$(event.currentTarget).after($div);
 	},
 	

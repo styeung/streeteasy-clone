@@ -26,8 +26,6 @@ StreetEasyClone.Views.PropertyEdit = Backbone.View.extend({
 		var preview = document.getElementById("main-photo-container");
 		var oldChild = $(".current-image")[0];
 		
-		console.log(oldChild);
-		
 		for(var i = 0; i < files.length; i++) {
 			var file = files[i];
 			var imageType = /image.*/;
@@ -69,7 +67,7 @@ StreetEasyClone.Views.PropertyEdit = Backbone.View.extend({
 				StreetEasyClone.router.navigate("property/" + model.id, {trigger: true});
 			},
 			error: function(model, response, options) {
-				console.log("There was an error");
+
 			}
 		});
 	},
@@ -83,20 +81,6 @@ StreetEasyClone.Views.PropertyEdit = Backbone.View.extend({
 		var subView = new StreetEasyClone.Views.PhotoUpload({model: this.model});
 		$(".additional-photos-container").html(subView.render().$el);
 		
-		
-		// var formData = $(".new-property-form").serializeJSON();
-//
-// 		this.model.set(formData);
-//
-// 		this.model.save(null, {
-// 			success: function(model, response, options) {
-// 				var subView = new StreetEasyClone.Views.PhotoUpload({model: model});
-// 				$(".additional-photos-container").html(subView.render().$el);
-// 			},
-// 			error: function(model, response, options) {
-// 				console.log("There was an error");
-// 			}
-// 		});
 	},
 	
 	preventDefaultFormSubmission: function(event) {

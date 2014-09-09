@@ -18,7 +18,6 @@ StreetEasyClone.Views.PropertyNew = Backbone.View.extend({
 	handleFiles: function(event) {
 		var that = this;
 		var files = event.currentTarget.files;
-		console.log(files.length);
 		
 		var preview = document.getElementById("main-photo-container");
 		var oldChild = $(".current-image")[0];
