@@ -22,7 +22,7 @@ Rails.application.routes.draw do
       resources :comments, except: [:new, :edit]
     end
     
-    delete "properties/remove_saved", to: "properties#remove_saved"
+    post "properties/remove_saved", to: "properties#remove_saved"
       
     # get "/auth/check_current_user", to: "auth#check_current_user"
   end

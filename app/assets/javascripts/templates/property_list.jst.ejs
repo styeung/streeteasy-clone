@@ -7,12 +7,12 @@
 	
 			<% var ellipsisLeft = false; var ellipsisRight = false; %>
 
-			<% for(var i = 0; i < Math.floor(count/12) + 1; i++) { %>
+			<% for(var i = 0; i < Math.ceil(count/12); i++) { %>
 				<% if ((i + 1) === currentPage) { %>
 					<a href="#" class="property-page-link disabled-link"><%= i + 1 %></a>
 				<% } else if ((i + 1) === 1){ %>
 					<a href="#properties/<%= StreetEasyClone.searchQuery %>&page=<%= i + 1 %>" class="property-page-link"><%= i + 1 %></a>
-				<% } else if ((i + 1) === Math.floor(count/12) + 1){ %>
+				<% } else if ((i + 1) === Math.ceil(count/12)){ %>
 					<a href="#properties/<%= StreetEasyClone.searchQuery %>&page=<%= i + 1 %>" class="property-page-link"><%= i + 1 %></a>
 				<% } else if ((i + 1) >= currentPage - 2 && (i + 1) <= currentPage + 2){ %>
 					<a href="#properties/<%= StreetEasyClone.searchQuery %>&page=<%= i + 1 %>" class="property-page-link"><%= i + 1 %></a>
@@ -25,7 +25,7 @@
 				<% } %>
 			<% } %>
 	
-			<% if(currentPage < count/12) { %>
+			<% if(currentPage < Math.ceil(count/12)) { %>
 				<a href="#properties/<%= StreetEasyClone.searchQuery %>&page=<%= currentPage + 1 %>" class="property-page-link">►</a>
 			<% } %>
 		<% } %>
@@ -35,35 +35,35 @@
 	
 		</ul>
 		<div class="page-link-container">
-		<% if(!savedPage) { %>
-			<% if(currentPage > 1) { %>
-				<a href="#properties/<%= StreetEasyClone.searchQuery %>&page=<%= currentPage - 1 %>" class="property-page-link">◄</a>
-			<% } %>
+			<% if(!savedPage) { %>
+				<% if(currentPage > 1) { %>
+					<a href="#properties/<%= StreetEasyClone.searchQuery %>&page=<%= currentPage - 1 %>" class="property-page-link">◄</a>
+				<% } %>
 	
-			<% var ellipsisLeft = false; var ellipsisRight = false; %>
+				<% var ellipsisLeft = false; var ellipsisRight = false; %>
 
-			<% for(var i = 0; i < Math.floor(count/12) + 1; i++) { %>
-				<% if ((i + 1) === currentPage) { %>
-					<a href="#" class="property-page-link disabled-link"><%= i + 1 %></a>
-				<% } else if ((i + 1) === 1){ %>
-					<a href="#properties/<%= StreetEasyClone.searchQuery %>&page=<%= i + 1 %>" class="property-page-link"><%= i + 1 %></a>
-				<% } else if ((i + 1) === Math.floor(count/12) + 1){ %>
-					<a href="#properties/<%= StreetEasyClone.searchQuery %>&page=<%= i + 1 %>" class="property-page-link"><%= i + 1 %></a>
-				<% } else if ((i + 1) >= currentPage - 2 && (i + 1) <= currentPage + 2){ %>
-					<a href="#properties/<%= StreetEasyClone.searchQuery %>&page=<%= i + 1 %>" class="property-page-link"><%= i + 1 %></a>
-				<% } else if ((i + 1) < currentPage && !ellipsisLeft){ %>
-					<a href="#" class="disabled-link ellipsis">···</a>
-					<% ellipsisLeft = true; %>
-				<% } else if ((i + 1) > currentPage && !ellipsisRight){ %>
-					<a href="#" class="disabled-link ellipsis">···</a>
-					<% ellipsisRight = true; %>
+				<% for(var i = 0; i < Math.ceil(count/12); i++) { %>
+					<% if ((i + 1) === currentPage) { %>
+						<a href="#" class="property-page-link disabled-link"><%= i + 1 %></a>
+					<% } else if ((i + 1) === 1){ %>
+						<a href="#properties/<%= StreetEasyClone.searchQuery %>&page=<%= i + 1 %>" class="property-page-link"><%= i + 1 %></a>
+					<% } else if ((i + 1) === Math.ceil(count/12)){ %>
+						<a href="#properties/<%= StreetEasyClone.searchQuery %>&page=<%= i + 1 %>" class="property-page-link"><%= i + 1 %></a>
+					<% } else if ((i + 1) >= currentPage - 2 && (i + 1) <= currentPage + 2){ %>
+						<a href="#properties/<%= StreetEasyClone.searchQuery %>&page=<%= i + 1 %>" class="property-page-link"><%= i + 1 %></a>
+					<% } else if ((i + 1) < currentPage && !ellipsisLeft){ %>
+						<a href="#" class="disabled-link ellipsis">···</a>
+						<% ellipsisLeft = true; %>
+					<% } else if ((i + 1) > currentPage && !ellipsisRight){ %>
+						<a href="#" class="disabled-link ellipsis">···</a>
+						<% ellipsisRight = true; %>
+					<% } %>
+				<% } %>
+	
+				<% if(currentPage < Math.ceil(count/12)) { %>
+					<a href="#properties/<%= StreetEasyClone.searchQuery %>&page=<%= currentPage + 1 %>" class="property-page-link">►</a>
 				<% } %>
 			<% } %>
-	
-			<% if(currentPage < count/12) { %>
-				<a href="#properties/<%= StreetEasyClone.searchQuery %>&page=<%= currentPage + 1 %>" class="property-page-link">►</a>
-			<% } %>
-		<% } %>
 		</div>
 	</div>
 

@@ -23,6 +23,7 @@ StreetEasyClone.Routers.AppRouter = Backbone.Router.extend({
 	},
 	
 	savedProperties: function() {
+		StreetEasyClone.currentPageUrl = window.location.href;
 		var that = this;
 		this.properties.fetch({
 			data: "saved=true",

@@ -27,9 +27,18 @@ StreetEasyClone.Views.PropertyIndex = Backbone.View.extend({
 	},
 	
 	render: function() {
+		if(!StreetEasyClone.currentView) {
+			StreetEasyClone.currentView = "list"
+		}
+		
+		var content = this.template({properties: this.collection, count: StreetEasyClone.totalCount, savedPage: this.savedPage });
+		this.$el.html(content);
+		
+		this.$("button[data-id='"+StreetEasyClone.currentView + "']").toggleClass("active");
+		
 		var activeButton = this.$(".view-switch.active").html();
 		if(activeButton === "LIST") {
-			var subView = new StreetEasyClone.Views.PropertyList({collection: this.collection, savedPage: this.savedPage });
+			var subView = new StreetEasyClone.Views.PropertyList({collection: this.collection, savedPage: this.savedPage, indexView: this });
 			
 		}
 		else if (activeButton === "MAP") {
@@ -43,7 +52,8 @@ StreetEasyClone.Views.PropertyIndex = Backbone.View.extend({
 	
 	switchView: function(event) {
 		if(!$(event.currentTarget).hasClass("active")) {
-			$(".view-switch-container").find(".view-switch").toggleClass("active");
+			StreetEasyClone.currentView = $(event.currentTarget).attr("data-id");
+			// $(".view-switch-container").find(".view-switch").toggleClass("active");
 			this.render();
 		}
 	},

@@ -9,33 +9,33 @@ StreetEasyClone.Views.PropertyList = Backbone.View.extend({
 			StreetEasyClone.searchQuery = this.getQueryString();
 		}
 		
+		this.indexView = options.indexView;
 		// this.listenTo(this.collection, "remove", this.render);
 	},
 
 	render: function() {
 		var that = this;
-		console.log("currentPageUrl", StreetEasyClone.currentPageUrl);
-		console.log("currentPage:", this.getCurrentPage());
 		
 		var content = this.template({properties: this.collection, count: StreetEasyClone.totalCount, currentPage: this.getCurrentPage(), savedPage: this.savedPage});
 		this.$el.html(content);
 
 		this.collection.each(function(property) {
-			var subView = new StreetEasyClone.Views.PropertyRow({collection: that.collection, model: property, savedPage: that.savedPage });
+			var subView = new StreetEasyClone.Views.PropertyRow({collection: that.collection, model: property, savedPage: that.savedPage, indexView: that.indexView });
 			that.$(".property-list").append(subView.render().$el);
 		});
 		
 		return this;
 	},
 	
-	getCurrentPage: function() {
-		// var fullUrl = window.location.href;
+	getCurrentPage: function() {	
 		var fullUrl = StreetEasyClone.currentPageUrl;
+		
 		var pageParamStart = fullUrl.indexOf("page=");
 		
 		if (pageParamStart !== -1) {
 			var pageNumberStart = pageParamStart + 5;
-			var nextParamStart = fullUrl.slice(pageNumberStart).indexOf("&")
+			var nextParamStart = fullUrl.slice(pageNumberStart).indexOf("&");
+			
 			if(nextParamStart === -1) {
 				var pageNumberEnd = fullUrl.length;
 			}
@@ -46,7 +46,13 @@ StreetEasyClone.Views.PropertyList = Backbone.View.extend({
 			return parseInt(fullUrl.slice(pageNumberStart, pageNumberEnd));
 		}
 		else {
-			return 1;
+			if (this.savedPage) {
+				console.log("here 1")
+				return false;
+			}
+			else {
+				return 1;
+			}
 		}
 	},
 	

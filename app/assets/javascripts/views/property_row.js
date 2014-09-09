@@ -3,12 +3,15 @@ StreetEasyClone.Views.PropertyRow = Backbone.View.extend({
 	
 	initialize: function(options) {
 		this.savedPage = options.savedPage;
+		this.collection = options.collection;
+		this.indexView = options.indexView;
 	},
 	
 	tagName: "li",
 	
 	events: {
-		"click .save-button": "saveListing"
+		"click .save-button": "saveListing",
+		"click .delete-button": "deletePropertySave"
 	},
 	
 	attributes: function() {
@@ -28,7 +31,6 @@ StreetEasyClone.Views.PropertyRow = Backbone.View.extend({
 	
 	saveListing: function(event) {
 		var that = this;
-		// $(event.currentTarget).attr("class", "already-saved-button");
 		$(event.currentTarget).prop("disabled", true);
 		
 		this.model.save({"following_user_id": StreetEasyClone.currentUser}, {
@@ -43,12 +45,14 @@ StreetEasyClone.Views.PropertyRow = Backbone.View.extend({
 	deletePropertySave: function(event) {
 		var that = this;
 		$.ajax({
-			url: "/properties/removed_saved",
-			type: "DELETE",
+			url: "api/properties/remove_saved",
+			type: "POST",
 			data: "property_id=" + this.model.id,
 			success: function() {
-				console.log("deleted");
 				that.collection.remove(that.model);
+				StreetEasyClone.totalCount = that.collection.length;
+				console.log("totalLength:", that.collection.length);
+				that.indexView.render();
 			}
 		})
 	}

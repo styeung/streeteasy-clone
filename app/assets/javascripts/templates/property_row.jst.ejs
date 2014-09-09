@@ -7,9 +7,7 @@
 		<div class="listing-header-container group">
 			<h3 class="listing-header"><a href="<%= "#/property/" + property.escape("id") %>"><%= property.escape("address") %> <%= property.escape("unit") %></a></h3>
 			<% if(StreetEasyClone.currentUser && savedPage) { %>
-				<% if (property.escape("following_users").indexOf(StreetEasyClone.currentUser) === -1) { %>
 					<button class="delete-button"><span></span></button>
-				<% } %>
 			<% } else if(StreetEasyClone.currentUser && !savedPage) { %>
 				<% if (property.escape("following_users").indexOf(StreetEasyClone.currentUser) === -1) { %>
 					<button class="save-button"><span></span></button>

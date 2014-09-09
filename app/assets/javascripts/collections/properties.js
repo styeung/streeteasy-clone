@@ -4,6 +4,7 @@ StreetEasyClone.Collections.Properties = Backbone.Collection.extend({
 	
 	parse: function(response) {
 		if (response.length > 0) {
+			console.log("totalCount", response[0].total_count);
 			StreetEasyClone.totalCount = response[0].total_count;
 			StreetEasyClone.currentUser = response[0].current_user;
 			for(var i = 0; i < response.length; i++) {

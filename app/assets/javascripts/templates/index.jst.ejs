@@ -18,6 +18,7 @@
 	<% } %>
 </div>
 <div class="search-terms">
+	<% if(!savedPage) { %>
 	<p>
 	<% if(StreetEasyClone.searchQueryJSON && StreetEasyClone.searchQueryJSON.property.location.length > 0) { %>
 		<b>Location:</b> "<%= StreetEasyClone.searchQueryJSON.property.location %>"
@@ -38,13 +39,14 @@
 		<b>Max Price:</b> "<%= StreetEasyClone.convertNumToCurrency(StreetEasyClone.searchQueryJSON.property.max_price) %>"
 	<% } %>
 	</p>
+	<% } %>
 </div>
 <ul class="view-switch-container group">
 	<li>
-	  <button class="view-switch active">LIST</button>
+	  <button data-id="list" class="view-switch">LIST</button>
 	</li>
 	<li>
-	  <button class="view-switch">MAP</button>
+	  <button data-id="map" class="view-switch">MAP</button>
 	</li>
 	<li class="sort-form-container">
 		<form class="sort-form">Sort By:

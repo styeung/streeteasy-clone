@@ -401,6 +401,11 @@ div.map-view#map {
 	color: white;
 }
 
+.delete-button:hover {
+	border: 1px solid #801515;
+	background-color: #801515;
+}
+
 .delete-button:after {
 	content: "REMOVE";
 }

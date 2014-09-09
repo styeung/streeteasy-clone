@@ -148,8 +148,7 @@ class Api::PropertiesController < ApplicationController
   end
 
   def remove_saved
-    @property_save = PropertySave.where("user_id = :current_user_id AND property_id = :property_id", current_user_id: current_user.id, property_id: params[:property_id])
-    
+    @property_save = PropertySave.where("user_id = :current_user_id AND property_id = :property_id", current_user_id: current_user.id, property_id: params[:property_id]).first
     if @property_save.destroy
       render json: @property_save
     else
