@@ -23,7 +23,7 @@
 			  <select name="property[apt_type]" id="search-apt-type" class="small-input">
 					<option value="">Any Type</option>
 					<% StreetEasyClone.apt_types.forEach(function(apt_type){ %>
-						<option value="<%= apt_type %>">
+						<option value="<%= apt_type.toLowerCase() %>">
 							<p><%= apt_type.charAt(0).toUpperCase() + apt_type.slice(1) %></p>
 						</option>
 					<% });%>
