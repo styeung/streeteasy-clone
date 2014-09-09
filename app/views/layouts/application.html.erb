@@ -74,7 +74,7 @@
 					<input type="text" name="user[email]" placeholder="Email Address" class="modal-input" id="signin-email">
 					<input type="password" name="user[password]" placeholder="Password" class="modal-input" id="signin-password">
 					<button class="sign-in-button">SIGN IN</button>
-					<!-- <button class="sign-in-dummy">SIGN IN AS DEMO USER</button> -->
+					<button class="sign-in-dummy">SIGN IN AS DEMO USER</button>
 				</form>
 			</div>
 		</article>
@@ -175,7 +175,7 @@
       }
     });
 		
-		$(".dummy").on("click", function (event) {
+		$(".sign-in-dummy").on("click", function (event) {
 			event.preventDefault();
 			$("#signin-email").val("agent1@gmail.com");
 			$("#signin-password").val("agent1agent1");
