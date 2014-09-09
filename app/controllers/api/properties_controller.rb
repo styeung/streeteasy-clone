@@ -147,5 +147,14 @@ class Api::PropertiesController < ApplicationController
     params.permit(:following_user_id)
   end
 
+  def remove_saved
+    @property_save = PropertySave.where("user_id = :current_user_id AND property_id = :property_id", current_user_id: current_user.id, property_id: params[:property_id])
+    
+    if @property_save.destroy
+      render json: @property_save
+    else
+      render json: @property_save.errors.full_messages, status: 422
+    end
+  end
   
 end

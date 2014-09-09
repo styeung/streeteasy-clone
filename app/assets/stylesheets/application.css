@@ -391,6 +391,20 @@ div.map-view#map {
 	content: "SAVED";
 }
 
+.delete-button {
+	width: 72px;
+	height: 24px;
+	border: 1px solid #B40000;
+	padding: 0 12px;
+	margin: 5px 0;
+	background-color: #B40000;
+	color: white;
+}
+
+.delete-button:after {
+	content: "REMOVE";
+}
+
 .listing-header-container {
 	width: 410px;
 }

@@ -9,11 +9,8 @@ StreetEasyClone.Views.PropertyIndex = Backbone.View.extend({
 	children: [],
 		
 	initialize: function(options) {
-		if (StreetEasyClone.totalCount) {
-			var count = StreetEasyClone.totalCount;
-		}
-		else {
-			var count = 0;
+		if (!StreetEasyClone.totalCount) {
+			StreetEasyClone.totalCount = 0;
 		}
 		
 		if (options.savedPage) {
@@ -23,14 +20,13 @@ StreetEasyClone.Views.PropertyIndex = Backbone.View.extend({
 			this.savedPage = false;
 		}
 		
-		var content = this.template({properties: this.collection, count: count, savedPage: this.savedPage });
+		var content = this.template({properties: this.collection, count: StreetEasyClone.totalCount, savedPage: this.savedPage });
 		this.$el.html(content);
 		
-		// this.listenTo(this.collection, "sort", this.render)
+		this.listenTo(this.collection, "sort", this.render)
 	},
 	
 	render: function() {
-		
 		var activeButton = this.$(".view-switch.active").html();
 		if(activeButton === "LIST") {
 			var subView = new StreetEasyClone.Views.PropertyList({collection: this.collection, savedPage: this.savedPage });
@@ -60,7 +56,6 @@ StreetEasyClone.Views.PropertyIndex = Backbone.View.extend({
 		else {
 			var formData = $(event.currentTarget).serializeJSON();
 			var currentQueryString = StreetEasyClone.searchQuery;
-			console.log("searchQuery", StreetEasyClone.searchQuery)
 			
 			if (formData["sort-criterion"] === "Most Expensive") {
 				StreetEasyClone.sortString = "sort=price+desc";				
@@ -80,16 +75,18 @@ StreetEasyClone.Views.PropertyIndex = Backbone.View.extend({
 			else if (formData["sort-criterion"] === "Least Bedrooms") {
 				StreetEasyClone.sortString = "sort=beds+asc";				
 			}
+						
+			var queryWithSort = currentQueryString + "&" + StreetEasyClone.sortString;
+			this.collection.fetch({
+				data: queryWithSort,
+				success: function(resp) {
+
+				}
+			});
 			
-			StreetEasyClone.router.navigate("properties/" + currentQueryString, {trigger: true});
+			StreetEasyClone.router.navigate("properties/" + currentQueryString);
+			StreetEasyClone.currentPageUrl = currentQueryString;
 			
-			// var queryWithSort = currentQueryString + "&" + StreetEasyClone.sortString;
-// 			this.collection.fetch({
-// 				data: queryWithSort,
-// 				success: function(resp) {
-//
-// 				}
-// 			});
 		}
 		
 	},

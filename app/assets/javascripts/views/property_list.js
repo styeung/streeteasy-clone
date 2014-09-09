@@ -8,15 +8,20 @@ StreetEasyClone.Views.PropertyList = Backbone.View.extend({
 		else if(!StreetEasyClone.searchQuery) {
 			StreetEasyClone.searchQuery = this.getQueryString();
 		}
+		
+		// this.listenTo(this.collection, "remove", this.render);
 	},
 
 	render: function() {
 		var that = this;
+		console.log("currentPageUrl", StreetEasyClone.currentPageUrl);
+		console.log("currentPage:", this.getCurrentPage());
+		
 		var content = this.template({properties: this.collection, count: StreetEasyClone.totalCount, currentPage: this.getCurrentPage(), savedPage: this.savedPage});
 		this.$el.html(content);
 
 		this.collection.each(function(property) {
-			var subView = new StreetEasyClone.Views.PropertyRow({model: property, savedPage: that.savedPage });
+			var subView = new StreetEasyClone.Views.PropertyRow({collection: that.collection, model: property, savedPage: that.savedPage });
 			that.$(".property-list").append(subView.render().$el);
 		});
 		
@@ -24,7 +29,8 @@ StreetEasyClone.Views.PropertyList = Backbone.View.extend({
 	},
 	
 	getCurrentPage: function() {
-		var fullUrl = window.location.href;
+		// var fullUrl = window.location.href;
+		var fullUrl = StreetEasyClone.currentPageUrl;
 		var pageParamStart = fullUrl.indexOf("page=");
 		
 		if (pageParamStart !== -1) {

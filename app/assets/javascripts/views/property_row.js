@@ -38,5 +38,18 @@ StreetEasyClone.Views.PropertyRow = Backbone.View.extend({
 			},
 			wait: true
 		});
+	},
+	
+	deletePropertySave: function(event) {
+		var that = this;
+		$.ajax({
+			url: "/properties/removed_saved",
+			type: "DELETE",
+			data: "property_id=" + this.model.id,
+			success: function() {
+				console.log("deleted");
+				that.collection.remove(that.model);
+			}
+		})
 	}
 });

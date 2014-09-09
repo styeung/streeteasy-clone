@@ -1,37 +1,41 @@
 
-	<ul class="group">
-		<li class="listing-component">
-			<img src="<%= property.escape("property_photo_url") %>">
-		</li>
-		<li class="listing-component">
-			<div class="listing-header-container group">
-				<h3 class="listing-header"><a href="<%= "#/property/" + property.escape("id") %>"><%= property.escape("address") %> <%= property.escape("unit") %></a></h3>
-				<% if(StreetEasyClone.currentUser && !savedPage) { %>
-					<% if (property.escape("following_users").indexOf(StreetEasyClone.currentUser) === -1) { %>
-						<button class="save-button"><span></span></button>
-					<% } else { %>
-						<button class="save-button" disabled><span></span></button>
-					<% } %>
+<ul class="group">
+	<li class="listing-component">
+		<img src="<%= property.escape("property_photo_url") %>">
+	</li>
+	<li class="listing-component">
+		<div class="listing-header-container group">
+			<h3 class="listing-header"><a href="<%= "#/property/" + property.escape("id") %>"><%= property.escape("address") %> <%= property.escape("unit") %></a></h3>
+			<% if(StreetEasyClone.currentUser && savedPage) { %>
+				<% if (property.escape("following_users").indexOf(StreetEasyClone.currentUser) === -1) { %>
+					<button class="delete-button"><span></span></button>
 				<% } %>
-			</div>
-			
-			
-			<ul>
-				<li class="listing-price"><%= property.escape("price_text") %></li>
-				<% if((property.escape("sq_ft") + property.escape("beds") + property.escape("baths")).length > 0) { %>
-					<li class="listing-row">
-						<ul class="group">
-							<% for(var i = 0; i < StreetEasyClone.stat_attributes.length; i++) { %>
-								<% if (property.escape(StreetEasyClone.stat_attributes[i]).length > 0) { %>
-									<li class="listing-text"><p><%= property.escape(StreetEasyClone.stat_attributes[i]) %> <%= StreetEasyClone.stat_attributes[i] %></p></li>
-								<% } %>
+			<% } else if(StreetEasyClone.currentUser && !savedPage) { %>
+				<% if (property.escape("following_users").indexOf(StreetEasyClone.currentUser) === -1) { %>
+					<button class="save-button"><span></span></button>
+				<% } else { %>
+					<button class="save-button" disabled><span></span></button>
+				<% } %>
+			<% } %>
+		</div>
+		
+
+		<ul>
+			<li class="listing-price"><%= property.escape("price_text") %></li>
+			<% if((property.escape("sq_ft") + property.escape("beds") + property.escape("baths")).length > 0) { %>
+				<li class="listing-row">
+					<ul class="group">
+						<% for(var i = 0; i < StreetEasyClone.stat_attributes.length; i++) { %>
+							<% if (property.escape(StreetEasyClone.stat_attributes[i]).length > 0) { %>
+								<li class="listing-text"><p><%= property.escape(StreetEasyClone.stat_attributes[i]) %> <%= StreetEasyClone.stat_attributes[i] %></p></li>
 							<% } %>
-						</ul>
-					</li>
-				<% } %>
-				<% if((property.escape("apt_type") + property.escape("neighborhood") + property.escape("baths")).length > 0) { %>
-					<li class="listing-row listing-text"><%= property.escape("apt_type") %> in <%= property.escape("neighborhood") + ", "%> <%= property.escape("borough") %></li>
-				<% } %>
-			</ul>
-		</li>
-	</ul>
+						<% } %>
+					</ul>
+				</li>
+			<% } %>
+			<% if((property.escape("apt_type") + property.escape("neighborhood") + property.escape("baths")).length > 0) { %>
+				<li class="listing-row listing-text"><%= property.escape("apt_type") %> in <%= property.escape("neighborhood") + ", "%> <%= property.escape("borough") %></li>
+			<% } %>
+		</ul>
+	</li>
+</ul>

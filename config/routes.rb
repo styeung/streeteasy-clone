@@ -21,8 +21,10 @@ Rails.application.routes.draw do
       resources :album_photos, except: [:new, :edit]
       resources :comments, except: [:new, :edit]
     end
+    
+    delete "properties/remove_saved", to: "properties#remove_saved"
       
-    get "/auth/check_current_user", to: "auth#check_current_user"
+    # get "/auth/check_current_user", to: "auth#check_current_user"
   end
 
 end
