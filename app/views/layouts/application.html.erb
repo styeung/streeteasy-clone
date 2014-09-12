@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>AvEasy</title>
+  <title>StreetSimple</title>
   <%= stylesheet_link_tag    'application', media: 'all'%>
   <%= javascript_include_tag 'application'%>
   <%= csrf_meta_tags %>
@@ -22,7 +22,7 @@
 	<div class="nav-settings">
 		<ul class="group">
 			<li>
-				<a href="#" class="settings-link">Sign In / Register</a>
+				<a href="#" class="settings-link">Sign In / Register / <strong>Sign In As Demo User</strong></a>
 			</li>
 		</ul>
 	</div>
@@ -52,6 +52,7 @@
 <div class="main">
 	<%= yield %>
 </div>
+
 
 <% if !signed_in? %>
 	<section id="sign-in-sign-up">
@@ -122,7 +123,7 @@
 
 <script>
 	$(document).ready(function() {
-		
+		StreetEasyClone.isHome = true
 		StreetEasyClone.neighborhoods = JSON.parse($("script#bootstrapped-all-neighborhoods").html());
 		StreetEasyClone.apt_types = JSON.parse($("script#bootstrapped-all-apt-types").html());
 		StreetEasyClone.addresses = JSON.parse($("script#bootstrapped-all-addresses").html());
@@ -181,6 +182,9 @@
 			$("#signin-password").val("agent1agent1");
 			$(".signin-view .sign-in-button").click();
 		});
+		
+		StreetEasyClone.bannerAssetPath = "<%= asset_path('new-york-empire_compressed_original.jpg') %>";
+		
 		
 		
 	});
