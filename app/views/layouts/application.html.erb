@@ -122,6 +122,8 @@
 
 
 <script>
+	StreetEasyClone.bannerAssetPath = "<%= asset_path('new-york-empire_compressed_original.jpg') %>";
+	
 	$(document).ready(function() {
 		StreetEasyClone.isHome = true
 		StreetEasyClone.neighborhoods = JSON.parse($("script#bootstrapped-all-neighborhoods").html());
@@ -183,7 +185,7 @@
 			$(".signin-view .sign-in-button").click();
 		});
 		
-		StreetEasyClone.bannerAssetPath = "<%= asset_path('new-york-empire_compressed_original.jpg') %>";
+		
 		
 		
 		
