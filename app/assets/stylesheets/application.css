@@ -90,6 +90,7 @@ label {
 .banner-image {
 	position: absolute;
 	margin: auto;
+	height: 100%;
 	width: 100%;
 	left: 0;
 	top: 0;
