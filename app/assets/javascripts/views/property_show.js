@@ -3,6 +3,8 @@ StreetEasyClone.Views.PropertyShow = Backbone.View.extend({
 	
 	initialize: function () {
 		this.listenTo(this.model.comments(), "sync", this.renderComments);
+		
+		this.listenToOnce(this.model, "sync", this.render);
 	},
 	
 	events: {
@@ -10,7 +12,8 @@ StreetEasyClone.Views.PropertyShow = Backbone.View.extend({
 	},
 	
 	render: function() {
-		var property = this.model
+		var property = this.model;
+		console.log(property.escape("following_users"));
 
 		var content = this.template({property: property});
 		this.$el.html(content);
@@ -30,7 +33,7 @@ StreetEasyClone.Views.PropertyShow = Backbone.View.extend({
 		this.model.save({"following_user_id": StreetEasyClone.currentUser}, {
 			patch: true,
 			success: function(model, response) {
-				
+
 			}
 		});
 	},

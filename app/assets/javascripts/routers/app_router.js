@@ -44,7 +44,6 @@ StreetEasyClone.Routers.AppRouter = Backbone.Router.extend({
 		this.properties.fetch({
 			data: query + "&" + StreetEasyClone.sortString,
 			success: function(resp) {
-				
 				var view = new StreetEasyClone.Views.PropertyIndex({collection: that.properties});
 				that.$rootEl.html(view.render().$el);
 				window.scrollTo(0, 0);
@@ -57,11 +56,13 @@ StreetEasyClone.Routers.AppRouter = Backbone.Router.extend({
 		var model = new StreetEasyClone.Models.Property({id: id});
 		model.fetch({
 			success: function(model, resp) {
-				var view = new StreetEasyClone.Views.PropertyShow({model: model});
-				that.$rootEl.html(view.render().$el);
-				window.scrollTo(0, 0);
+
 			}
 		});
+		
+		var view = new StreetEasyClone.Views.PropertyShow({model: model});
+		that.$rootEl.html(view.render().$el);
+		window.scrollTo(0, 0);
 	},
 	
 	propertyNew: function() {
