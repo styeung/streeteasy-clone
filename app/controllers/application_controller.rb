@@ -24,7 +24,7 @@ class ApplicationController < ActionController::Base
     return false if !current_user
     
     return false if current_user.id != property.owner_id.to_i
-    
+      
     true
   end
 

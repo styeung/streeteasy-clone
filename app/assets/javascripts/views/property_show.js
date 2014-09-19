@@ -13,7 +13,6 @@ StreetEasyClone.Views.PropertyShow = Backbone.View.extend({
 	
 	render: function() {
 		var property = this.model;
-		console.log(property.escape("following_users"));
 
 		var content = this.template({property: property});
 		this.$el.html(content);
