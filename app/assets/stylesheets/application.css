@@ -17,6 +17,9 @@
  *= require_self
  */
 
+
+
+/* Setting Defaults */
 html, body, header, div, ul, li, h1, h2, h3, h4, h5, p, a, option, br, hr {
 	padding: 0;
 	margin: 0;
@@ -87,6 +90,8 @@ label {
 	display: block;
 }
 
+/* Background Image Styles */
+
 .banner-image {
 	position: absolute;
 	margin: auto;
@@ -110,6 +115,21 @@ label {
 }
 
 
+/* Clear-fix */
+
+.group:after {
+	content: "";
+	display: block;
+	clear:both;
+}
+
+.group > li {
+	float: left;
+}
+
+
+/************ Navigation Bar Styles ************/
+
 .nav {
 	display: block;
 	width: 980px;
@@ -119,16 +139,11 @@ label {
 	border-bottom: 4px solid black;
 }
 
+/* Navigation Bar Logo Styles */
 
 .nav-logo {
 	float: left;
 	display: block;
-}
-
-.group:after {
-	content: "";
-	display: block;
-	clear:both;
 }
 
 .nav-logo li {
@@ -140,10 +155,6 @@ label {
 	background-color: #00669d;
 }
 
-.group > li {
-	float: left;
-}
-
 a.logo-link {
 	color: white;
 }
@@ -153,12 +164,13 @@ a.logo-link {
 	font-weight: 400;
 }
 
-
 .logo-link sup {
 	vertical-align: 5px;
 	font-size: 18px;
 	font-weight: 100;
 }
+
+/* Navigation Bar Components Styles */
 
 .nav-settings {
 	float: right;
@@ -180,6 +192,12 @@ a.logo-link {
 .nav-settings a {
 	display: block;
 	padding: 10px 5px;
+}
+
+/* Navigation Bar Dropdown Styles*/
+
+.user-dropdown-container:hover > .dropdown{
+	display: block;
 }
 
 .dropdown {
@@ -206,305 +224,7 @@ a.logo-link {
 }
 
 
-.user-dropdown-container:hover > .dropdown{
-	display: block;
-}
-
-.title {
-	display: block;
-	font-size: 30px;
-	font-weight: 100;
-	padding: 10px 0px;
-}
-
-.title.first-page {
-	color: white;
-}
-
-.main {
-	width: 980px;
-	margin: auto;
-	padding-bottom: 80px;
-}
-
-.form-main {
-	width: 660px;
-}
-
-.new-form-main {
-	width: 980px;
-}
-
-.form-sidebar {
-	width: 343px;
-}
-
-.big-input {
-	width: 462px;
-	height: 24px;
-	padding: 6px;
-	background-color: white;
-	border: 1px solid #ccc;
-	border-radius: 0;
-	font-size: 14px;
-}
-
-.medium-input {
-	width: 300px;
-	height: 24px;
-	padding: 6px;
-	background-color: white;
-	border: 1px solid #ccc;
-	border-radius: 0;
-	font-size: 14px;
-}
-
-.small-input {
-	width: 138px;
-	height: 24px;
-	padding: 6px;
-	border: 1px solid #ccc;
-	background-color: white;
-	border-radius: 0;
-	font-size: 14px;
-}
-
-select.small-input {
-	width: 152px;
-	padding: 6px;
-	height: 38px;
-	font-size: 14px;
-}
-
-.new-form-description {
-	width: 464px;
-	height: 100px;
-	border: 1px solid #ccc;
-	padding: 6px;
-	font-size: 14px;
-}
-
-.form-element {
-	padding: 5px 10px 10px 0px;
-	font-size: 14px;
-}
-
-
-.form-element > label {
-	font-size: 11px;
-	font-weight: bold;
-}
-
-.search-form label {
-	color: white;
-}
-
-.search-button {
-	width: 138px;
-	height: 38px;
-	padding: 7px;
-	color: white;
-	background-color: #0080c6;
-	font-size: 13px;
-}
-
-.search-button:hover {
-	background-color: #00669d;
-}
-
-
-#map {  
-	width: 300px; 
-	height: 300px;
-}
-
-.map-static {
-	position: absolute; 
-	top:300px;
-	left: 550px;
-}
-
-.map-scrolling {
-	position: absolute;
-}
-
-.map-scrolling.locked {
-	position: fixed;
-	top: 10px;
-}
-
-.map-sidebar-container {
-	float: left;
-	width: 304px;
-	position: relative;
-	padding-left: 38px;
-}
-
-.search-filter {
-	padding: 20px 0px 7px 0px;
-}
-	
-div.map-view#map {
-	position: absolute;
-	top: 240px;
-	width: 100%;
-	height: 100%;
-	left: 1px;
-	border-top: 3px solid #999;
-}
-
-.listings-photo {
-	width: 170px;
-	min-height: 110px;
-}
-
-.property-list {
-	border-top: 2px solid black;
-}
-
-.property-listing {
-	border-bottom: 2px solid black;
-	padding: 12px 0px;
-}
-
-.all-properties {
-	display: none;
-}
-
-
-.property-list-container {
-	float: left;
-	width: 638px;
-}
-
-.view-switch {
-	width: 72px;
-	height: 30px;
-	border: 1px solid #ccc;
-	padding: 0 15px;
-	margin: 5px 0;
-	background-color: white;
-}
-
-.view-switch.active {
-	background-color: #ddd;
-	font-weight: bold;
-}
-
-.view-switch:hover {
-	background-color: #eee;
-	font-weight: bold;
-}
-
-.listing-component {
-	padding-right: 20px;
-}
-
-.search-terms {
-	padding-bottom: 10px;
-}
-
-.save-button {
-	width: 72px;
-	height: 24px;
-	border: 1px solid #fdc435;
-	padding: 0 12px;
-	margin: 5px 0;
-	background-color: white;
-}
-
-.save-button:hover {
-	background-color: #fdc435;
-	cursor: pointer;
-}
-
-.save-button:after {
-	content: "★ SAVE";
-}
-
-.save-button:disabled {
-	cursor: default;
-	width: 72px;
-	height: 24px;
-	border: 1px solid #bbb;
-	padding: 0 12px;
-	margin: 5px 0;
-	background-color: #eee;
-	color: #bbb;
-}
-
-.save-button:disabled:after {
-	content: "SAVED";
-}
-
-.delete-button {
-	width: 72px;
-	height: 24px;
-	border: 1px solid #B40000;
-	padding: 0 12px;
-	margin: 5px 0;
-	background-color: #B40000;
-	color: white;
-}
-
-.delete-button:hover {
-	border: 1px solid #801515;
-	background-color: #801515;
-}
-
-.delete-button:after {
-	content: "REMOVE";
-}
-
-.listing-header-container {
-	width: 410px;
-}
-
-.listing-header-container h3 {
-	float: left;
-}
-
-.listing-header-container button {
-	float: right;
-}
-
-.listing-header {
-	font-size: 18px;
-	font-weight: 100;
-	text-transform: capitalize;
-	padding-top: 6px;
-}
-
-.listing-price {
-	font-size: 18px;
-	font-weight: 100;
-	text-transform: capitalize;
-	padding-top: 6px;
-}
-
-.listing-text {
-	font-size: 14px;
-	font-weight: 100;
-	text-transform: capitalize;
-}
-
-.listing-row {
-	border-top: 1px solid #ccc;
-	padding: 4px 0;
-}
-
-.listing-row li {
-	padding: 0 4px;
-	border-left: 1px solid #ccc;
-}
-
-.listing-row li:first-child {
-	border-left: none;
-	padding-left: 0;
-}
-
-
-/* signin modal */
+/* Signin/Register Modal Styles */
 #sign-in-sign-up {
 	display: none;
 	position: absolute;
@@ -663,6 +383,132 @@ div.map-view#map {
 	font-weight: bold;
 }
 
+
+/************ Content Styles ************/
+
+.main {
+	width: 980px;
+	margin: auto;
+	padding-bottom: 80px;
+}
+
+/* General Form Styles */
+
+.big-input {
+	width: 462px;
+	height: 24px;
+	padding: 6px;
+	background-color: white;
+	border: 1px solid #ccc;
+	border-radius: 0;
+	font-size: 14px;
+}
+
+.medium-input {
+	width: 300px;
+	height: 24px;
+	padding: 6px;
+	background-color: white;
+	border: 1px solid #ccc;
+	border-radius: 0;
+	font-size: 14px;
+}
+
+.small-input {
+	width: 138px;
+	height: 24px;
+	padding: 6px;
+	border: 1px solid #ccc;
+	background-color: white;
+	border-radius: 0;
+	font-size: 14px;
+}
+
+select.small-input {
+	width: 152px;
+	padding: 6px;
+	height: 38px;
+	font-size: 14px;
+}
+
+.form-element {
+	padding: 5px 10px 10px 0px;
+	font-size: 14px;
+}
+
+.form-element > label {
+	font-size: 11px;
+	font-weight: bold;
+}
+
+/* Search Box Styles */
+
+.title {
+	display: block;
+	font-size: 30px;
+	font-weight: 100;
+	padding: 10px 0px;
+}
+
+.title.first-page {
+	color: white;
+}
+
+.form-main {
+	width: 660px;
+}
+
+.search-form label {
+	color: white;
+}
+
+.search-button {
+	width: 138px;
+	height: 38px;
+	padding: 7px;
+	color: white;
+	background-color: #0080c6;
+	font-size: 13px;
+}
+
+.search-button:hover {
+	background-color: #00669d;
+}
+
+
+/* List View Styles */
+
+/* List View - Search Term Styles */
+
+.search-terms {
+	padding-bottom: 10px;
+}
+.search-filter {
+	padding: 20px 0px 7px 0px;
+}
+
+
+/* List View - Options Bar Styles */
+
+.view-switch {
+	width: 72px;
+	height: 30px;
+	border: 1px solid #ccc;
+	padding: 0 15px;
+	margin: 5px 0;
+	background-color: white;
+}
+
+.view-switch.active {
+	background-color: #ddd;
+	font-weight: bold;
+}
+
+.view-switch:hover {
+	background-color: #eee;
+	font-weight: bold;
+}
+
 .sort-form-container {
 	display: absolute;
 	padding: 5px 0px 5px 260px;
@@ -710,6 +556,214 @@ div.map-view#map {
 
 a.ellipsis {
 	padding: 0 1px;
+}
+
+
+/* List View - Property Listing Styles */
+
+.listings-photo {
+	width: 170px;
+	min-height: 110px;
+}
+
+.property-list {
+	border-top: 2px solid black;
+}
+
+.property-listing {
+	border-bottom: 2px solid black;
+	padding: 12px 0px;
+}
+
+.all-properties {
+	display: none;
+}
+
+.property-list-container {
+	float: left;
+	width: 638px;
+}
+
+.listing-component {
+	padding-right: 20px;
+}
+
+.listing-header-container {
+	width: 410px;
+}
+
+.listing-header-container h3 {
+	float: left;
+}
+
+.listing-header-container button {
+	float: right;
+}
+
+.listing-header {
+	font-size: 18px;
+	font-weight: 100;
+	text-transform: capitalize;
+	padding-top: 6px;
+}
+
+.listing-price {
+	font-size: 18px;
+	font-weight: 100;
+	text-transform: capitalize;
+	padding-top: 6px;
+}
+
+.listing-text {
+	font-size: 14px;
+	font-weight: 100;
+	text-transform: capitalize;
+}
+
+.listing-row {
+	border-top: 1px solid #ccc;
+	padding: 4px 0;
+}
+
+.listing-row li {
+	padding: 0 4px;
+	border-left: 1px solid #ccc;
+}
+
+.listing-row li:first-child {
+	border-left: none;
+	padding-left: 0;
+}
+
+
+/* List View - Map Styles */
+
+#sidebar-map {  
+	width: 300px; 
+	height: 300px;
+}
+
+.map-static {
+	position: absolute; 
+	top:300px;
+	left: 550px;
+}
+
+.map-scrolling {
+	position: absolute;
+}
+
+.map-scrolling.locked {
+	position: fixed;
+	top: 10px;
+}
+
+.map-sidebar-container {
+	float: left;
+	width: 304px;
+	position: relative;
+	padding-left: 38px;
+}
+
+/* Save/Delete Button Styles */
+
+.save-button {
+	width: 72px;
+	height: 24px;
+	border: 1px solid #fdc435;
+	padding: 0 12px;
+	margin: 5px 0;
+	background-color: white;
+}
+
+.save-button:hover {
+	background-color: #fdc435;
+	cursor: pointer;
+}
+
+.save-button:after {
+	content: "★ SAVE";
+}
+
+.save-button:disabled {
+	cursor: default;
+	width: 72px;
+	height: 24px;
+	border: 1px solid #bbb;
+	padding: 0 12px;
+	margin: 5px 0;
+	background-color: #eee;
+	color: #bbb;
+}
+
+.save-button:disabled:after {
+	content: "SAVED";
+}
+
+.delete-button {
+	width: 72px;
+	height: 24px;
+	border: 1px solid #B40000;
+	padding: 0 12px;
+	margin: 5px 0;
+	background-color: #B40000;
+	color: white;
+}
+
+.delete-button:hover {
+	border: 1px solid #801515;
+	background-color: #801515;
+}
+
+.delete-button:after {
+	content: "REMOVE";
+}
+
+
+/* Map View Styles */
+	
+div.map-view#map {
+	position: absolute;
+	top: 240px;
+	width: 100%;
+	height: 100%;
+	left: 1px;
+	border-top: 3px solid #999;
+}
+
+.leaflet-popup-content {
+	width: 240px;
+}
+
+.leaflet-popup-content img {
+	display: block;
+	width: 180px;
+	height: auto;
+	margin: auto;
+}
+
+.leaflet-popup-content h3 {
+	text-align: center;
+	text-transform: capitalize;
+}
+
+
+/* New/Edit Property Form Styles */
+
+.new-form-main {
+	width: 980px;
+}
+
+.form-sidebar {
+	width: 343px;
+}
+
+.new-form-description {
+	width: 464px;
+	height: 100px;
+	border: 1px solid #ccc;
+	padding: 6px;
+	font-size: 14px;
 }
 
 .new-property-link {
@@ -780,198 +834,6 @@ a.ellipsis {
 
 .delete-cover:hover {
 	cursor: pointer;
-}
-
-.thumbnail-container {
-	padding-top: 10px;
-	padding-bottom: 20px;
-}
-
-.thumbnail-container li {
-	margin-right: 10px;
-	padding: 3px;
-}
-
-.thumbnail {
-	width: 30px;
-	height: 30px;
-}
-
-.thumbnail-container li.active {
-	background-color: #0080c6;
-}
-
-.save-button-list {
-	float: right;
-	padding-bottom: 10px;
-}
-
-.show-content h4{
-	font-size: 16px;
-	font-weight: bold;
-	padding-bottom: 12px
-}
-
-
-.left-side-show {
-	float: left;
-	width: 574px;
-	padding-right: 14px;
-}
-
-.left-side-show p {
-	font-size: 14px;
-	padding-bottom: 12px;
-	line-height: 1.6;
-}
-
-.right-side-show {
-	float: left;
-	width: 386px;
-	padding: 3px;
-}
-
-.right-side-show h2 {
-	font-size: 30px;
-	font-weight: 100;
-	line-height: 30px;
-	padding: 0 7px;
-	text-transform: capitalize;
-}
-
-.right-side-show h3 {
-	font-size: 27px;
-	font-weight: bold;
-	padding: 8px 7px;
-}
-
-.right-side-show ul {
-	border-top: 1px solid #ccc;
-	border-bottom: 1px solid #ccc;
-}
-
-.right-side-show li{
-	padding: 5px 7px;
-	border-right: 1px solid #ccc;
-}
-
-.right-side-show li:last-child{
-	border-right: 0;
-}
-
-.type-and-location-container {
-	border-bottom: 1px solid #ccc;
-	padding: 5px 7px;
-}
-
-.right-side-show p {
-	font-size: 14px;
-	text-transform: capitalize;
-}
-
-.description-container {
-	border-top: 4px solid black;
-	padding-top: 8px;
-	padding-bottom: 20px;
-}
-
-.description-container p {
-	font-size: 14px;
-	padding-bottom: 12px;
-	line-height: 1.6;
-}
-
-.show-map-container {
-	padding: 20px;
-}
-
-.show-map-container > #map {
-	margin: auto;
-}
-
-.edit-button {
-	display: block;
-	width: 110px;
-	height: 14px;
-	padding-top: 3px;
-	padding-bottom: 7px;
-	color: white;
-	background-color: #0080c6;
-	font-size: 15px;
-	margin: 5px 10px;
-	text-align: center;
-}
-
-.edit-button:hover {
-	background-color: #00669d;
-	color: white;
-}
-
-.zoom-in {
-	position: absolute;
-	z-index: 10000;
-}
-
-.zoom-out {
-	position: absolute;
-	z-index: 10000;
-}
-
-.subway-stations-container {
-	padding: 10px;
-	width: 366px;
-}
-
-.subway-station {
-	display: block;
-	
-	padding: 10px 0;
-	font-size: 12px;
-}
-
-.comments-container {
-	border-top: 4px solid black;
-	padding-top: 8px;
-	padding-bottom: 20px;
-}
-
-.new-comment-container {
-	border-top: 1px solid #ccc;
-	padding: 20px 0;
-}
-
-.new-comment-form label {
-	font-size: 14px;
-	padding-bottom: 12px;
-	line-height: 1.6;
-}
-
-.new-comment-form input[type="text"] {
-	width: 540px;
-	font-size: 14px;
-}
-
-.new-comment-form textarea {
-	width: 540px;
-	height: 50px;
-	font-size: 14px;
-	padding: 6px;
-	background-color: white;
-	border: 1px solid #ccc;
-}
-
-.new-comment-form button {
-	width: 138px;
-	height: 38px;
-	padding: 7px;
-	color: white;
-	background-color: #0080c6;
-	font-size: 13px;
-	margin-top: 10px;
-}
-
-.new-comment-form button:hover {
-	background-color: #00669d;
 }
 
 #main-photo-container {
@@ -1065,18 +927,206 @@ a.ellipsis {
 }
 
 
-.leaflet-popup-content {
-	width: 240px;
+
+/* Property Show Page Styles */
+
+/* Property Show Page - Left Side Styles */
+
+.thumbnail-container {
+	padding-top: 10px;
+	padding-bottom: 20px;
 }
 
-.leaflet-popup-content img {
-	display: block;
-	width: 180px;
-	height: auto;
+.thumbnail-container li {
+	margin-right: 10px;
+	padding: 3px;
+}
+
+.thumbnail {
+	width: 30px;
+	height: 30px;
+}
+
+.thumbnail-container li.active {
+	background-color: #0080c6;
+}
+
+.left-side-show {
+	float: left;
+	width: 574px;
+	padding-right: 14px;
+}
+
+.left-side-show p {
+	font-size: 14px;
+	padding-bottom: 12px;
+	line-height: 1.6;
+}
+
+.description-container {
+	border-top: 4px solid black;
+	padding-top: 8px;
+	padding-bottom: 20px;
+}
+
+.description-container p {
+	font-size: 14px;
+	padding-bottom: 12px;
+	line-height: 1.6;
+}
+
+/* Property Show Page - Right Side Styles*/
+
+.save-button-list {
+	float: right;
+	padding-bottom: 10px;
+}
+
+.show-content h4{
+	font-size: 16px;
+	font-weight: bold;
+	padding-bottom: 12px
+}
+
+.right-side-show {
+	float: left;
+	width: 386px;
+	padding: 3px;
+}
+
+.right-side-show h2 {
+	font-size: 30px;
+	font-weight: 100;
+	line-height: 30px;
+	padding: 0 7px;
+	text-transform: capitalize;
+}
+
+.right-side-show h3 {
+	font-size: 27px;
+	font-weight: bold;
+	padding: 8px 7px;
+}
+
+.right-side-show ul {
+	border-top: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+}
+
+.right-side-show li{
+	padding: 5px 7px;
+	border-right: 1px solid #ccc;
+}
+
+.right-side-show li:last-child{
+	border-right: 0;
+}
+
+.type-and-location-container {
+	border-bottom: 1px solid #ccc;
+	padding: 5px 7px;
+}
+
+.right-side-show p {
+	font-size: 14px;
+	text-transform: capitalize;
+}
+
+.show-map-container {
+	padding: 20px;
+}
+
+.show-map-container > #map {
 	margin: auto;
 }
 
-.leaflet-popup-content h3 {
+.edit-button {
+	display: block;
+	width: 110px;
+	height: 14px;
+	padding-top: 3px;
+	padding-bottom: 7px;
+	color: white;
+	background-color: #0080c6;
+	font-size: 15px;
+	margin: 5px 10px;
 	text-align: center;
-	text-transform: capitalize;
 }
+
+.edit-button:hover {
+	background-color: #00669d;
+	color: white;
+}
+
+.zoom-in {
+	position: absolute;
+	z-index: 10000;
+}
+
+.zoom-out {
+	position: absolute;
+	z-index: 10000;
+}
+
+.subway-stations-container {
+	padding: 10px;
+	width: 366px;
+}
+
+.subway-station {
+	display: block;
+	
+	padding: 10px 0;
+	font-size: 12px;
+}
+
+/* Property Show Page - Comments Styles */
+
+.comments-container {
+	border-top: 4px solid black;
+	padding-top: 8px;
+	padding-bottom: 20px;
+}
+
+.new-comment-container {
+	border-top: 1px solid #ccc;
+	padding: 20px 0;
+}
+
+.new-comment-form label {
+	font-size: 14px;
+	padding-bottom: 12px;
+	line-height: 1.6;
+}
+
+.new-comment-form input[type="text"] {
+	width: 540px;
+	font-size: 14px;
+}
+
+.new-comment-form textarea {
+	width: 540px;
+	height: 50px;
+	font-size: 14px;
+	padding: 6px;
+	background-color: white;
+	border: 1px solid #ccc;
+}
+
+.new-comment-form button {
+	width: 138px;
+	height: 38px;
+	padding: 7px;
+	color: white;
+	background-color: #0080c6;
+	font-size: 13px;
+	margin-top: 10px;
+}
+
+.new-comment-form button:hover {
+	background-color: #00669d;
+}
+
+
+
+
